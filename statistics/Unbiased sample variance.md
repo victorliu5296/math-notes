@@ -4,7 +4,7 @@ So I was looking at the statistics course on Khan Academy, and he said that the 
 
 --- 
 
-Let's calculate the expected value of the biased estimator of the sample variance, $ S^2_{\text{biased}} $, and show how it relates to the true population variance $ \sigma^2 $.
+Let's calculate the expected value of the biased estimator of the sample variance, $S^2_{\text{biased}}$, and show how it relates to the true population variance $ \sigma^2 $.
 
 ### 1. **Restating the Biased Estimator**:
 
