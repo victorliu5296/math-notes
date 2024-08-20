@@ -13,25 +13,25 @@ Prompt: "Can you help me write about the connection between the Central limit th
 
 The Central Limit Theorem (CLT) is a fundamental principle in probability theory and statistics. It states that the sum (or average) of a large number of independent, identically distributed (i.i.d.) random variables, regardless of their original distribution, will tend to follow a normal (Gaussian) distribution, provided that certain conditions are met. This convergence to a normal distribution occurs as the number of variables increases.
 
-Mathematically, if $X_1, X_2, \dots, X_n$ are i.i.d. random variables with mean $\mu$ and variance $\sigma^2$, the normalized sum:
+Mathematically, if $`X_1, X_2, \dots, X_n`$ are i.i.d. random variables with mean $`\mu`$ and variance $`\sigma^2`$, the normalized sum:
 
 $$
 Z_n = \frac{1}{\sqrt{n}} \sum_{i=1}^{n} \left( \frac{X_i - \mu}{\sigma} \right)
 $$
 
-approaches a standard normal distribution $N(0,1)$ as $n$ becomes large.
+approaches a standard normal distribution $`N(0,1)`$ as $`n`$ becomes large.
 
 #### Diffusion Models and Their Reverse Process
 
 Diffusion models are a type of generative model used in machine learning and statistics. These models simulate a diffusion process where data points are progressively noised until they resemble a simple distribution, typically a normal distribution. The reverse process of this diffusion aims to recover the original data by starting from a sample in this simple distribution and reversing the noise.
 
-In the forward process, a data point $x_0$ is incrementally noised through a series of steps:
+In the forward process, a data point $`x_0`$ is incrementally noised through a series of steps:
 
 $$
 x_t = x_{t-1} + \text{noise}
 $$
 
-where $t$ indicates the time step, and the noise is often Gaussian. After many such steps, the distribution of the data converges to a normal distribution due to the CLT, because the accumulated effect of adding small, independent noise at each step approximates a normal distribution.
+where $`t`$ indicates the time step, and the noise is often Gaussian. After many such steps, the distribution of the data converges to a normal distribution due to the CLT, because the accumulated effect of adding small, independent noise at each step approximates a normal distribution.
 
 In the reverse process, the model aims to reverse this diffusion to generate data samples by denoising a sample from the normal distribution back to the original data distribution. This reverse process is crucially dependent on the fact that the forward process converges to a normal distribution.
 
@@ -57,25 +57,25 @@ The Central Limit Theorem (CLT) is a fundamental concept in probability theory a
 
 **The Central Limit Theorem**
 
-The CLT states that for a sequence of i.i.d. random variables $X_1, X_2, \ldots, X_n$ with finite mean $\mu$ and variance $\sigma^2$, the distribution of the standardized sum
+The CLT states that for a sequence of i.i.d. random variables $`X_1, X_2, \ldots, X_n`$ with finite mean $`\mu`$ and variance $`\sigma^2`$, the distribution of the standardized sum
 
 $$
 Z_n = \frac{\sum_{i=1}^{n} X_i - n\mu}{\sigma \sqrt{n}}
 $$
 
-converges to a standard normal distribution $N(0, 1)$ as $n \to \infty$. This theorem explains why the normal distribution appears so frequently in nature and forms the basis for many statistical tests and confidence intervals.
+converges to a standard normal distribution $`N(0, 1)`$ as $`n \to \infty`$. This theorem explains why the normal distribution appears so frequently in nature and forms the basis for many statistical tests and confidence intervals.
 
 **Diffusion Models and the Reverse Process**
 
 Diffusion models define a Markov chain that gradually adds Gaussian noise to the data, transforming it into a simple, tractable distribution, such as a standard normal distribution. The reverse process then learns to denoise the data, generating new samples from the original data distribution.
 
-Given a data distribution $q(x_0)$, the forward diffusion process is defined as:
+Given a data distribution $`q(x_0)`$, the forward diffusion process is defined as:
 
 $$
 q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1 - \beta_t} x_{t-1}, \beta_t I)
 $$
 
-where $\beta_t$ is a variance schedule. After a large number of time steps $T$, the data distribution $q(x_T)$ approaches a standard normal distribution due to the cumulative effect of the added Gaussian noise.
+where $`\beta_t`$ is a variance schedule. After a large number of time steps $`T`$, the data distribution $`q(x_T)`$ approaches a standard normal distribution due to the cumulative effect of the added Gaussian noise.
 
 The reverse process is also a Markov chain with Gaussian transitions:
 
@@ -83,7 +83,7 @@ $$
 p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))
 $$
 
-where $\mu_\theta$ and $\Sigma_\theta$ are parameterized neural networks that predict the mean and covariance of the Gaussian distribution, respectively.
+where $`\mu_\theta`$ and $`\Sigma_\theta`$ are parameterized neural networks that predict the mean and covariance of the Gaussian distribution, respectively.
 
 **Connection to the Central Limit Theorem**
 

@@ -4,10 +4,12 @@
 replace_delimiters() {
     local file="$1"
     perl -i -pe '
-        s/\\\(/\$/g;
-        s/\\\)/\$/g;
-        s/\\\[/\$\$/g;
-        s/\\\]/\$\$/g;
+        # Replace \( expression \) with $`expression`$
+        s/\\\(\s*/\$`/g;
+        s/\s*\\\)/`\$/g;
+        # Replace \[ expression \] with ```math expression ```
+        s/\\\[\s*/```math /g;
+        s/\s*\\\]/ ```/g;
     ' "$file"
 }
 
