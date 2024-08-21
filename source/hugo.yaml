@@ -1,0 +1,69 @@
+baseURL: https://victorliu5296.github.io/math-notes/
+languageCode: en-us
+title: Victor Liu's Math Notes
+theme: ["PaperMod"]
+
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+taxonomies:
+  tag: tags
+  category: categories
+  folder: folders
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: Victor Liu's Math Notes
+  description: "Victor Liu's math notes"
+  keywords: [Blog, Portfolio, PaperMod]
+  author: Victor Liu
+  # author: ["Me", "You"] # multiple authors
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+
+  # home-info mode
+  homeInfoParams:
+    Title: "Welcome"
+    Content: >
+      Hi! I'm Victor, a high school student. I enjoy mathematics. Here, I share my notes on topics I find interesting or confusing.
+      Check [about me](/about-me/) for more information.
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/victorliu5296"
+
+  cover:
+    hidden: true # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: true # hide on single page
+
+  editPost:
+    URL: "https://github.com/victorliu5296/math-notes/source/content/posts"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+menu:
+  main:
+    - identifier: about-me
+      name: About Me
+      url: /about-me/
+      weight: 1
+    - identifier: portfolio
+      name: Portfolio
+      url: /portfolio/
+      weight: 2

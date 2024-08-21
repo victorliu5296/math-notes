@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Go to source/content/posts directory
+cd source/content/posts || exit
+
 # Function to replace delimiters in a file
 replace_delimiters() {
     local file="$1"
