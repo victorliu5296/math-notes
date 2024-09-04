@@ -22,7 +22,7 @@ These questions all relate to the idea of measuring the size of sets. While we c
 
 To develop a consistent way of measuring, we start by thinking about simple, intuitive cases:
 
-1. **Length of Intervals**: We know that the length of an interval \([a, b]\) on the real line is $b - a$.
+1. **Length of Intervals**: We know that the length of an interval $[a, b]$ on the real line is $b - a$.
 2. **Area of Rectangles**: We also know that the area of a rectangle with sides of length $a$ and $b$ is $a \times b$.
 
 These concepts of length and area are familiar and straightforward, but how can we extend them to more complex or irregular sets?
