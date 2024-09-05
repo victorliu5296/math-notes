@@ -7,15 +7,10 @@ cd source/content/posts || exit
 replace_delimiters() {
     local file="$1"
     perl -i -pe '
-        # Replace \( expression \) with $expression$ and remove spaces around the expression
-        s/\\\(\s*/\$/g;
-        s/\s*\\\)/\$/g;
-        # Remove any spaces between $ and the expression
-        s/\$\s+/\$/g;
-        s/\s+\$/\$/g;
-        # Replace \[ expression \] with ```math expression ```
-        s/\\\[\s*/```math /g;
-        s/\s*\\\]/ ```/g;
+        # Replace \( expression \) with $expression$ while preserving spaces
+        s/\\\(([^\)]*)\\\)/\$$1\$/g;
+        # Replace \[ expression \] with ```math expression ``` while preserving spaces
+        s/\\\[([^\]]*)\\\]/```math $1 ```/g;
     ' "$file"
 }
 
