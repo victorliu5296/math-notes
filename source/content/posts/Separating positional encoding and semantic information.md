@@ -1,8 +1,11 @@
 ---
 title: "Separating positional encoding and semantic information"
 date: 2024-08-13
-math: katex
 description: "How does the model manage to separate the 2 parts of positional encoding?"
+math: katex
+categories: [Machine Learning]
+tags: [Transformer, NLP, LLM, Attention Mechanism, Positional Encoding, Semantic Embedding, Word Embedding]
+weight: 100
 ---
 I'm curious as to the positional encoding part. I've seen the mathematics part, we add a positional encoding vector to a semantic encoding vector. My question is, how does the model manage to separate the 2 parts? Aren't we losing information this way? How does it recover it meaningfully?
 

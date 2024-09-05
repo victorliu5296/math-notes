@@ -2,6 +2,10 @@
 title: "CLT and diffusion models"
 date: 2024-08-13
 description: "Connections between the Central Limit Theorem (CLT) and the reverse process of diffusion models being able to initialize from normal (Gaussian) distributions."
+math: katex
+categories: [Statistics, Machine Learning]
+tags: [Central Limit Theorem, Diffusion Models]
+weight: 100
 ---
 
 It's interesting to see that the two versions of the explanation are quite different, with ChatGPT's version being more centered on intuition and Mistral Large-2's version being more technical and mathematical.

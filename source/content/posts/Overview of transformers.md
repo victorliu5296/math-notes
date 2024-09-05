@@ -1,8 +1,11 @@
 ---
 title: "Overview of transformers"
 date: 2024-08-13
-math: katex
 description: "High-level explanation of transformers, how they work (no math), and the history leading up to them."
+math: katex
+categories: [Machine Learning]
+tags: [Transformer, NLP, LLM, Attention Mechanism, Encoder-Decoder, Decoder-Only]
+weight: 100
 ---
 Can you explain transformers, how they work and the history leading up to them
 

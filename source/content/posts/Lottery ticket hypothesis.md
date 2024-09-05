@@ -1,8 +1,11 @@
 ---
 title: "The Lottery Ticket Hypothesis"
 date: 2024-08-13
-math: katex
 description: "Visual intuition for the Lottery Ticket Hypothesis."
+math: katex
+categories: [Machine Learning]
+tags: [Neural Networks, Pruning, Lottery Ticket Hypothesis]
+weight: 100
 ---
 # The Lottery Ticket Hypothesis
 

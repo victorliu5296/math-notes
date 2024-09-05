@@ -2,8 +2,9 @@
 title: "Unbiased sample variance"
 date: 2024-08-13
 math: katex
-categories: [statistics]
-tags: [variance, sample variance, biased estimator, expected value]
+categories: [Statistics]
+tags: [Variance, Sample Variance, Biased Estimator, Expected Value]
+weight: 100
 ---
 # Dividing sample variance by one less than the sample size
 
