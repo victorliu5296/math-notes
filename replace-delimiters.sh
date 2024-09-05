@@ -11,6 +11,9 @@ replace_delimiters() {
         s/\\\(([^\)]*)\\\)/\$$1\$/g;
         # Replace \[ expression \] with ```math expression ``` while preserving spaces
         s/\\\[([^\]]*)\\\]/```math $1 ```/g;
+        # Replace \{ with \\{ and \} with \\}
+        s/\\\{/\\\\\{/g;
+        s/\\\}/\\\\\}/g;
     ' "$file"
 }
 
