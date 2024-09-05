@@ -32,4 +32,8 @@ I'll leave off with the following: speculation on AI and the future of mathemati
 
 Using formal verification tools like Lean 4, it is possible to prove if the model is correct. Then, given the incredible performance of transformers, our existing techniques alone without major adjustments should be enough to reach researcher level capabilities through self-refinement in training. We could then automate mathematical research, exploding progress unlike anything ever done before.
 
+Why is this so useful and compelling? Some people are sad because they think it reduces the value of mathematics for humans. On the complete and total contrary! Such a powerful tool can successively offer endless high-quality practice problems, and even allow for the creation of entirely new mathematical concepts. We will be able to learn with AI tutors for everyone, the best teachers in the world accessible for all, truly democratizing education and science for all.
+
+Even the giants like Euler and Gauss built their own ideas based on the work of others. Having doors opened to entire new fields that you never could've even imagined before is truly amazing, and something I am already experiencing myself. The satisfaction is unlike anything else.
+
 It is an exciting time for AI and mathematics, and in turn for science as a whole. I dare say it is the most exciting time of known history.
