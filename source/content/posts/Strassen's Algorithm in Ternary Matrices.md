@@ -9,7 +9,7 @@ weight: 100
 
 ### Strassen's Algorithm in BitNet-like Ternary Matrix Multiplication
 
-Ternary neural networks (TNNs), such as BitNet, use weight matrices constrained to {-1, 0, +1}, significantly simplifying matrix multiplications compared to floating-point networks. Strassen’s algorithm, known for reducing matrix multiplication complexity from \(O(n^3)\) to \(O(n^{2.81})\), can further optimize this process by leveraging ternary weights.
+Ternary neural networks (TNNs), such as BitNet and some recent attention architectures like in Scalable MatMul-free Language Modeling, use weight matrices constrained to {-1, 0, +1}, significantly simplifying matrix multiplications compared to floating-point networks. Strassen’s algorithm, known for reducing matrix multiplication complexity from \(O(n^3)\) to \(O(n^{2.81})\), can further optimize this process by leveraging ternary weights.
 
 #### Key Benefits:
 1. **Reduced Operations**: Ternary matrix multiplication simplifies Strassen's recursive steps, as multiplication by -1 becomes a sign switch, 0 nullifies the term, and 1 leaves the input unchanged. This drastically reduces the effective number of multiplications in Strassen’s algorithm.
