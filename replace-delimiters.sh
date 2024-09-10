@@ -9,8 +9,8 @@ replace_delimiters() {
     perl -i -pe '
         # Replace \( expression \) with $expression$ while preserving spaces
         s/\\\(([^\)]*)\\\)/\$$1\$/g;
-        # Replace \[ expression \] with \\[ expression \\] while preserving spaces
-        s/\\\[([^\]]*)\\\]/\\\[$1\\\]/g;
+        # Replace \[ expression \] with $$ expression $$ while preserving spaces
+        s/\\\[([^\]]*)\\\]/\$\$\[$1\\$\$/g;
         # Replace \{ with \\{ and \} with \\}
         s/\\\{/\\\\\{/g;
         s/\\\}/\\\\\}/g;
