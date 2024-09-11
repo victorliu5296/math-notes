@@ -10,7 +10,7 @@ replace_delimiters() {
         # Replace \( expression \) with $expression$ while preserving spaces
         s/\\\(([^\)]*)\\\)/\$$1\$/g;
         # Replace \[ expression \] with $$ expression $$ while preserving spaces
-        s/\\\[([^]]*)\\\]/\$\$$1\$\$/g;
+        s/\\\[([\s\S]*?)\\\]/\$\$$1\$\$/g;
         # Replace \{ with \\{ and \} with \\}
         s/\\\{/\\\\\{/g;
         s/\\\}/\\\\\}/g;
