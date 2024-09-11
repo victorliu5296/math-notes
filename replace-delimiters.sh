@@ -6,7 +6,7 @@ cd source/content/posts || exit
 # Function to replace delimiters in a file
 replace_delimiters() {
     local file="$1"
-    perl -i -pe '
+    perl -i -0777 -pe '
         # Replace \( expression \) with $expression$ while preserving spaces
         s/\\\(([^\)]*)\\\)/\$$1\$/g;
         # Replace \[ expression \] with $$ expression $$ while preserving spaces
