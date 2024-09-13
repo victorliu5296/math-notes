@@ -183,3 +183,17 @@ We’ve now built up a complete understanding of KL-divergence and its related c
 - **Entropy** quantifies the average uncertainty or information in a distribution.
 - **Cross-Entropy** measures the inefficiency of encoding data from one distribution using another.
 - **KL-Divergence** measures the extra cost incurred by using the wrong distribution to encode the true distribution.
+
+---
+
+### 7. **Optimization of KL-Divergence in Machine Learning**
+
+In practice, actual KL-divergence is not optimized directly. This is because the entropy of the underlying distribution \(H(P)\) is often unknown, and the KL-divergence is only used to compare two distributions.
+
+Luckily for us, this is not a problem. Let's recall our relationship between KL-divergence and cross-entropy:
+
+\[
+D_{KL}(P || Q) = H(P, Q) - H(P)
+\]
+
+The important thing to note is that the entropy \(H(P)\) is a constant, independent of our model distribution \(Q(x)\). This means that we can instead optimize the cross-entropy, as a constant shift does not affect the optimization problem.
