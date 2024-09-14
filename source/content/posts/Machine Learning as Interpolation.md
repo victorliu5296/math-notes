@@ -2,10 +2,11 @@
 title: 'Machine Learning as Interpolation'
 date: 2024-09-13T21:51:58-04:00
 math: katex
-description: ""
-categories: []
-tags: []
+description: "Exploring how machine learning models generalize by interpolating on data manifolds, with concrete examples from image and language processing"
+categories: ["Machine Learning", "Deep Learning"]
+tags: ["Neural Networks", "Generalization", "Scaling Laws", "Data Manifolds"]
 weight: 100
+draft: false
 ---
 
 This is a post on the interpretation of machine learning models as interpolating between training points. It is inspired by the recent [video](https://www.youtube.com/watch?v=5eqRuVp65eY) "AI can't cross this line and we don't know why" by Welch Labs, containing great visualizations. The bulk of the mathematical details are taken from the paper *"A Neural Scaling Law from the Dimension of the Data Manifold"* by Utkarsh Sharma and Jared Kaplan.
