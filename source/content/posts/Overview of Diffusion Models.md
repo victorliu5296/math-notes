@@ -22,16 +22,16 @@ Diffusion models are a type of generative model that create high-quality samples
 
 ### **1.1. Evolution of Image Generation in Machine Learning**
 
-| **Date** | **Model**                      | **Key Innovation**                                                                                       | **Strengths**                                    | **Weaknesses**                            |
-| -------- | ------------------------------ | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ----------------------------------------- |
-| **2014** | GANs (Goodfellow et al.)       | Generator and discriminator trained in a minimax game to produce realistic images.                       | Sharp, realistic images                          | Unstable training, mode collapse          |
-| **2014** | VAEs (Kingma & Welling)        | Probabilistic framework using latent variables for image generation.                                     | Stable training, well-defined probabilities      | Blurry images                             |
-| **2016** | PixelCNN (van den Oord et al.) | Autoregressive model generating images pixel by pixel, with explicit likelihood.                         | Likelihood modeling, captures pixel dependencies | Slow, limited global coherence            |
-| **2019** | BigGAN                         | Large-scale GAN models, improving quality and diversity in image generation.                             | High-resolution, diverse images                  | Requires enormous computational resources |
-| **2019** | VQ-VAE-2 (DeepMind)            | Combines discrete latent spaces and hierarchy to improve image generation quality.                       | High-quality, diverse images                     | Complex architecture                      |
-| **2020** | DALL-E (OpenAI)                | Text-to-image generation, using multimodal learning to generate images from descriptions.                | Breakthrough in text-to-image generation         | High computational cost                   |
-| **2021** | DDPMs (Ho et al.)              | Diffusion models for generating images by denoising a Gaussian noise process over several steps.         | Stable training, high-quality images             | Slow sampling                             |
-| **2022** | Latent Diffusion Models (LDMs) | Diffusion models operating in a lower-dimensional latent space for faster and more efficient generation. | Fast sampling, highly realistic images           | Computationally complex model design      |
+| **Date** | **Model**                      | **Key Innovation**                                                                                                                                 | **Strengths**                                    | **Weaknesses**                            |
+| -------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ----------------------------------------- |
+| **2014** | GANs (Goodfellow et al.)       | Generator and discriminator trained in a minimax game to produce realistic images.                                                                 | Sharp, realistic images                          | Unstable training, mode collapse          |
+| **2014** | VAEs (Kingma & Welling)        | Probabilistic framework using latent variables for image generation.                                                                               | Stable training, well-defined probabilities      | Blurry images                             |
+| **2016** | PixelCNN (van den Oord et al.) | Autoregressive model generating images pixel by pixel, with explicit likelihood.                                                                   | Likelihood modeling, captures pixel dependencies | Slow, limited global coherence            |
+| **2019** | BigGAN                         | Large-scale GAN models, improving quality and diversity in image generation.                                                                       | High-resolution, diverse images                  | Requires enormous computational resources |
+| **2019** | VQ-VAE-2 (DeepMind)            | Combines discrete latent spaces and hierarchy to improve image generation quality.                                                                 | High-quality, diverse images                     | Complex architecture                      |
+| **2020** | DALL-E (OpenAI)                | Text-to-image generation, using multimodal learning to generate images from descriptions.                                                          | Breakthrough in text-to-image generation         | High computational cost                   |
+| **2021** | DDPMs (Ho et al.)              | Denoising Diffusion Probabilistic Models (DDPMs): diffusion models for generating images by denoising a Gaussian noise process over several steps. | Stable training, high-quality images             | Slow sampling                             |
+| **2022** | Latent Diffusion Models (LDMs) | Diffusion models operating in a lower-dimensional latent space for faster and more efficient generation.                                           | Fast sampling, highly realistic images           | Computationally complex model design      |
 
 ---
 
@@ -81,7 +81,8 @@ Where:
 - $x_t$ is the noisy version of the data at timestep $t$
 - $\beta_t$ is a variance schedule (typically small and increasing over time)
 - $\mathcal{N}(\mu, \Sigma)$ denotes a Gaussian distribution with mean $\mu$ and covariance $\Sigma$
-- The notation $\mathcal{N}(x; \mu, \Sigma)$ is shorthand for $x \sim \mathcal{N}(\mu, \Sigma)$.
+- The notation $\mathcal{N}(x; \mu, \Sigma)$ is shorthand for $x \sim \mathcal{N}(\mu, \Sigma)$
+- $I$ is the identity matrix
 
 #### Closed Form for Noisy Data
 We can directly express $x_t$ in terms of the original data $x_0$ and noise $\epsilon \sim \mathcal{N}(0, I)$:
@@ -105,11 +106,27 @@ Where:
 
 The model is trained to predict the noise added at each timestep. A common objective is denoising score matching:
 
-$$L(\theta) = \mathbb{E}_{t, x_0, \epsilon} \left[ \|\epsilon - \epsilon_\theta(x_t, t)\|^2 \right]$$
+$$
+\begin{aligned}
+L(\theta) :=& \, \mathbb{E}_{t, x_0, \epsilon} \left[ \|\epsilon - \epsilon_\theta(x_t, t)\|^2 \right] \\
+=& \, \mathbb{E}_{t, x_0, \epsilon} \left[ \left\| \epsilon - \epsilon_\theta(\sqrt{\bar \alpha_t} x_0 + \sqrt{1 - \bar \alpha_t} \epsilon, t) \right\|^2 \right] \\
+\end{aligned}
+$$
 
 Where:
 - $\epsilon \sim \mathcal{N}(0, I)$ is the noise added to the data
-- $\epsilon_\theta(x_t, t)$ is the model's prediction of the noise at timestep $t$
+- $\epsilon_\theta(x_t, t)$ is the model's prediction of the **total cumulated** noise at timestep $t$
+
+It is important to note that although the reverse process is iterative such that we subtract a part of the noise at each step, the objective of the model is to find the **total** noise at that step (therefore, recovering the original image) in a single step.
+
+Empirically, trying to predict the noise between a single step does not work well. Intuitively, this is likely because two noisy images tend to look similar and have similar features, so the model has a hard time finding the correct noise to subtract.
+
+Effectively, if the model were trained to predict the next intermediate timestep $x_{t}$ from $x_{t-1}$​ directly, it would have to explicitly learn the full sequence of steps in the reverse process. This would complicate the training procedure:
+
+- The model would need to learn how to transition between each intermediate distribution at each step.
+- It would be more prone to error accumulation—if the model makes a mistake at one step, that error could propagate through subsequent steps, degrading the quality of the final output.
+
+An explanation on why the reverse process is then iterative is mentioned in the questions section.
 
 ### Sampling (Generation)
 
@@ -145,7 +162,7 @@ Where $\epsilon$ is fresh Gaussian noise at each step.
 
 ### 1. Why Use an Iterative Procedure Rather Than One-Shotting It?
 
-The iterative procedure in diffusion models is crucial for several reasons:
+The iterative reverse process procedure in diffusion models is crucial for several reasons:
 
 a) **Tractability**: Reversing the noise process in one step would require modeling an extremely complex distribution. By breaking it down into many small steps, we make each step simpler and more tractable.
 
