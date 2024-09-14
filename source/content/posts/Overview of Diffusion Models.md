@@ -81,6 +81,7 @@ Where:
 - $x_t$ is the noisy version of the data at timestep $t$
 - $\beta_t$ is a variance schedule (typically small and increasing over time)
 - $\mathcal{N}(\mu, \Sigma)$ denotes a Gaussian distribution with mean $\mu$ and covariance $\Sigma$
+- The notation $\mathcal{N}(x; \mu, \Sigma)$ is shorthand for $x \sim \mathcal{N}(\mu, \Sigma)$.
 
 #### Closed Form for Noisy Data
 We can directly express $x_t$ in terms of the original data $x_0$ and noise $\epsilon \sim \mathcal{N}(0, I)$:
