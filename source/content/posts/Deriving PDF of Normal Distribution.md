@@ -157,7 +157,7 @@ A = \frac{\sqrt{-B}}{\sqrt{\pi}} = \frac{1}{\sigma\sqrt{2\pi}}
 Substituting these values, we get the normal distribution PDF:
 
 \[
-p(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{x^2}{2\sigma^2}}
+p(x|\sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{x^2}{2\sigma^2}}
 \]
 
 This is the standard form of the normal distribution, which indeed involves \(e^{-x^2}\) as part of its expression.
@@ -165,7 +165,7 @@ This is the standard form of the normal distribution, which indeed involves \(e^
 Since this is an even function, it is symmetric around zero. In addition, if you wish to shift it so that the mean is zero, we can subtract the mean from the input \(x\):
 
 \[
-p(x, \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+p(x| \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 \]
 
 ## Conclusion
