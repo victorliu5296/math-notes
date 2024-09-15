@@ -12,11 +12,15 @@ I scoured the internet for a simple derivation of the probability density functi
 
 Therefore, in this post, I wish to present an informal derivation of the probability density function of a normal distribution. The goal is to avoid being too technical or mathematically involved (trying to avoid the reference to hard-to-prove theorems). All the while, I hope it provides a certain intuition about the normal distribution.
 
-In particular, I want to focus on the Central Limit Theorem: it is a mathematical result that states the distribution arising from adding more and more independent samples from the same distribution will converge to a normal distribution.
+I want to focus on the Central Limit Theorem: it is a mathematical result that states the distribution arising from adding more and more independent samples from the same distribution will converge to a normal distribution.
 
-This implies that for a large number of samples, adding another sample doesn't significantly change the distribution.
+An important implication of the CLT is that as the number of samples grows large, adding one more sample doesn't significantly alter the overall distribution. This property hints at a kind of stability or equilibrium state that the normal distribution represents.
 
-Drawing inspiration from physics, we can apply the concept of increasing entropy to probability distributions. We'll find the probability density function (PDF) that maximizes entropy, subject to certain constraints, and show that this is indeed the normal distribution.
+To understand this equilibrium state better, we can draw an analogy from physics, specifically from thermodynamics and statistical mechanics. In these fields, systems tend to evolve towards states of maximum entropy, which represent the most probable configurations.
+
+Entropy, in the context of information theory and statistics, measures the uncertainty or randomness of a probability distribution. A distribution with high entropy contains less specific information and is, in a sense, more "spread out" or less constrained.
+
+By applying this concept of maximum entropy to probability distributions, we can derive the form of the normal distribution. We'll show that among all possible distributions with a given mean and variance, the normal distribution is the one that maximizes entropy. This approach not only yields the correct mathematical form but also provides insight into why the normal distribution is so common in nature and statistical phenomena.
 
 ## Step 1: Define Entropy for Continuous Distributions
 
@@ -170,8 +174,10 @@ p(x| \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 
 ## Conclusion
 
-By maximizing entropy subject to constraints on the variance, we've derived the normal distribution. This approach provides insight into why the normal distribution is so common: among all distributions with a given variance, it has the highest entropy, making it the "least informative" distribution consistent with the known constraints.
+Through the principle of maximum entropy, we've derived the probability density function of the normal distribution. This approach reveals why the normal distribution is so ubiquitous in nature and statistics:
 
-This derivation aligns with the Central Limit Theorem's implications. As we add more independent random variables, the resulting distribution tends towards the one with maximum entropy (subject to the constraint of fixed variance), which is the normal distribution.
+1. It maximizes entropy given a fixed variance, making it the least informative (or most uncertain) distribution consistent with this constraint.
 
-This approach to deriving the normal distribution offers an intuitive understanding of its ubiquity in nature and statistics, grounded in the fundamental principle of maximum entropy.
+2. This property aligns with the Central Limit Theorem, explaining why the sum of many independent random variables tends towards a normal distribution, just like how physical systems tend towards maximum entropy states.
+
+This perspective tying physics to statistics offers valuable insight into why the normal distribution emerges so frequently across diverse fields of study.
