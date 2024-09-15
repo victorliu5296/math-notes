@@ -74,8 +74,18 @@ menu:
     - identifier: about-me
       name: About Me
       url: /about-me/
-      weight: 1
+      weight: 10
     - identifier: portfolio
       name: Portfolio
       url: /portfolio/
-      weight: 2
+      weight: 20
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 30
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
