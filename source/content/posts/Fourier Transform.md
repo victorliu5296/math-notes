@@ -1,12 +1,20 @@
 ---
-title: 'Fourier Transform'
+title: "Fourier Transform: A Dual Perspective"
 date: 2024-09-16T21:56:31-04:00
 math: katex
-description: ""
-categories: []
-tags: []
+description: "An in-depth explanation of Fourier transforms from both a concrete/informal and abstract/formal perspective, including practical examples, intuitive definitions, and theoretical insights."
+categories: 
+  - Mathematics
+tags: 
+  - Fourier Transform
+  - Harmonic Analysis
+  - Signal Processing
+  - Mathematical Analysis
+  - Dirac Delta Function
+  - Signal Processing
+  - Applied Mathematics
 weight: 100
-draft: true
+draft: false
 ---
 
 ### **Fourier Transforms: Two Perspectives**
