@@ -109,16 +109,39 @@ This indicates that the sine wave contains only two specific frequencies: \( \om
 ### **2. Abstract/Formal Approach**
 In this approach, the Fourier transform is viewed as a **linear functional** or **operator** acting on a space of functions, mapping them from the **signal domain** (time or space) to the **frequency domain**.
 
-#### **Fourier Transform as a Linear Operator**
-- The Fourier transform can be treated as a **linear operator** \( \mathcal{F} \) that acts on functions in a specific function space, commonly the **space of square-integrable functions** \( L^2(\mathbb{R}) \), which are functions where the integral of their square is finite:
+### **Formal Mapping of the Fourier Transform**
+- For **general signals** \( f(t) \), the Fourier transform is well-defined for functions in the space \( L^1(\mathbb{R}) \), which is the set of functions for which:
   \[
-  \int_{-\infty}^{\infty} |f(t)|^2 dt < \infty
+  \int_{-\infty}^{\infty} |f(t)| dt < \infty
   \]
-  - This means that the Fourier transform takes a function from \( L^2(\mathbb{R}) \) (the time domain) to another function in \( L^2(\mathbb{R}) \) (the frequency domain).
-  - Formally, for \( f(t) \in L^2(\mathbb{R}) \), the Fourier transform is:
-    \[
-    \mathcal{F} \colon L^2(\mathbb{R}) \to L^2(\mathbb{R})
-    \]
+- The Fourier transform of a function \( f \in L^1(\mathbb{R}) \) maps it to a function \( F(w) \) that is **continuous and bounded**, meaning:
+  \[
+  F(w) \in C(\mathbb{R}) \cap L^\infty(\mathbb{R})
+  \]
+  This means that the Fourier transform results in a function that is both continuous and essentially bounded (has a finite maximum value).
+
+### **Why This Matters**
+- For functions in \( L^1(\mathbb{R}) \), the Fourier transform is **well-behaved**. The resulting function in the frequency domain is **bounded** (does not blow up) and **continuous** (smooth in the frequency variable \( w \)).
+- When you move to other function spaces like \( L^2(\mathbb{R}) \), which is the space of square-integrable functions, the Fourier transform still exists but behaves differently. Specifically, in \( L^2(\mathbb{R}) \), the Fourier transform is an **isometry** (it preserves the norm of the function), but this requires a more abstract discussion involving functional analysis.
+
+So, if we take the more **general mapping** into account, the Fourier transform is typically defined as:
+\[
+\mathcal{F}: L^1(\mathbb{R}) \to C(\mathbb{R}) \cap L^\infty(\mathbb{R})
+\]
+- \( L^1(\mathbb{R}) \): The space of integrable functions (functions where the absolute value can be integrated over \( \mathbb{R} \)).
+- \( C(\mathbb{R}) \): The space of continuous functions.
+- \( L^\infty(\mathbb{R}) \): The space of bounded functions (functions whose values have a finite supremum or maximum).
+
+For functions in \( L^1(\mathbb{R}) \), this mapping ensures that the Fourier transform will produce continuous and bounded functions in the frequency domain.
+
+- The Fourier transform of a function \( f(t) \in L^1(\mathbb{R}) \) maps to a continuous and bounded function \( F(w) \in C(\mathbb{R}) \cap L^\infty(\mathbb{R}) \).
+
+For square-integrable functions \( f(t) \in L^2(\mathbb{R}) \), the Fourier transform still exists, but it maps between two different function spaces: \( L^2(\mathbb{R}) \to L^2(\mathbb{R}) \). In this case, the Fourier transform preserves the norm, known as **Plancherel’s theorem**.
+- The Fourier transform can be treated as a **linear operator** \( \mathcal{F} \) that acts on the **space of square-integrable functions** \( L^2(\mathbb{R}) \), which are functions where the integral of their square is finite:
+\[
+\int_{-\infty}^{\infty} |f(t)|^2 dt < \infty
+\]
+- This means that the Fourier transform takes a function from \( L^2(\mathbb{R}) \) (the time domain) to another function in \( L^2(\mathbb{R}) \) (the frequency domain).
 
 #### **Properties of the Fourier Transform as an Operator**
 - **Linearity:** The Fourier transform is a linear operator, meaning that for any functions \( f(t) \) and \( g(t) \) and scalars \( a \), \( b \):
