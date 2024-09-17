@@ -1,8 +1,8 @@
 ---
-title: "Fourier Transform: A Dual Perspective"
+title: "Fourier Transform"
 date: 2024-09-16T21:56:31-04:00
 math: katex
-description: "An in-depth explanation of Fourier transforms from both a concrete/informal and abstract/formal perspective, including practical examples, intuitive definitions, and theoretical insights."
+description: "An overview of the Fourier Transform"
 categories: 
   - Mathematics
 tags: 
