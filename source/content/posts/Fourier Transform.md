@@ -34,7 +34,7 @@ Fourier transforms are essential in analyzing and understanding signals, particu
 - **Why it matters:** Many signals, such as sounds or electrical signals, are complex. Fourier transforms allow us to understand these signals by converting them into simpler, more manageable components—frequencies.
 
 #### **Analogy**
-- Think of a **musical chord**. When you hear a chord, you're hearing multiple notes (frequencies) played together. The Fourier transform acts like a **musical ear**, allowing you to decompose the chord into its individual notes (frequencies), revealing the ingredients of the sound.
+- Think of the Fourier transform as a prism *splitting* white light into its constituent colors. Just as a prism reveals the *spectrum of frequencies* in light, the Fourier transform reveals the spectrum of frequencies in a function or signal.
 
 ---
 
