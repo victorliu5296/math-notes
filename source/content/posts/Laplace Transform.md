@@ -101,7 +101,7 @@ The Laplace Transform can be formally described as a **linear operator** between
 
 - **Convolution Theorem**: The Laplace Transform of the convolution of two functions is the product of their individual transforms:
   \[
-  \mathcal{L}\{(f * g)(t)\} = F(s) G(s)
+  \mathcal{L}\{(f * g)(t)\} = \mathcal{L}\{f(t)\} \mathcal{L}\{g(t)\}
   \]
   This is highly useful in systems analysis, particularly in control systems, where inputs and responses are modeled using convolutions.
 
