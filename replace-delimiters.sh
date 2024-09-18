@@ -21,17 +21,8 @@ replace_delimiters() {
         s/\\\,/\\\\\\,/g;
         s/\\\;/\\\\\\;/g;
 
-        # Replace \# with \\# and \_ with \\_
-        s/\\\#/\\\\\\#/g;
+        # Replace \_ with \\_
         s/\\\_/\\\\\\_/g;
-
-        # Replace \~ with \\~ and \^ with \\^
-        s/\\\~/\\\\\\~/g;
-        s/\\\^/\\\\\\^/g;
-
-        # Replace \$ with \\$ and \% with \\%
-        s/\\\$/\\\\\\$/g;
-        s/\\\%/\\\\\\%/g;
     ' "$file"
 }
 
