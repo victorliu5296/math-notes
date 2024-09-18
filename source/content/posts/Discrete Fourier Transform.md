@@ -16,6 +16,11 @@ weight: 100
 draft: false
 ---
 
+Update 20240918: 
+I have found an absolutely amazing YouTube video on the linear algebraic perspective of this topic: [The Linear Algebra behind sound](https://www.youtube.com/watch?v=SB_8kS_kBMI)
+
+I also discovered this video: [The math behind music | Linear Algebra episode 3](https://www.youtube.com/watch?v=dn0SSkgCiII) in a playlist on linear Algebra. I'll have to watch the playlist for sure.
+
 # Discrete Fourier Transform (DFT)
 
 ## Motivation and Historical Context

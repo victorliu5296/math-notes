@@ -17,6 +17,11 @@ weight: 100
 draft: false
 ---
 
+Update 20240918: 
+I have found an absolutely amazing YouTube video on the linear algebraic perspective of this topic: [The Linear Algebra behind sound](https://www.youtube.com/watch?v=SB_8kS_kBMI)
+
+I also discovered this video: [The math behind music | Linear Algebra episode 3](https://www.youtube.com/watch?v=dn0SSkgCiII) in a playlist on linear Algebra. I'll have to watch the playlist for sure.
+
 ### **Fourier Transforms: Two Perspectives**
 
 Fourier transforms are essential in analyzing and understanding signals, particularly in terms of how they can be broken down into constituent frequencies. This analysis is crucial in fields ranging from engineering to quantum physics, and the transform is named after the French mathematician Jean-Baptiste Joseph Fourier, who introduced the concept in the early 19th century.
