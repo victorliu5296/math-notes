@@ -16,6 +16,22 @@ replace_delimiters() {
         # Replace \{ with \\{ and \} with \\}
         s/\\\{/\\\\\{/g;
         s/\\\}/\\\\\}/g;
+
+        # Replace \, with \\, and \; with \\;
+        s/\\\,/\\\\\\,/g;
+        s/\\\;/\\\\\\;/g;
+
+        # Replace \# with \\# and \_ with \\_
+        s/\\\#/\\\\\\#/g;
+        s/\\\_/\\\\\\_/g;
+
+        # Replace \~ with \\~ and \^ with \\^
+        s/\\\~/\\\\\\~/g;
+        s/\\\^/\\\\\\^/g;
+
+        # Replace \$ with \\$ and \% with \\%
+        s/\\\$/\\\\\\$/g;
+        s/\\\%/\\\\\\%/g;
     ' "$file"
 }
 
