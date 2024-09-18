@@ -11,8 +11,8 @@ replace_delimiters() {
         s/\\\begin/\\\\begin/g;
         s/\\\end/\\\\end/g;
 
-        # 1. Escape underscores and asterisks: _ -> \_, * -> \*
-        s/([_*])/\\$1/g;
+        # Escape underscores in LaTeX math expressions: \( ... \) and \[ ... \]
+        s/(?<!\\)_/\\_/g;
 
         # Replace \( ... \) with \\( ... \\) while escaping and removing spaces after \( and before \)
         s/\\\(\s*(.*?)\s*\\\)/\\\\($1\\\\)/g;
@@ -20,20 +20,9 @@ replace_delimiters() {
         # Replace \[ ... \] with \\[ ... \\] while escaping and removing spaces after \[ and before \]
         s/\\\[\s*(.*?)\s*\\\]/\\\\[$1\\\\]/g;
 
-        # Handle backslashes at the end of the line (replace "\\" at EOL with "\\\\")
-        s/(^|[^\\])(\\\\)[[:blank:]]*$/\\1\\\\\\\\/g;
-
-        # Escape braces for LaTeX: \{ -> \\{, \} -> \\}
+        # Replace \{ with \\{ and \} with \\}
         s/\\\{/\\\\\{/g;
         s/\\\}/\\\\\}/g;
-
-        # Replace commas inside math expressions with \, (small space)
-        s/([^\\])\\\((.*?)\\\)/$1\\\\($2\\\\)/g; # Look for commas in inline math expressions \( ... \)
-        s/([^\\])\\\[\s*(.*?)\s*\\\]/$1\\\\[$2\\\\]/g; # Look for commas in block math expressions \[ ... \]
-
-        # Replace semicolons inside math expressions with \; (medium space)
-        s/([^\\])\\\((.*?)\\\)/$1\\\\($2\\\\)/g; # Look for semicolons in inline math expressions \( ... \)
-        s/([^\\])\\\[\s*(.*?)\s*\\\]/$1\\\\[$2\\\\]/g; # Look for semicolons in block math expressions \[ ... \
     ' "$file"
 }
 
