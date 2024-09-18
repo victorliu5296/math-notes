@@ -54,6 +54,8 @@ Here, \( \mathcal{F} \) denotes the Fourier transform operator. The inverse Four
 f * g = \mathcal{F}^{-1} \{\mathcal{F}\{f\} \cdot \mathcal{F}\{g\}\}
 \]
 
+Note: the Convolution Theorem also works with the Laplace transform, but in practice, we use the Fourier transform for the efficiency of the FFT algorithm.
+
 #### Fast Fourier Transform (FFT)
 The key to leveraging the Convolution Theorem for faster convolutions lies in the **Fast Fourier Transform (FFT)** algorithm. FFT is an efficient method to compute the Discrete Fourier Transform (DFT) and its inverse, reducing the computational complexity from \( O(N^2) \) to \( O(N \log N) \).
 
