@@ -14,28 +14,24 @@ replace_delimiters() {
         # 1. Escape underscores and asterisks: _ -> \_, * -> \*
         s/([_*])/\\$1/g;
 
-        # 2. Handle (c), (r), (tm) -> add space before c, r, tm
-        s/\((c|r|tm)\)/\( $1\)/g;
+        # Replace \( ... \) with \\( ... \\) while escaping and removing spaces after \( and before \)
+        s/\\\(\s*(.*?)\s*\\\)/\\\\($1\\\\)/g;
 
-        # 3. Escape brackets, braces, and pipes: \( -> \\(, \[ -> \\[, etc.
-        s/([\\[\\](){}|])/\\\\$1/g;
+        # Replace \[ ... \] with \\[ ... \\] while escaping and removing spaces after \[ and before \]
+        s/\\\[\s*(.*?)\s*\\\]/\\\\[$1\\\\]/g;
 
-        # 4. Handle backslashes at the end of the line (replace "\\" at EOL with "\\\\")
+        # Handle backslashes at the end of the line (replace "\\" at EOL with "\\\\")
         s/(^|[^\\])(\\\\)[[:blank:]]*$/\\1\\\\\\\\/g;
 
-        # 5. Remove spaces after opening delimiters (\(, \[) and before closing delimiters (\), \])
-        s/\\\\\(\s*(.*?)\s*\\\\\)/\\\\($1\\\\)/g;
-        s/\\\\\[\s*(.*?)\s*\\\\\]/\\\\[$1\\\\]/g;
-
-        # 6. Escape braces for LaTeX: \{ -> \\{, \} -> \\}
+        # Escape braces for LaTeX: \{ -> \\{, \} -> \\}
         s/\\\{/\\\\\{/g;
         s/\\\}/\\\\\}/g;
 
-        # 7. Replace commas inside math expressions with \, (small space)
+        # Replace commas inside math expressions with \, (small space)
         s/([^\\])\\\((.*?)\\\)/$1\\\\($2\\\\)/g; # Look for commas in inline math expressions \( ... \)
         s/([^\\])\\\[\s*(.*?)\s*\\\]/$1\\\\[$2\\\\]/g; # Look for commas in block math expressions \[ ... \]
 
-        # 8. Replace semicolons inside math expressions with \; (medium space)
+        # Replace semicolons inside math expressions with \; (medium space)
         s/([^\\])\\\((.*?)\\\)/$1\\\\($2\\\\)/g; # Look for semicolons in inline math expressions \( ... \)
         s/([^\\])\\\[\s*(.*?)\s*\\\]/$1\\\\[$2\\\\]/g; # Look for semicolons in block math expressions \[ ... \
     ' "$file"
