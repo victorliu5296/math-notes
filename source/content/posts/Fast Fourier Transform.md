@@ -194,3 +194,57 @@ $$
 2. The butterfly operation allows for in-place computation, reducing memory requirements.
 
 3. The divide-and-conquer approach reduces the number of operations from $O(N^2)$ to $O(N \log N)$.
+
+### Matrix Form of the FFT
+
+The Fast Fourier Transform (FFT) can be represented more abstractly as a factorization of matrices. This representation provides a powerful mathematical framework for understanding the algorithm's structure and efficiency.
+
+The Discrete Fourier Transform (DFT) can be expressed as a matrix multiplication:
+
+$$X = F_N x$$
+
+Where:
+- $X$ is the output vector of length N
+- $x$ is the input vector of length N
+- $F_N$ is the N × N DFT matrix
+
+The elements of the DFT matrix $F_N$ are given by:
+
+$$F_N[k,n] = W_N^{kn}$$
+
+Where $W_N = e^{-2\pi i/N}$ is the Nth root of unity.
+
+The key insight of the FFT algorithm is that this DFT matrix can be factored into a product of sparse matrices. For the radix-2 Cooley-Tukey FFT algorithm, the factorization takes the form:
+
+$$F_N = P_N (F_{N/2} \oplus F_{N/2}) D_N (I_{N/2} \otimes F_2)$$
+
+Where:
+- $P_N$ is a permutation matrix that performs the bit-reversal permutation
+- $F_{N/2}$ is the DFT matrix of size N/2
+- $\oplus$ denotes the direct sum of matrices
+- $D_N$ is a diagonal matrix of twiddle factors
+- $I_{N/2}$ is the identity matrix of size N/2
+- $\otimes$ denotes the Kronecker product
+- $F_2$ is the 2×2 DFT matrix
+
+This factorization corresponds to the recursive structure of the FFT algorithm:
+
+1. The $(I_{N/2} \otimes F_2)$ term represents the butterfly operations at the lowest level.
+2. The $D_N$ term applies the twiddle factors.
+3. The $(F_{N/2} \oplus F_{N/2})$ term represents the recursive application of the FFT to the even and odd subsequences.
+4. The $P_N$ term reorders the results.
+
+The power of this representation lies in its ability to explain the algorithm's efficiency:
+
+1. Each factor is a sparse matrix, containing many zero elements.
+2. The number of non-zero elements in each factor is O(N).
+3. There are log₂(N) factors in the product.
+
+This structure leads directly to the O(N log N) complexity of the FFT algorithm, as multiplying a vector by each sparse factor requires O(N) operations, and there are log₂(N) such multiplications.
+
+Moreover, this matrix factorization view:
+- Provides a unified framework for understanding different FFT algorithms
+- Facilitates the development of parallel and vectorized implementations
+- Allows for a deeper mathematical analysis of the algorithm's properties
+
+In summary, representing the FFT as a matrix factorization not only provides an elegant mathematical description of the algorithm but also offers valuable insights into its structure, efficiency, and potential optimizations.
