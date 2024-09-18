@@ -7,10 +7,12 @@ cd source/content/posts || exit
 replace_delimiters() {
     local file="$1"
     perl -i -0777 -pe '
-        # Replace \( expression \) with \\( expression \\) while preserving spaces
-        s/\\\(([^\)]*)\\\)/\\\\($1\\\\)/g;
-        # Replace \[ expression \] with $$ expression $$ while preserving spaces
-        s/\\\[([\s\S]*?)\\\]/\$\$$1\$\$/g;
+        # Replace \( ... \) with \\( ... \\) while escaping and removing spaces after \( and before \)
+        s/\\\(\s*(.*?)\s*\\\)/\\\\($1\\\\)/g;
+
+        # Replace \[ ... \] with \\[ ... \\] while escaping and removing spaces after \[ and before \]
+        s/\\\[\s*(.*?)\s*\\\]/\\\\[$1\\\\]/g;
+
         # Replace \{ with \\{ and \} with \\}
         s/\\\{/\\\\\{/g;
         s/\\\}/\\\\\}/g;
