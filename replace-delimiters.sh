@@ -23,6 +23,10 @@ replace_delimiters() {
 
         # Replace \_ with \\_
         s/\\\_/\\\\\\_/g;
+
+        # Replace \begin with \\begin and \end with \\end
+        s/\\\begin/\\\\begin/g;
+        s/\\\end/\\\\end/g;
     ' "$file"
 }
 
