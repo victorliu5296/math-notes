@@ -1,5 +1,22 @@
-Here's a more concise version of the text that incorporates the **Orthogonal Decomposition Theorem** while comparing Fourier and Taylor series:
-
+---
+title: 'Function Bases'
+date: 2024-09-18T19:11:00-04:00
+math: katex
+description: "A Linear Algebra Perspective on Infinite-Dimensional (Function) Spaces"
+categories:
+  - Mathematics
+  - Functional Analysis
+  - Linear Algebra
+tags:
+  - Function Spaces
+  - Fourier Series
+  - Taylor Series
+  - Orthogonality
+  - Hilbert Spaces
+  - Basis Functions
+  - Approximation Theory
+weight: 100
+draft: false
 ---
 
 ### **Function Bases and the Orthogonal Decomposition Theorem**
