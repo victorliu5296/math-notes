@@ -23,6 +23,10 @@ replace_delimiters() {
         # Replace \{ with \\{ and \} with \\}
         s/\\\{/\\\\\{/g;
         s/\\\}/\\\\\}/g;
+
+        # Replace \, with \\, and \; with \\;
+        s/\\\,/\\\\\\,/g;
+        s/\\\;/\\\\\\;/g;
     ' "$file"
 }
 
