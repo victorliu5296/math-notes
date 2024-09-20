@@ -9,10 +9,7 @@ weight: 100
 ---
 # The Lottery Ticket Hypothesis
 
-{{<figure src="pruned_landscape.png" alt="Landscape graph comparison">}}
-{{ with .Resources.GetMatch "pruned_landscape.png" }}
-  <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}">
-{{ end }}
+![Landscape graph comparison](pruned_landscape.png)
 
 This chart shows a simplified 3D landscape illustrating the loss function of the neural network.
 - Left: The original "full" network, which is overparameterized.
