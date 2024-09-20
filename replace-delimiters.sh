@@ -21,6 +21,12 @@ replace_delimiters() {
         # Replace \[ ... \] with \\[ ... \\] while escaping and removing spaces after \[ and before \]
         s/\\\[\s*(.*?)\s*\\\]/\\\\[$1\\\\]/g;
 
+        # Remove spaces inside inline math $ ... $
+        s/\$\s*(.*?)\s*\$/\$$1\$/g;
+
+        # Remove spaces inside block math $$ ... $$
+        s/\$\$\s*(.*?)\s*\$\$/\$\$$1\$\$/g;
+
         # Replace \{ with \\{ and \} with \\}
         s/\\\{/\\\\\{/g;
         s/\\\}/\\\\\}/g;
