@@ -9,7 +9,8 @@ weight: 100
 ---
 # The Lottery Ticket Hypothesis
 
-{{ $image := .Resources.Get "pruned_landscape.png" }}
+{{<figure src="pruned_landscape.png" alt="Landscape graph comparison">}}
+
 This chart shows a simplified 3D landscape illustrating the loss function of the neural network.
 - Left: The original "full" network, which is overparameterized.
 - Right: The pruned network, which has less bumps and is cheaper to optimize. However, in some points, it can be less "certain" than the original network, which explains the higher training loss despite the higher accuracy on the test set. You can see it interpolating approximately rather than partially overfitting.
