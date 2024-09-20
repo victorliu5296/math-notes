@@ -11,14 +11,14 @@ replace_delimiters() {
         s/\\\begin/\\\\begin/g;
         s/\\\end/\\\\end/g;
 
-        # Escape underscores in LaTeX math expressions: \( ... \) and \[ ... \]
-        s/(\\\(|\\\[)[^\\]*?_(?=[^\\]*?\\\)|[^\\]*?\\\])/\\_/g
-
         # Replace \( ... \) with \\( ... \\) while escaping and removing spaces after \( and before \)
         s/\\\(\s*(.*?)\s*\\\)/\\\\($1\\\\)/g;
 
         # Replace \[ ... \] with \\[ ... \\] while escaping and removing spaces after \[ and before \]
         s/\\\[\s*(.*?)\s*\\\]/\\\\[$1\\\\]/g;
+
+        # Escape underscores in LaTeX math expressions: \( ... \) and \[ ... \]
+        s/(\\\(|\\\[)[^\\]*?_(?=[^\\]*?\\\)|[^\\]*?\\\])/\\_/g
 
         # Replace \{ with \\{ and \} with \\}
         s/\\\{/\\\\\{/g;
