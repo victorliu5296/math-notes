@@ -12,7 +12,7 @@ replace_delimiters() {
         s/\\\end/\\\\end/g;
 
         # Escape underscores in LaTeX math expressions: \( ... \) and \[ ... \]
-        s/(?<!\\)_/\\_/g;
+        s/(\\\(|\\\[)[^\\]*?_(?=[^\\]*?\\\)|[^\\]*?\\\])/\\_/g
 
         # Replace \( ... \) with \\( ... \\) while escaping and removing spaces after \( and before \)
         s/\\\(\s*(.*?)\s*\\\)/\\\\($1\\\\)/g;
