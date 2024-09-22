@@ -73,11 +73,11 @@ menu:
   main:
     - identifier: about-me
       name: About Me
-      url: /about-me/
+      url: ../about-me/
       weight: 10
     - identifier: portfolio
       name: Portfolio
-      url: /portfolio/
+      url: ../portfolio/
       weight: 20
     - identifier: search
       name: Search
