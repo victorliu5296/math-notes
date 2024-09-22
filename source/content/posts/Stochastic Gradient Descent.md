@@ -2,11 +2,17 @@
 title: 'Stochastic Gradient Descent'
 date: 2024-09-22T16:44:35-04:00
 math: katex
-description: ""
+description: "An overview of Stochastic Gradient Descent (SGD)"
 categories:
-  - 
+  - Machine Learning
 tags:
-  - 
+  - Optimization
+  - Deep Learning
+  - Efficiency
+  - Gradient Descent
+  - Stochastic Gradient Descent
+  - Mini-batch Gradient Descent
+
 weight: 100
 draft: false
 ---
