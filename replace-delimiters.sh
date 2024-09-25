@@ -7,33 +7,30 @@ cd source/content/posts || exit
 replace_delimiters() {
     local file="$1"
     perl -i -0777 -pe '
-        # Replace \begin with \\begin and \end with \\end
-        s/\\\begin/\\\\begin/g;
-        s/\\\end/\\\\end/g;
+        # Helper function to escape special characters if not already escaped
+        sub escape_if_not_escaped {
+            my ($char, $replacement) = @_;
+            return "(?<!\\\\)$char" . (defined $replacement ? $replacement : "\\\\$char");
+        }
 
-        # Escape underscores ONLY within LaTeX math expressions: \( ... \) and \[ ... \]
-        # Use non-greedy match to capture math content and avoid breaking non-math content
-        s/(\\\(|\\\[)([^\)]*?)(_)([^\)]*?)(\\\)|\\\])/\1\2\\_\4\5/g;
+        # Escape special characters in all math environments
+        foreach my $env (qw(\\\( \\\[ \$ \$\$)) {
+            my $end_env = $env eq '\\\(' ? '\\\)' : ($env eq '\\\[' ? '\\\]' : $env);
+            s/${env}(.*?)${end_env}/$env . $1 =~ s{
+                @{[escape_if_not_escaped("_")]}|
+                @{[escape_if_not_escaped("&")]}|
+                @{[escape_if_not_escaped("\\{", "\\\\{")]}|
+                @{[escape_if_not_escaped("\\}", "\\\\}")]}|
+                @{[escape_if_not_escaped("\\,", "\\\\,")]}|
+                @{[escape_if_not_escaped("\\;", "\\\\;")]}
+            }{\\$&}gr . $end_env/ges;
+        }
 
-        # Replace \( ... \) with \\( ... \\), skipping if already escaped as \\( ... \\)
-        s/(?<!\\)\\\(\s*(.*?)\s*(?<!\\)\\\)/\\\\($1\\\\)/g;
+        # Double escape backslashes before math delimiters
+        s/(?<!\\)(\\)(?=[\(\[\$])/\\\\/g;
 
-        # Replace \[ ... \] with \\[ ... \\], skipping if already escaped as \\[ ... \\]
-        s/(?<!\\)\\\[\s*(.*?)\s*(?<!\\)\\\]/\\\\[$1\\\\]/g;
-
-        # Remove spaces inside inline math $ ... $
-        s/\$\s*(.*?)\s*\$/\$$1\$/g;
-
-        # Remove spaces inside block math $$ ... $$
-        s/\$\$\s*(.*?)\s*\$\$/\$\$$1\$\$/g;
-
-        # Replace \{ with \\{ and \} with \\}
-        s/\\\{/\\\\\{/g;
-        s/\\\}/\\\\\}/g;
-
-        # Replace \, with \\, and \; with \\;
-        s/\\\,/\\\\\\,/g;
-        s/\\\;/\\\\\\;/g;
+        # Remove spaces inside math environments
+        s/(\$+)\s*(.*?)\s*(\$+)/\1\2\3/g;
     ' "$file"
 }
 
