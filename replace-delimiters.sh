@@ -21,6 +21,9 @@ replace_delimiters() {
             # Double-escape commas
             $content =~ s/\\,/\\\\,/g;
 
+            # Double-escape apostrophes (single quotes)
+            $content =~ s/(?<!\\\\)\\'/\\\\'/g;
+
             # Double-escape underscores
             $content =~ s/\\_/\\\\_/g;
 
