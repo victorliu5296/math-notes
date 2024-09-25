@@ -9,28 +9,29 @@ replace_delimiters() {
     perl -i -0777 -pe '
         # Helper function to escape special characters if not already escaped
         sub escape_if_not_escaped {
-            my ($char, $replacement) = @_;
-            return "(?<!\\\\)$char" . (defined $replacement ? $replacement : "\\\\$char");
+            my ($char) = @_;
+            return "(?<!\\\\)$char(?!\\\\)";
         }
 
         # Escape special characters in all math environments
         foreach my $env (qw(\\\( \\\[ \$ \$\$)) {
             my $end_env = $env eq '\\\(' ? '\\\)' : ($env eq '\\\[' ? '\\\]' : $env);
-            s/${env}(.*?)${end_env}/$env . $1 =~ s{
+            s/${env}((?:(?!${end_env}).)*?)${end_env}/$env . $1 =~ s{
                 @{[escape_if_not_escaped("_")]}|
                 @{[escape_if_not_escaped("&")]}|
-                @{[escape_if_not_escaped("\\{", "\\\\{")]}|
-                @{[escape_if_not_escaped("\\}", "\\\\}")]}|
-                @{[escape_if_not_escaped("\\,", "\\\\,")]}|
-                @{[escape_if_not_escaped("\\;", "\\\\;")]}
+                @{[escape_if_not_escaped("\{")]}|
+                @{[escape_if_not_escaped("\}")]}|
+                @{[escape_if_not_escaped("\,")]}|
+                @{[escape_if_not_escaped("\;")]}
             }{\\$&}gr . $end_env/ges;
         }
 
-        # Double escape backslashes before math delimiters
-        s/(?<!\\)(\\)(?=[\(\[\$])/\\\\/g;
+        # Ensure math delimiters are properly escaped
+        s/(?<!\\)(\\[\(\[\$])/\\$1/g;
+        s/(?<!\\)(\\[\)\]\$])/\\$1/g;
 
         # Remove spaces inside math environments
-        s/(\$+)\s*(.*?)\s*(\$+)/\1\2\3/g;
+        s/(\$+)\s*(.*?)\s*(\$+)/$1$2$3/g;
     ' "$file"
 }
 
