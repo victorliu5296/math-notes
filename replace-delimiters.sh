@@ -11,11 +11,22 @@ replace_delimiters() {
         sub process_math {
             my ($content) = @_;
 
-            # Escape backslashes if not preceded by a backslash
-            $content =~ s/(?<!\\)\\/\\\\/g;
-
             # Escape double backslashes
             $content =~ s/\\\\/\\\\\\\\/g;
+
+            # Only escape \begin and \end if they are not already escaped
+            $content =~ s/(?<!\\\\)\\begin/\\\\begin/g;
+            $content =~ s/(?<!\\\\)\\end/\\\\end/g;
+
+            # Double-escape commas
+            $content =~ s/\\\\,/\\,/g;
+            
+            # Escape underscores if not already escaped
+            $content =~ s/(?<!\\)_/\\_/g;
+
+            # Only escape rendered curly brackets
+            $content =~ s/\\left\\\{/\\left\\\\\{/g;
+            $content =~ s/\\right\\\}/\\right\\\\\}/g;
 
             return $content;
         }
