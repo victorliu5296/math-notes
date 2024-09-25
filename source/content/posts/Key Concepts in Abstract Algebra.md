@@ -2,11 +2,13 @@
 title: 'Key Concepts in Abstract Algebra'
 date: 2024-09-24T19:49:41-04:00
 math: katex
-description: ""
+description: "A list of key concepts in abstract algebra with concise natural language definitions."
 categories:
-  - 
+  - Abstract Algebra
 tags:
-  - 
+  - Algebraic Structures
+  - Morphisms
+  - Tensor Product
 weight: 100
 draft: false
 ---
