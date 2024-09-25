@@ -22,8 +22,8 @@ replace_delimiters() {
             $content =~ s/(?<!\\)_/\\_/g;
 
             # Only escape rendered curly brackets
-            $content =~ s/(?<!\\)\\left\{/\\left\\\{/g;
-            $content =~ s/(?<!\\)\\right\{/\\right\\\{/g;
+            $content =~ s/\\left\{/\\left\\\{/g;
+            $content =~ s/\\right\{/\\right\\\{/g;
 
             return $content;
         }
@@ -32,20 +32,22 @@ replace_delimiters() {
         sub process_text {
             my ($content) = @_;
 
-            # Escape underscores if not already escaped inside \text{}
-            $content =~ s/(?<!\\)_/\\_/g;
+            # Escape underscores inside \text{}
+            $content =~ s/_/\\_/g;
 
             return $content;
         }
-
         # Process math environments: \( ... \), \[ ... \], $ ... $, and $$ ... $$
         # This version allows for any amount of whitespace, including newlines, between delimiters
         s/(\\\(|\\\[|\$\$?)\s*(.*?)\s*(\\\)|\\\]|\$\$?)/ 
             my ($open, $content, $close) = ($1, $2, $3);
-            # Process math content, then handle text blocks inside
             $open . process_math($content) . $close;
-            $content =~ s/\\text\{(.*?)\}/ "\\text{" . process_text($1) . "}" /gse;
         /gsex;
+
+        # Process \text{...} environments and escape underscores inside them
+        s/\\text\{(.*?)\}/ 
+            "\\text{" . process_text($1) . "}";
+        /gse;
 
         # Double-escape delimiters if not already double-escaped
         s/(?<!\\\\)\\\(/\\\\(/g;
