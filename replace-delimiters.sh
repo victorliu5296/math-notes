@@ -10,8 +10,11 @@ replace_delimiters() {
         # Helper function to process math content
         sub process_math {
             my ($content) = @_;
-            $content =~ s/\\_/\\\\_/g;  # Escape already escaped underscores
+            $content =~ s/\\_/\\\\_/g;  # Escape underscores
             $content =~ s/\\\\/\\\\\\\\/g;  # Escape double backslashes
+            $content =~ s/\\\{/\\\\\\\{/g;  # Escape curly braces
+            $content =~ s/\\\}/\\\\\\\}/g;  # Escape curly braces
+            $content =~ s/\\,/\\\\,/g;  # Escape commas
             return $content;
         }
 
@@ -28,14 +31,6 @@ replace_delimiters() {
         # Escape delimiters consistently
         s/(\\\(|\\\[)/\\$1/g;
         s/(\\\)|\\\])/\\$1/g;
-
-        # Replace \{ with \\{ and \} with \\}
-        s/\\\{/\\\\\{/g;
-        s/\\\}/\\\\\}/g;
-
-        # Replace \, with \\, and \; with \\;
-        s/\\\,/\\\\,/g;
-        s/\\\;/\\\\;/g;
     ' "$file"
 }
 
