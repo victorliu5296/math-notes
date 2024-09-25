@@ -25,6 +25,9 @@ replace_delimiters() {
             $content =~ s/\\left\\\{/\\left\\\\\{/g;
             $content =~ s/\\right\\\}/\\right\\\\\}/g;
 
+            # Single-escape commas
+            $content =~ s/\\\\,/\\,/g;
+
             return $content;
         }
 
