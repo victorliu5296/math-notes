@@ -7,24 +7,15 @@ cd source/content/posts || exit
 replace_delimiters() {
     local file="$1"
     perl -i -0777 -pe '
-        # Helper function to escape special characters if not already escaped
-        sub escape_if_not_escaped {
-            my ($char) = @_;
-            return "(?<!\\\\)$char(?!\\\\)";
-        }
+        # Re-escape already-escaped special characters in math environments
+        s/(\$\$?|\[|\()\s*(.*?)\s*(\$\$?|\]|\))/
+            $1 . ($2 =~ s{
+                \\([_\{\};,])  # Find already escaped _, {, }, ;, or ,
+            }{\\\\$1}gr) . $3/ges;
 
-        # Escape special characters in all math environments
-        foreach my $env (qw(\\\( \\\[ \$ \$\$)) {
-            my $end_env = $env eq '\\\(' ? '\\\)' : ($env eq '\\\[' ? '\\\]' : $env);
-            s/${env}((?:(?!${end_env}).)*?)${end_env}/$env . $1 =~ s{
-                @{[escape_if_not_escaped("_")]}|
-                @{[escape_if_not_escaped("&")]}|
-                @{[escape_if_not_escaped("\{")]}|
-                @{[escape_if_not_escaped("\}")]}|
-                @{[escape_if_not_escaped("\,")]}|
-                @{[escape_if_not_escaped("\;")]}
-            }{\\$&}gr . $end_env/ges;
-        }
+        # Always escape ampersand (&) inside math environments
+        s/(\$\$?|\[|\()\s*(.*?)\s*(\$\$?|\]|\))/
+            $1 . ($2 =~ s/&/\\&/gr) . $3/ges;
 
         # Ensure math delimiters are properly escaped
         s/(?<!\\)(\\[\(\[\$])/\\$1/g;
