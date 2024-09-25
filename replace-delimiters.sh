@@ -10,7 +10,6 @@ replace_delimiters() {
         # Helper function to process math content
         sub process_math {
             my ($content) = @_;
-            $content =~ s/&/\\&/g;  # Escape & symbols
             $content =~ s/_/\\_/g;  # Escape underscores
             return $content;
         }
