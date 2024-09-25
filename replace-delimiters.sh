@@ -15,11 +15,11 @@ replace_delimiters() {
         # Use non-greedy match to capture math content and avoid breaking non-math content
         s/(\\\(|\\\[)([^\)]*?)(_)([^\)]*?)(\\\)|\\\])/\1\2\\_\4\5/g;
 
-        # Replace \( ... \) with \\( ... \\) while escaping and removing spaces after \( and before \)
-        s/\\\(\s*(.*?)\s*\\\)/\\\\($1\\\\)/g;
+        # Replace \( ... \) with \\( ... \\), skipping if already escaped as \\( ... \\)
+        s/(?<!\\\\)\(\\\(\s*(.*?)\s*\\\)\)/\\\\($1\\\\)/g;
 
-        # Replace \[ ... \] with \\[ ... \\] while escaping and removing spaces after \[ and before \]
-        s/\\\[\s*(.*?)\s*\\\]/\\\\[$1\\\\]/g;
+        # Replace \[ ... \] with \\[ ... \\], skipping if already escaped as \\[ ... \\]
+        s/(?<!\\\\)\\\[\s*(.*?)\s*\\\]/\\\\[$1\\\\]/g;
 
         # Remove spaces inside inline math $ ... $
         s/\$\s*(.*?)\s*\$/\$$1\$/g;
