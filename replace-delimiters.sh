@@ -11,6 +11,7 @@ replace_delimiters() {
         sub process_math {
             my ($content) = @_;
             $content =~ s/_/\\_/g;  # Escape underscores
+            $content =~ s/\\\\/\\\\\\\\/g;  # Escape double backslashes
             return $content;
         }
 
