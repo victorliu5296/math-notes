@@ -7,6 +7,9 @@ cd source/content/posts || exit
 replace_delimiters() {
     local file="$1"
     perl -i -0777 -pe '
+        # Replace \\ with \\\\ to escape backslashes
+        s/\\\\/\\\\\\\\/g;
+
         # Replace \begin with \\begin and \end with \\end
         s/\\\begin/\\\\begin/g;
         s/\\\end/\\\\end/g;
