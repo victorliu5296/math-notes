@@ -1,5 +1,5 @@
 ---
-title: 'Expressiveness of Sparse Matrcies'
+title: 'Expressiveness of Sparse Matrices'
 date: 2024-09-08T21:54:38-04:00
 math: katex
 categories: [Linear Algebra, Machine Learning]
