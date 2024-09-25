@@ -14,8 +14,8 @@ replace_delimiters() {
             # Escape double backslashes
             $content =~ s/\\\\/\\\\\\\\/g;
 
-            # Escape underscores
-            $content =~ s/_/\\_/g;
+            # Escape underscores if not already escaped
+            $content =~ s/(?<!\\)_/\\_/g;
             
             # Only double-escape curly braces if they are already escaped
             $content =~ s/(?<!\\)\\{\\\\{/g;
@@ -31,10 +31,11 @@ replace_delimiters() {
         s/\\\end/\\\\end/g;
 
         # Process math environments: \( ... \), \[ ... \], $ ... $, and $$ ... $$
+        # This version allows for any amount of whitespace, including newlines, between delimiters
         s/(\\\(|\\\[|\$\$?)\s*(.*?)\s*(\\\)|\\\]|\$\$?)/
             my ($open, $content, $close) = ($1, $2, $3);
             $open . process_math($content) . $close;
-        /ges;
+        /gsex;
 
         # Escape delimiters consistently
         s/(\\\(|\\\[)/\\$1/g;
