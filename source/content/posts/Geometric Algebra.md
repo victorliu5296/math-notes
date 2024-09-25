@@ -38,7 +38,8 @@ Geometric Algebra extends traditional linear algebra and vector calculus by intr
    - \(a \cdot b\) is the *inner product* or *dot product*, representing the parallel alignment of vectors.
    - \(a \wedge b\) is the *outer product* or *wedge product*, which represents the oriented plane (or *bivector*) spanned by the vectors.
 
-   See []
+   See a visual explanation of why they are called the "inner" and "outer" products in the post [Geometric Origins of the Inner Product](/math-notes/posts/geometric-origins-of-the-inner-product/).
+
    This product encapsulates both the scalar information (magnitude and direction along one another) and the geometrical structure (area formed by the vectors).
 
 ### 3. **Multivectors: Generalizing Geometry**
