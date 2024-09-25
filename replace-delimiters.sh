@@ -14,8 +14,8 @@ replace_delimiters() {
             # Escape double backslashes
             $content =~ s/\\\\/\\\\\\\\/g;
 
-            # Escape underscores if not already escaped
-            $content =~ s/(?<!\\)_/\\_/g;
+            # Escape underscores
+            $content =~ s/_/\\_/g;
             
             # Only double-escape curly braces if they are already escaped
             $content =~ s/(?<!\\)\\{\\\\{/g;
