@@ -3,26 +3,52 @@
 # Go to source/content/posts directory
 cd source/content/posts || exit
 
-# Function to replace delimiters in a file
+# Function to replace delimiters and escape special characters in a file
 replace_delimiters() {
     local file="$1"
     perl -i -0777 -pe '
-        # Re-escape already-escaped special characters in math environments
-        s/(\$\$?|\[|\()\s*(.*?)\s*(\$\$?|\]|\))/
-            $1 . ($2 =~ s{
-                \\([_\{\};,])  # Find already escaped _, {, }, ;, or ,
-            }{\\\\$1}gr) . $3/ges;
+        # Step 1: Escape special characters within math environments
 
-        # Always escape ampersand (&) inside math environments
-        s/(\$\$?|\[|\()\s*(.*?)\s*(\$\$?|\]|\))/
-            $1 . ($2 =~ s/&/\\&/gr) . $3/ges;
+        # Replace \begin with \\begin and \end with \\end
+        s/\\begin/\\\\begin/g;
+        s/\\end/\\\\end/g;
 
-        # Ensure math delimiters are properly escaped
-        s/(?<!\\)(\\[\(\[\$])/\\$1/g;
-        s/(?<!\\)(\\[\)\]\$])/\\$1/g;
+        # Escape underscores, ampersands, braces, commas, and semicolons ONLY within LaTeX math expressions
+        # Handles \( ... \), \[ ... \], $...$, and $$...$$ consistently
 
-        # Remove spaces inside math environments
-        s/(\$+)\s*(.*?)\s*(\$+)/$1$2$3/g;
+        # Inline math \( ... \) and block math \[ ... \]
+        s/(\\\(|\\\[)(.*?)(\\\)|\\\])/escape_math($1, $2, $3)/eg;
+
+        # Inline math $...$
+        s/\$(.*?)\$/escape_math("\$", $1, "\$")/eg;
+
+        # Block math $$...$$
+        s/\$\$(.*?)\$\$/escape_math("\$\$", $1, "\$\$")/eg;
+
+        # Step 2: Ensure consistent escaping for non-math characters outside math environments
+
+        # Replace \{ with \\{ and \} with \\}
+        s/\\\{/\\\\\{/g;
+        s/\\\}/\\\\\}/g;
+
+        # Replace \, with \\, and \; with \\;
+        s/\\\,/\\\\\\,/g;
+        s/\\\;/\\\\\\;/g;
+
+        # Return the string unchanged outside math environments
+        sub escape_math {
+            my ($start, $content, $end) = @_;
+            
+            # Escape underscores
+            $content =~ s/_/\\_/g;
+
+            # Escape ampersands (&) to avoid alignment issues
+            $content =~ s/&/\\&/g;
+
+            # Return the escaped math environment
+            return "$start$content$end";
+        }
+
     ' "$file"
 }
 
