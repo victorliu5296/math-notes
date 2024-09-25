@@ -27,6 +27,7 @@ There's a lot of different areas of mathematics to keep up with nowadays, many o
    - **Core Ideas**: Algebra is the study of structures, relations, and operations. Modern algebra extends classical algebraic concepts into abstract settings, including:
      - **Groups, Rings, and Fields**: These are fundamental algebraic structures. Groups deal with symmetries, rings extend groups with additional operations like multiplication, and fields are rings where division is possible (except by zero).
      - **Linear Algebra**: Focuses on vector spaces and linear mappings between them. It forms the backbone of many mathematical and scientific disciplines.
+       - **Multilinear Algebra**: Extends linear algebra to higher-dimensional multilinear spaces and mappings, called tensors. It is often grouped with tensor calculus.
      - **Abstract Algebra**: The generalization of classical algebraic operations and structures, dealing with more abstract systems like modules, lattices, and algebras over fields.
 
    - **Connections**:
@@ -92,6 +93,7 @@ There's a lot of different areas of mathematics to keep up with nowadays, many o
 ### 7. **Geometry**
    - **Core Ideas**: Geometry is the study of shapes, sizes, and the properties of space. Modern geometry has grown to include both classical Euclidean geometry and highly abstract spaces:
      - **Differential Geometry**: Studies smooth shapes and structures. It is essential in physics, particularly in general relativity, which models space-time as a curved manifold.
+       - **Tensor Calculus**: Tensor calculus helps define varying quantities over manifolds such as derivatives, integrals, and coordinate transformations in curved spaces.
      - **Algebraic Geometry**: Studies geometric properties of solutions to polynomial equations. It is deeply connected to number theory and abstract algebra.
      - **Riemannian Geometry**: A type of differential geometry focused on Riemannian manifolds, which generalizes the notion of curved spaces.
 
