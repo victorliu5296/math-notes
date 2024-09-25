@@ -23,7 +23,7 @@ replace_delimiters() {
 
             # Only escape rendered curly brackets
             $content =~ s/\\left\{/\\left\\\{/g;
-            $content =~ s/\\right\{/\\right\\\{/g;
+            $content =~ s/\\right\}/\\right\\\}/g;
 
             return $content;
         }
