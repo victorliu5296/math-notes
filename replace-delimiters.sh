@@ -19,10 +19,10 @@ replace_delimiters() {
             $content =~ s/(?<!\\\\)\\end/\\\\end/g;
 
             # Double-escape commas
-            $content =~ s/\\\\,/\\,/g;
-            
-            # Escape underscores if not already escaped
-            $content =~ s/(?<!\\)_/\\_/g;
+            $content =~ s/\\,/\\\\,/g;
+
+            # Double-escape underscores
+            $content =~ s/\\_/\\\\_/g;
 
             # Only escape rendered curly brackets
             $content =~ s/\\left\\\{/\\left\\\\\{/g;
