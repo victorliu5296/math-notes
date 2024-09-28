@@ -1,7 +1,7 @@
 ---
 title: "Separating positional encoding and semantic information"
 date: 2024-08-13
-description: "How does the model manage to separate the 2 parts of positional encoding?"
+summary: "How does the model manage to separate the 2 parts of positional encoding?"
 math: katex
 categories: [Machine Learning]
 tags: [Transformer, NLP, LLM, Attention Mechanism, Positional Encoding, Semantic Embedding, Word Embedding]

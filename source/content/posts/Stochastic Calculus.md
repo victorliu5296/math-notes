@@ -2,7 +2,7 @@
 title: 'Stochastic Calculus'
 date: 2024-09-22T20:49:30-04:00
 math: katex
-description: "An overview of stochastic calculus"
+summary: "An overview of stochastic calculus"
 categories:
   - Stochastic Calculus
 tags:

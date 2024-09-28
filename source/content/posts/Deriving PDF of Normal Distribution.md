@@ -2,7 +2,7 @@
 title: 'Deriving PDF of Normal Distribution'
 date: 2024-09-14T20:18:51-04:00
 math: katex
-description: "An elementary derivation of the PDF of a normal distribution."
+summary: "An elementary derivation of the PDF of a normal distribution."
 categories: [Statistics, Probability Theory]
 tags: [Normal Distribution, Maximum Entropy, Central Limit Theorem]
 weight: 100

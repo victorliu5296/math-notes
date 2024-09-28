@@ -2,7 +2,7 @@
 title: 'Stochastic Gradient Descent'
 date: 2024-09-22T16:44:35-04:00
 math: katex
-description: "An overview of Stochastic Gradient Descent (SGD)"
+summary: "An overview of Stochastic Gradient Descent (SGD)"
 categories:
   - Machine Learning
 tags:

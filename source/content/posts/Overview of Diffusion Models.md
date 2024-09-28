@@ -2,7 +2,7 @@
 title: 'Overview of Diffusion Models'
 date: 2024-09-14T10:54:40-04:00
 math: katex
-description: "An overview of diffusion models, including their mathematical foundations, key concepts, and practical applications."
+summary: "An overview of diffusion models, including their mathematical foundations, key concepts, and practical applications."
 categories: [Machine Learning]
 tags: [Diffusion Models, Generative Models, Image Generation, Overview]
 weight: 100

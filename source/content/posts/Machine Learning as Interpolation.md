@@ -2,7 +2,7 @@
 title: 'Machine Learning as Interpolation'
 date: 2024-09-13T21:51:58-04:00
 math: katex
-description: "Exploring how machine learning models generalize by interpolating on data manifolds, with concrete examples from image and language processing"
+summary: "Exploring how machine learning models generalize by interpolating on data manifolds, with concrete examples from image and language processing"
 categories: ["Machine Learning", "Deep Learning"]
 tags: ["Neural Networks", "Generalization", "Scaling Laws", "Data Manifolds"]
 weight: 100

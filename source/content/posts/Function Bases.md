@@ -2,7 +2,7 @@
 title: 'Function Bases'
 date: 2024-09-18T19:11:00-04:00
 math: katex
-description: "A Linear Algebra Perspective on Infinite-Dimensional (Function) Spaces"
+summary: "A Linear Algebra Perspective on Infinite-Dimensional (Function) Spaces"
 categories:
   - Mathematics
   - Functional Analysis

@@ -1,6 +1,7 @@
 ---
 title: 'Scaling Transformers Efficiently'
 date: 2024-09-05T19:31:37-04:00
+summary: "A summary of techniques for scaling transformers efficiently."
 math: katex
 categories: [Machine learning]
 tags: [Language modeling, NLP, Transformers, Efficiency, Scaling]

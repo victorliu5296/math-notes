@@ -2,6 +2,7 @@
 title: 'Basic Concepts in Information Theory'
 date: 2024-09-13T17:58:35-04:00
 math: katex
+summary: "A brief overview of some important concepts in information theory."
 categories: [Statistics, Information Theory]
 tags: [Information Theory, Statistics, Probability, Expectation, Variance, Covariance, Entropy, Mutual Information, Conditional Entropy, Fisher Information, Jensen's Inequality, Cramér-Rao Bound, Bias-Variance Tradeoff, Likelihood Function, Bayes' Theorem]
 weight: 100

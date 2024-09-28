@@ -2,7 +2,7 @@
 title: "Fourier Transform"
 date: 2024-09-16T21:56:31-04:00
 math: katex
-description: "An overview of the Fourier Transform"
+summary: "An overview of the Fourier Transform"
 categories: 
   - Mathematics
 tags: 

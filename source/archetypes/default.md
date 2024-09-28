@@ -1,8 +1,8 @@
 ---
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
 date: {{ .Date }}
+summary: ""
 math: katex
-description: ""
 categories:
   - 
 tags:

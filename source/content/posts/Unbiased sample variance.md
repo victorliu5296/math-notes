@@ -1,6 +1,7 @@
 ---
 title: "Unbiased sample variance"
 date: 2024-08-13
+summary: "An algebraic derivation of the biased sample variance estimator using expected value."
 math: katex
 categories: [Statistics]
 tags: [Variance, Sample Variance, Biased Estimator, Expected Value]

@@ -1,6 +1,7 @@
 ---
 title: 'Expressiveness of Sparse Matrices'
 date: 2024-09-08T21:54:38-04:00
+summary: "An evaluation of the expressiveness of sparse matrices in machine learning."
 math: katex
 categories: [Linear Algebra, Machine Learning]
 tags: [Matrix, Sparse Matrix, Expressiveness, Machine Learning, Deep Learning, Computational Efficiency]

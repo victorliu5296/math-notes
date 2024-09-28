@@ -2,7 +2,7 @@
 title: 'Convolution Theorem For Faster Convolutions'
 date: 2024-09-17T12:05:14-04:00
 math: katex
-description: "Using the FFT to accelerate convolution computation"
+summary: "Using the FFT to accelerate convolution computation"
 categories:
   - Mathematics
 tags:

@@ -2,7 +2,7 @@
 title: 'Attention Mechanism in Transformers (Scaled Dot-Product Attention)'
 date: 2024-09-23T16:57:09-04:00
 math: katex
-description: "An interpretation and explanation of the scaled dot-product attention mechanism via probability theory."
+summary: "An interpretation and explanation of the scaled dot-product attention mechanism via probability theory."
 categories:
   - Machine Learning
 tags:

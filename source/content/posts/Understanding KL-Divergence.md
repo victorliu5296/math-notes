@@ -1,6 +1,7 @@
 ---
 title: 'Understanding KL-Divergence'
 date: 2024-09-12T20:00:00-04:00
+summary: "An interpretation and explanation of the KL-divergence (Kullback-Leibler divergence) via probability theory."
 math: katex
 categories: [Statistics, Information Theory]
 tags: [Bayesian Statistics, KL-Divergence, Information Theory, Entropy, Cross-Entropy, Surprisal, Kullback-Leibler Divergence, Probability, Statistics, Machine Learning, Deep Learning, Feature Learning, Interpolation, Generalization, Bias-Variance Tradeoff, Regularization, Data Augmentation, Architectural Choices, Adversarial Training, Multi-task Learning, Contrastive Learning, Causal Learning, Out-of-distribution Testing, Adversarial Testing, Interpretability, Probing Tasks, Few-shot Learning]

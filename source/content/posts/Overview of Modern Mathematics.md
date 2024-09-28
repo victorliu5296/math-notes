@@ -2,7 +2,7 @@
 title: 'Overview of Modern Mathematics'
 date: 2024-09-24T21:33:05-04:00
 math: katex
-description: "A survey of some important modern mathematical fields and their applications."
+summary: "A survey of some important modern mathematical fields and their applications."
 categories:
   - Mathematics
   - Overview

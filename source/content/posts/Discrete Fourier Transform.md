@@ -2,7 +2,7 @@
 title: 'Discrete Fourier Transform'
 date: 2024-09-17T08:53:05-04:00
 math: katex
-description: "An overview of the Discrete Fourier Transform (DFT)"
+summary: "An overview of the Discrete Fourier Transform (DFT)"
 categories:
   - Mathematics
 tags:

@@ -2,7 +2,7 @@
 title: 'Geometric Origins of the Inner Product'
 date: 2024-09-24T21:00:08-04:00
 math: katex
-description: "A short note on the name for the inner and outer products with a geometric origin."
+summary: "A short note on the name for the inner and outer products with a geometric origin."
 categories:
   - 
 tags:

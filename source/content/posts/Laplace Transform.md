@@ -2,7 +2,7 @@
 title: 'Laplace Transform'
 date: 2024-09-17T09:34:03-04:00
 math: katex
-description: "An overview of the Laplace Transform"
+summary: "An overview of the Laplace Transform"
 categories:
   - Mathematics
 tags:

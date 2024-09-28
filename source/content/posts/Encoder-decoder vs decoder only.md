@@ -1,13 +1,14 @@
 ---
 title: "Encoder-decoder vs decoder only transformer models"
 date: 2024-08-13
+summary: "Concise comparison between encoder-decoder and decoder-only transformer models."
 math: katex
 categories: [Machine Learning]
 tags: [Transformer, NLP, LLM, Attention Mechanism, Encoder-Decoder, Decoder-Only]
 weight: 100
 ---
 # Encoder-decoder vs decoder only transformer models
-Modern state-of-the-art Transformer models are based on the decoder-only architecture. However, I was initially confused by the name "encoder", which to me alludes to encoding the words  into numbers. This is actually the role of the embedding layer.
+Modern state-of-the-art Transformer models are based on the decoder-only architecture. However, I was initially confused by the name "encoder", which to me alludes to encoding the words into numbers. This is actually the role of the embedding layer.
 
 So, what are the differences between an encoder-deconder and decoder-only transformer model?
 

@@ -1,6 +1,7 @@
 ---
 title: 'Introduction to Measure Theory'
 date: 2024-09-03T22:14:02-04:00
+summary: "A motivated introduction to measure theory."
 math: katex
 categories: [Measure Theory]
 tags: [Measure Theory, Measure, Integration, Probability, Random Variables, Distributions, Functions, Integrals, Riemann Integral, Lebesgue Integral, Lebesgue Measure, Counting Measure, Borel Sigma Algebra, Sigma-Algebra, Σ-Algebra, Measurable Space, Measurable Functions, Simple Functions, Monotone Convergence Theorem, Fatou's Lemma, Dominated Convergence Theorem]

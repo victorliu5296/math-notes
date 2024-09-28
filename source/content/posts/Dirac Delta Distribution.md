@@ -2,7 +2,7 @@
 title: 'Dirac Delta Distribution'
 date: 2024-09-17T21:46:52-04:00
 math: katex
-description: "A short description of the Dirac Delta Function (Distribution)"
+summary: "A short description of the Dirac Delta Function (Distribution)"
 categories:
   - Mathematics
 tags:

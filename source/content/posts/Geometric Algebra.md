@@ -2,7 +2,7 @@
 title: 'Geometric Algebra'
 date: 2024-09-24T21:47:39-04:00
 math: katex
-description: ""
+summary: "An introduction to geometric algebra"
 categories:
   - Geometric Algebra
 tags:

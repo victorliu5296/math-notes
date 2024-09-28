@@ -2,7 +2,7 @@
 title: 'Multi-Head Latent Attention'
 date: 2024-09-13T20:02:08-04:00
 math: katex
-description: "A short post on Multi-Head Latent Attention as presented in the DeepSeek-V2 paper."
+summary: "A short post on Multi-Head Latent Attention as presented in the DeepSeek-V2 paper."
 categories: [Machine Learning]
 tags: [Multi-head Latent Attention, Low Rank Approximation, DeepSeek-V2, Attention Mechanism, Transformer]
 weight: 100

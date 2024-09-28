@@ -2,7 +2,7 @@
 title: 'Fast Fourier Transform'
 date: 2024-09-17T10:34:48-04:00  
 math: katex  
-description: "An overview of the Fast Fourier Transform"
+summary: "An overview of the Fast Fourier Transform"
 categories:  
   - Mathematics  
 tags:  

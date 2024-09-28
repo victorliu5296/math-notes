@@ -1,6 +1,7 @@
 ---
 title: 'Strassen''s Algorithm in Ternary Matrices'
 date: 2024-09-07T21:35:06-04:00
+summary: "An explanation of the potential benefits of Strassen's algorithm in ternary matrices."
 math: katex
 categories: [Machine Learning]
 tags: [Neural Networks, Matrix Multiplication, Ternary Matrices, Strassen's Algorithm, BitNet]
