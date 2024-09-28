@@ -16,7 +16,7 @@ weight: 100
 draft: false
 ---
 
-I am reading through the book "Linear Algebra Done Wrong" by Sergei Treil. On page 87, it is mentioned that the although the columnwise additivity of the determinant is natural using its intuitive "volume of a parallelepiped" interpretation, it can be proven using the two other properties presented: argumentwise homogeneity of degree 1 and invariance under addition of linear combinations of other columns.
+I am reading through the book "Linear Algebra Done Wrong" by Sergei Treil. On page 77, it is mentioned that the although the columnwise additivity of the determinant is natural using its intuitive "volume of a parallelepiped" interpretation, it can be proven using the two other properties presented: argumentwise homogeneity of degree 1 and invariance under addition of linear combinations of other columns.
 
 I found that fact quite interesting and especially unintuitive, so I decided that it would be worth writing a post about it.
 
