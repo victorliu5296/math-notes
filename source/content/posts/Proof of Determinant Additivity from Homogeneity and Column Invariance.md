@@ -6,6 +6,7 @@ summary: "A proof of the additivity of determinants from homogeneity and invaria
 categories:
   - Linear Algebra
 tags:
+  - Proof
   - Determinant
   - Homogeneity
   - Column Invariance

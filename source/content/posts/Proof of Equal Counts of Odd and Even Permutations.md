@@ -6,6 +6,7 @@ math: katex
 categories:
   - Linear Algebra
 tags:
+  - Proof
   - Determinant
   - Combinatorics
   - Permutation

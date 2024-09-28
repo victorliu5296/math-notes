@@ -6,6 +6,7 @@ math: katex
 categories:
   - Statistics
 tags:
+  - Proof
   - Central Limit Theorem
   - Characteristic Function
   - Probability Distribution
