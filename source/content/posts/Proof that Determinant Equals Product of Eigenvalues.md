@@ -16,6 +16,8 @@ draft: false
 
 Proof that the determinant of a matrix is equal to the product of its eigenvalues based on exercise 4.1.10 from the book "Linear Algebra Done Wrong" by Sergei Treil.
 
+This fact corresponds well to the intuitive notion of the determinant as the hypervolume of a parallelepiped. If we look at the linear transformation geometrically, then the eigenvalues are scaling the parallelepiped along the direction of the eigenvectors, so the hypervolume is transformed accordingly. Since scaling a geometric object by a scalar multiplies its hypervolume by the same scalar, we intuitively see that the determinant is the product of the eigenvalues.
+
 #### 1. Start with the characteristic equation:
 The characteristic polynomial of a matrix \( A \) is given by the determinant of \( A - \lambda I \), where \( \lambda \) is a scalar and \( I \) is the identity matrix:
 \[
