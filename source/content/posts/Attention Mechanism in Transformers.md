@@ -22,18 +22,18 @@ weight: 50
 draft: false
 ---
 
-I feel like a lot of people don't really explain the attention mechanism in transformers properly. They tend to get caught in the implementation details and just running through the math, not really taking time to interpret it.
+## Attention Mechanism in Transformers (Scaled Dot-Product Attention)
 
-For instance, there is often a heavy focus on the dimensions of the tensors involved, but little detail on the interaction between single vectors within the tensors. The matrix form is only for computational implementation purposes and is not important to understanding the mechanism.
+In recent years, **transformer models** have revolutionized the field of machine learning, particularly in natural language processing tasks. A core component of these models is the **attention mechanism**, which enables the model to focus on different parts of the input sequence while processing it. 
 
-So, this is my own interpretation of the dot-product (multiplicative) attention mechanism in transformers. In short, here it is:
+Despite its success, the attention mechanism is often explained in a way that emphasizes the technical implementation details—tensor dimensions, matrix multiplications—while glossing over the intuition behind it. In this article, I aim to provide a deeper understanding of how **scaled dot-product attention** works by relating it to familiar concepts from probability theory and statistical mechanics.
 
-The dot-product attention mechanism is akin to a look-up table for a database in computer science. Except, rather than statically retrieving values from a table, it not only considers the similarity between the query and key, but also dynamically adjusts the database values based on the input sequence. Then, it doesn't pick a the single most similar value, but rather a weighted average of the similar values.
+We'll explore the following:
 
-In the dot-product attention mechanism specifically, the similarity measure is calculated using the dot product of the query and key vectors.
-
-Now, let's start a proper explanation from the beginning.
-
+- How dot products serve as a **similarity measure** between query and key vectors.
+- Why the **softmax** function is applied to normalize these similarity scores.
+- How the softmax operation can be viewed as representing a **Boltzmann distribution** from physics, providing a probabilistic interpretation of attention.
+- The significance of **scaling** the dot product to stabilize the learning process.
 
 ---
 
