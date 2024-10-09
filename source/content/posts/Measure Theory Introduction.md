@@ -10,38 +10,6 @@ weight: 100
 
 ## Measure Theory Crash Course
 
-1. Motivation: The Problem of "Measuring" Sets
-In mathematics, especially in analysis and probability theory, we often want to assign a "size" or "measure" to subsets of a given set. For example:
-
-Length: What is the length of an interval on the real line?
-Area: What is the area of a region in the plane?
-Probability: What is the probability of a certain event occurring?
-However, not all subsets can be measured in a simple, intuitive way. For example:
-
-The set of all rational numbers between 0 and 1 is infinite, but we intuitively feel it should have "size zero" in terms of length.
-There are even more exotic sets that defy simple measurement.
-This brings us to the core problem: **How can we systematically define a notion of "measure" that works for a wide variety of sets while avoiding paradoxes?**
-
-1. Intuition: Playing with Simple Examples
-Let’s start by thinking about some simple cases:
-- **Intervals on the real line**: It’s straightforward to define the length of an interval $[a,b]$ as $b - a$. This is intuitive and works well. Similarly, we can define the area of a rectangle as $a \times b$, the volume of a rectangular prism as $a \times b \times c$, and so on.
-- **Finite sets**: A finite set of points, like ${1, 2, 3}$, might be thought of as having zero length (in terms of intervals), but it can still be measured in a different context, like counting the number of elements.
-- **Countable sets**: Consider the set of all integers $\mathbb{Z}$ or the rationals $\mathbb{Q}$. These sets are infinite but still "small" in a certain sense—maybe they should have measure zero.
-- **The Cantor Set**: This set is a classic example of a set that has zero density but is uncountably infinite. It is constructed by removing the middle third of the interval $[0, 1]$ and then removing the middle third of the remaining interval. There is a great visualization on its Wikipedia page. Intuitively, we probably feel that it should have "size zero" in terms of length.
-
-From these examples, we see that measuring sets involves more than just straightforward length or area. We need a system that can handle everything from simple intervals to more complicated constructions.
-
-**Idea**: We need a general framework that can:
-- Assign a "size" to basic sets.
-- Combine these basic sets using operations like union, intersection, and complement.
-- Still produce a consistent and meaningful measure.
-
-
-Certainly! Here's a more detailed write-up with intuitive motivations and examples added to each section:
-
----
-
-## Crash Course on Measure Spaces and Basics of Measure Theory
 
 ### 1. Motivation: The Problem of "Measuring" Sets
 
@@ -56,15 +24,19 @@ However, not all subsets can be measured in a simple, intuitive way. For example
 
 This brings us to the core problem: **How can we systematically define a notion of "measure" that works for a wide variety of sets while avoiding paradoxes?**
 
-### 2. Intuition: Playing with Simple Examples
-
+2. Intuition: Playing with Simple Examples
 Let’s start by thinking about some simple cases:
-
-- **Intervals on the real line**: It’s straightforward to define the length of an interval \([a, b]\) as $b - a$. This is intuitive and works well.
-- **Finite sets**: A finite set of points, like $\{1, 2, 3\}$, might be thought of as having zero length (in terms of intervals), but it can still be measured in a different context, like counting the number of elements.
+- **Intervals on the real line**: It’s straightforward to define the length of an interval $[a,b]$ as $b - a$. This is intuitive and works well. Similarly, we can define the area of a rectangle as $a \times b$, the volume of a rectangular prism as $a \times b \times c$, and so on.
+- **Finite sets**: A finite set of points, like ${1, 2, 3}$, might be thought of as having zero length (in terms of intervals), but it can still be measured in a different context, like counting the number of elements.
 - **Countable sets**: Consider the set of all integers $\mathbb{Z}$ or the rationals $\mathbb{Q}$. These sets are infinite but still "small" in a certain sense—maybe they should have measure zero.
+- **The Cantor Set**: This set is a classic example of a set that has zero density but is uncountably infinite. It is constructed by removing the middle third of the interval $[0, 1]$ and then removing the middle third of the remaining interval. There is a great visualization on its Wikipedia page. Intuitively, we probably feel that it should have "size zero" in terms of length.
 
-From these examples, we see that **measuring sets** involves more than just straightforward length or area. We need a system that can handle everything from simple intervals to more complicated constructions.
+From these examples, we see that measuring sets involves more than just straightforward length or area. We need a system that can handle everything from simple intervals to more complicated constructions.
+
+**Idea**: We need a general framework that can:
+- Assign a "size" to basic sets.
+- Combine these basic sets using operations like union, intersection, and complement.
+- Still produce a consistent and meaningful measure.
 
 ### 3. Formalization: Measure Spaces
 
