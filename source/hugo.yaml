@@ -90,3 +90,13 @@ outputs:
     - HTML
     - RSS
     - JSON # necessary for search
+
+related:
+  threshold: 80
+  includeNewer: true
+  toLower: false
+  indices:
+    - name: "tags"
+      weight: 100
+    - name: "categories"
+      weight: 80
