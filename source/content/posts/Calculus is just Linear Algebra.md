@@ -29,6 +29,8 @@ The title really is true—I'm not kidding! *Functional analysis* defines fundam
 
 In fact, many concepts in calculus, often presented arbitrarily, can be understood as linear transformations. This perspective makes tools like Laplace and Fourier transforms arise much more naturally.
 
+I saw this perspective in the free online book [Linear Algebra Done Wrong](https://www.math.brown.edu/streil/papers/LADW/LADW_2024_10-01.pdf) by Sergei Treil. It's an excellent book, I recommend it.
+
 ## A Friendly Introduction to Calculus Through Linear Algebra
 
 At first glance, calculus and linear algebra may seem like separate subjects—calculus studies change (how things move, grow, or shrink), while linear algebra focuses on vectors and matrices. But these two worlds are deeply connected. Many calculus operations, like differentiation and integration, are actually **linear transformations**, just like those we study in linear algebra.
