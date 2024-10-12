@@ -9,7 +9,8 @@ I have been trying so hard to find a good introductory text on stochastic calcul
 
 ## Plan to Read
 
-1. [Bayesian Data Analysis](https://www.stat.columbia.edu/~gelman/book/) - Andrew Gelman, John B.
+1. [Understanding Analysis](https://csunibo.github.io/analisi-matematica/libri/real-analysis.pdf) - Stephen Abbott
+I've read about a fifth of it, it's easy to follow. I plan on finishing it.
 
 ## Study plan
 
@@ -54,7 +55,7 @@ I have been trying so hard to find a good introductory text on stochastic calcul
 ### Additional Complementary Topics
 
 - Category Theory
-- Differential Equations
+- Differential Equations (rigorous)
   - Ordinary Differential Equations (ODEs)
   - Partial Differential Equations (PDEs)
 - Computational Complexity and Algorithm Design
