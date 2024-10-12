@@ -36,7 +36,9 @@ I've read about a fifth of it, it's easy to follow. I plan on finishing it.
   - Advanced Topics in Linear Algebra (e.g., Jordan Canonical Form, Matrix Calculus)
 - Random Matrix Theory (to understand the dynamics of complex models)
 - Tensor Calculus
-- Graph Theory and Combinatorics
+- Basic Physics (to understand the principles that inspire machine learning, such as dynamics, forces, and conservation laws)
+- Statistical Mechanics (understanding concepts like entropy, energy landscapes, and Boltzmann distribution)
+- Graph Theory and Combinatorics (for graph-based machine learning)
 
 ### Analysis
 
