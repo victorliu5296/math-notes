@@ -72,6 +72,10 @@ params:
 
 menu:
   main:
+    - identifier: reading-list
+      name: Reading List
+      url: /reading-list/
+      weight: 1
     - identifier: about-me
       name: About Me
       url: ../about-me/
@@ -83,7 +87,7 @@ menu:
     - identifier: search
       name: Search
       url: /search/
-      weight: 30
+      weight: 9999
 
 outputs:
   home:
