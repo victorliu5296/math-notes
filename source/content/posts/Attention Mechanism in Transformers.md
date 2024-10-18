@@ -18,7 +18,7 @@ tags:
   - Boltzmann Distribution
   - Statistics
   - Probability Theory
-weight: 50
+weight: 99
 draft: false
 ---
 

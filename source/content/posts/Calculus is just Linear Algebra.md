@@ -21,7 +21,7 @@ tags:
   - Lagrange Interpolation
   - Mathematical Physics
   - Function Spaces
-weight: 25
+weight: 50
 draft: false
 ---
 
