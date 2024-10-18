@@ -58,6 +58,10 @@ So the measure of the entire interval should be the sum of the measures of all t
 
 This shows that the Vitali set is *non-measurable*—it’s not something the Lebesgue measure can handle.
 
+The construction of the Vitali set hinges on the **Axiom of Choice**, a fundamental principle in set theory. This axiom allows us to select exactly one representative from each equivalence class, even when no explicit rule dictates how to make these selections. Without the Axiom of Choice, constructing such a set would not be guaranteed.
+
+This is important because the Vitali set cannot be measured using the Lebesgue measure. Its construction shows how the Axiom of Choice can lead to the existence of non-measurable sets.
+
 ### Borel Sets and the Borel Measure
 
 #### 1. **Borel Sets: A Well-Behaved Family**
