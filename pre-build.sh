@@ -63,8 +63,8 @@ replace_delimiters() {
             return $text;
         }
 
-        # Escape \% and \$ outside of math environments
-        $_ = escape_outside_math($_);
+        # # Escape \% and \$ outside of math environments
+        # $_ = escape_outside_math($_);
 
         # Process math environments: \( ... \), \[ ... \], $ ... $, and $$ ... $$
         # This version allows for any amount of whitespace, including newlines, between delimiters
