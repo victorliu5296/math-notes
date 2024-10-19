@@ -78,11 +78,11 @@ replace_delimiters() {
             "\\text{" . process_text($1) . "}";
         /gse;
 
-        # Double-escape delimiters if not already double-escaped
-        s/(?<!\\\\)\\\(/\\\\(/g;
-        s/(?<!\\\\)\\\)/\\\\)/g;
-        s/(?<!\\\\)\\\[/\\\\[/g;
-        s/(?<!\\\\)\\\]/\\\\]/g;
+        # # Double-escape delimiters if not already double-escaped
+        # s/(?<!\\\\)\\\(/\\\\(/g;
+        # s/(?<!\\\\)\\\)/\\\\)/g;
+        # s/(?<!\\\\)\\\[/\\\\[/g;
+        # s/(?<!\\\\)\\\]/\\\\]/g;
     ' "$file"
 }
 
