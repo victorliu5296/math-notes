@@ -51,20 +51,20 @@ replace_delimiters() {
             # Match anything outside of math environments and escape \% and \$
             $text =~ s{
                 # Match content outside of math delimiters (\( \) \[ \] or $ ... $ or $$ ... $$)
-                (?:(?!\\\(|\\\)|\\\[|\\\]|\\\$|\$).)+
+                (?:(?!\\\(|\\\)|\\\[|\\\]|\$|\$\$).)+
             }{
                 # Escape \% and \$ in this part of the text
                 my $non_math_content = $&;
-                $non_math_content =~ s/(?<!\\)\\%/\\\\%/g;
-                $non_math_content =~ s/(?<!\\)\\$/\\\\$/g;
+                $non_math_content =~ s/(?<!\\\\)\\\%/\\\\\%/g;
+                $non_math_content =~ s/(?<!\\\\)\\\$/\\\\\$/g;
                 $non_math_content;
             }gsex;
 
             return $text;
         }
 
-        # # Escape \% and \$ outside of math environments
-        # $_ = escape_outside_math($_);
+        # Escape \% and \$ outside of math environments
+        $_ = escape_outside_math($_);
 
         # Process math environments: \( ... \), \[ ... \], $ ... $, and $$ ... $$
         # This version allows for any amount of whitespace, including newlines, between delimiters
