@@ -43,6 +43,17 @@ replace_delimiters() {
 
             return $content;
         }
+
+        # Escape backslashes outside math environments
+        sub escape_outside_math {
+            my ($content) = @_;
+
+            # Escape single backslashes outside math environments (but skip double backslashes)
+            $content =~ s/(?<!\\\\)\\(?!\\)/\\\\/g;
+
+            return $content;
+        }
+
         # Process math environments: \( ... \), \[ ... \], $ ... $, and $$ ... $$
         # This version allows for any amount of whitespace, including newlines, between delimiters
         s/(\\\(|\\\[|\$\$?)\s*(.*?)\s*(\\\)|\\\]|\$\$?)/ 
@@ -53,13 +64,16 @@ replace_delimiters() {
         # Process \text{...} environments and escape underscores inside them
         s/\\text\{(.*?)\}/ 
             "\\text{" . process_text($1) . "}";
-        /gse;
 
         # Double-escape delimiters if not already double-escaped
         s/(?<!\\\\)\\\(/\\\\(/g;
         s/(?<!\\\\)\\\)/\\\\)/g;
         s/(?<!\\\\)\\\[/\\\\[/g;
         s/(?<!\\\\)\\\]/\\\\]/g;
+        /gse;
+
+        # Escape backslashes    outside of math environments
+        $_ = escape_outside_math($_);
     ' "$file"
 }
 
