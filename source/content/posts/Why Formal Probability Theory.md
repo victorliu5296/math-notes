@@ -32,6 +32,8 @@ This blog post aims to fill this gap by providing a brief introduction to the fo
 
 Starting from the very basics, we will gradually refine each definition after encountering concrete problems that arise from our naive ones to build up to increasingly sophisticated and abstract concepts. By understanding the "why" behind the theory, these abstract concepts can hopefully become more accessible and meaningful.
 
+---
+
 ## Introduction
 
 Let's start with a seemingly simple question: What's the probability of randomly selecting a number between $0$ and $1$ on the unit interval $[0,1]$?
@@ -74,8 +76,6 @@ To solve this, we need to:
 
 This approach works well for discrete problems with a finite number of outcomes. But what happens when we encounter infinity?
 
-## A Brief History of Probability and Its Theory
-
 Probability theory quickly ran into philosophical and mathematical challenges that spurred its development. Let's explore a famous paradox that shook the foundations of probability theory:
 
 The "St. Petersburg paradox," proposed by Nicolas Bernoulli in 1713, goes like this:
@@ -87,6 +87,8 @@ Intuitively, most people would only pay a small amount. But if we calculate the 
 $E = \frac{1}{2} \cdot 2\$ + \frac{1}{4} \cdot 4\$ + \frac{1}{8} \cdot 8\$ + ... = \$1 + \$1 + \$1 + ... = \infty$
 
 This paradox challenged mathematicians to reconcile probability theory with real-world decision making, leading to concepts like utility theory and risk aversion.
+
+---
 
 ## Challenges to Classical Probability: Infinite Sets and Continuous Distributions
 
@@ -139,9 +141,11 @@ Surprisingly, this problem has three different solutions depending on how we int
 
 This paradox reveals that our intuitive notion of "randomness" isn't always well-defined in continuous spaces. It challenges us to think more carefully about what we mean by probability and how we should formalize it.
 
+---
+
 ## The Bridge Between Discrete and Continuous: A New Perspective
 
-As we've seen, both the counting approach for discrete probabilities and the geometric approach for continuous probabilities have their strengths and limitations. But what if we could find a unified framework that encompasses both? Let's explore some intriguing examples that highlight the need for a more comprehensive approach.
+As we've seen, both the counting approach for discrete probabilities and the geometric approach for continuous probabilities have their strengths and limitations. But what if we could find a unified framework that encompasses both? Let's first explore some intriguing examples that highlight the need for a more comprehensive approach.
 
 ### Limitations of Our Current Approaches
 
@@ -169,15 +173,19 @@ Our simple counting approach falls short here because the outcomes are no longer
 
 ### Continuous Distributions with Varying Densities
 
-Now, consider selecting a random point in a circular target. If the target has concentric rings of different colors, and you're more likely to hit the outer rings due to your throwing technique, how do we calculate the probability of hitting each color?
+Imagine you're a meteorologist studying rainfall patterns in a particular region. You have a map of the area, and you want to predict the likelihood of rain at different locations.
 
-Our geometric approach assumes uniform probability across the area, which doesn't apply here. We need a way to represent varying probabilities across a continuous space.
+#### The Uniform Approach Falls Short
+
+If rainfall were equally likely everywhere, we could use a simple geometric approach. The probability of rain in any sub-region would just be the area of that sub-region divided by the total area of the map.
+But let's consider why this doesn't work in our case:
+- Coastal areas might have a higher chance of rainfall due to moisture from the sea.
+- Mountainous regions could experience more rainfall due to orographic lifting.
+- Some areas might be in a "rain shadow," receiving less precipitation.
 
 ### From Counting to Measuring
 
-These examples highlight a fundamental idea: probability as a measure of sets. Whether we're counting discrete outcomes or measuring continuous regions, we're essentially quantifying the "size" of the event relative to the total "size" of possibilities.
-
-To formalize this idea and address the limitations we've discussed, statisticians introduced several key concepts:
+To address the limitations we've discussed, statisticians introduced several key concepts:
 
 1. Random Variables
 2. Probability Mass Functions (PMFs)
@@ -186,11 +194,17 @@ To formalize this idea and address the limitations we've discussed, statistician
 
 Before checking out the formal definitions, let's explore our previous definitions to see what properties we would like to preserve.
 
+The fundamental idea is to consider probability as a measure of sets. Whether we're counting discrete outcomes or measuring continuous regions, we're essentially quantifying the "size" of the event relative to the total "size" of possibilities. In the finite setting, we counted the number of favorable outcomes in the rolling of a die. In the geometric setting, we considered lengths of intervals and areas of shapes to define this "relative size".
+
+Measure theory, our ultimate goal to reach, is a modern mathematical framework that allows us to properly formalize this idea. 
+
 In both cases, as we have discussed, we would like to assign a probability as a ratio of the "size" of the favorable outcomes to the total "size" of all possible outcomes.
 
 In this case, the largest possible probability is $1$ when we say every outcome is favorable, and the smallest possible probability is $0$ when we say no outcomes are favorable. Then, other probabilities lies in between these two extremes.
 
-We will keep this in mind as we explore the formal definitions.
+We will keep this in mind as we explore the following definitions.
+
+---
 
 ### Random Variables: Bridging Discrete and Continuous
 
@@ -243,97 +257,112 @@ P(X = 2) = \frac{4}{9} \\
 \end{cases}
 \]
 
-So, our new defintions are more flexible, allowing us to assign probabilities to unevenly weighted outcomes.
+So, our new definitions are more flexible, allowing us to assign probabilities to unevenly weighted outcomes.
 
-#### Continuous Example
+---
 
-Now, let's consider a continuous example. As we've discussed previously with our paradox of picking a single number in an infinite set, we cannot meaningfully assign a probability to a single point in a continuous space. Instead, we need to assign probabilities to **intervals**.
+### Continuous Probability: Moving Beyond Points
 
-For example, while the probability of a person being exactly 170.000000... cm tall is zero, the probability of their height falling between 169.5 cm and 170.5 cm is meaningful and can be calculated.
+In our previous discussions, we've often encountered the paradox of picking a single number from an infinite set. How do we assign a meaningful probability to selecting just one point from a continuum of possibilities? For instance, imagine trying to assign a probability to a person being *exactly* 170.000000... cm tall. Intuitively, this feels impossible—there are infinitely many possible heights, and any one height, considered in isolation, has a probability of zero.
 
-In our initial example of picking a single number in an equally likely unit interval, the probability of picking a number between $0 \le a \le b \le 1$ would be
+So, what do we do? We shift our focus. Instead of assigning probabilities to **individual points**, we assign probabilities to **intervals**. This is one of the most important conceptual shifts in moving from discrete to continuous probability theory.
 
-$$\frac{b - a}{1} = b - a$$
+#### Example: Heights of Individuals
 
-Based on this definition, if $a = b$ (in other words, we are picking a single point), then we assign a probability of $0$. This seems strange at first because picking that point is still possible, and is a very popular counterintuitive result of definitions in probability theory. So, having probability $0$ in the continuous case doesn't mean it's impossible as in the finite case, simply that we can't assign a meaningful probability without blowing up to infinity.
+Let’s say we’re interested in the probability that a person’s height falls between 169.5 cm and 170.5 cm. Unlike the probability of being exactly 170 cm tall, this range is meaningful. The concept of probability now applies to intervals—ranges of outcomes—rather than individual values.
 
-If we once again consider this probability of lying within an interval as a "mass", then we define the the probability that the random variable lies within a certain interval:
+This principle is at the heart of continuous probability: assigning probabilities to intervals of outcomes rather than specific points.
 
-\[
-P(a \leq X \leq b) := b - a
-\]
+---
 
-Once again, this agrees with our previous valid examples. Let's try to define it for a biased example now.
+### Introducing Bias: Non-Uniform Distributions
 
-Let's say that we have a tendency toward smaller values, so that the probability of lying within the first half of the unit interval is $\frac{2}{3}$ while the probability of lying within the second half is $\frac{1}{3}$. In this case, we have to change our distribution:
+Now, let’s add some complexity. What if not all intervals are equally likely? Suppose we have a bias towards smaller values, such that the probability of picking a number in the first quarter of the interval $[0, 0.25]$ is weighted more heavily than the rest of the interval.
+
+Here’s how we’ll do it:
+
+- Assign twice as much weight to values in $[0, 0.25]$ compared to the rest of the interval $[0.25, 1]$.
+- Scale probability linearly with the length of the interval.
+- Normalize the weights so the total probability is still 1.
+
+To formalize this, let’s assign a weight of $\frac{2}{3}$ to the first quarter and $\frac{1}{3}$ to the rest of the interval. Then, the probability that the number falls between two points $a$ and $b$ depends on whether those points lie in the first quarter, the remainder, or both.
 
 \[
 P(a \leq X \leq b) = \begin{cases}
-\frac{2}{3} (b - a) & \text{if } 0 \leq a \leq b \leq \frac{1}{2} \\
-\frac{1}{3} (b - a) & \text{if } \frac{1}{2} \leq a \leq b \leq 1 \\
+\frac{2}{3} \frac{(b - a)}{0.25} & \text{if } 0 \leq a \leq b \leq 0.25 \\
+\frac{1}{3} \frac{(b - a)}{0.75} & \text{if } 0.25 \leq a \leq b \leq 1 \\
 0 & \text{otherwise}
 \end{cases}
 \]
 
-You might notice that every value is scaled by (b - a). We'll come back to this in a moment.
+#### What About Overlapping Intervals?
 
-The burning question is: what if the interval overlaps on both the first and second halves? For example, what if we take the interval $[0.25, 0.75]$? What is the probability of lying within this interval?
+Here’s where things get interesting. What happens if we want to calculate the probability for an interval that crosses from one region into another, like $[0, 0.5]$? We can’t apply the same weight across the entire interval because it spans two different regions with different weights.
 
-We can break it up into two pieces: $[0.25, 0.5]$ and $[0.5, 0.75]$. The probability of lying within $[0.25, 0.75]$ is then:
+Instead, we break the interval into two pieces: $[0, 0.25]$ and $[0.25, 0.5]$. We calculate the probability for each sub-interval separately, then sum them to get the total probability:
 
 \[
-P([0.25, 0.75]) = \frac{2}{3} \cdot (0.5 - 0.25) + \frac{1}{3} \cdot (0.75 - 0.5) = \frac{1}{4}
+P([0, 0.5]) = \frac{2}{3} \cdot (0.25 - 0) + \frac{1}{3} \cdot (0.5 - 0.25) = \frac{1}{3}
 \]
 
-This is the same as the probability of lying within $[0.25, 0.5]$ and $[0.5, 0.75]$ combined. If we look at the structure of the calculation, it's very reminiscent of the calculation for an average value.
+This calculation has a familiar structure—it’s similar to calculating an **average** value. We’re weighting the probabilities of the sub-intervals according to their lengths and summing them to get the total probability.
 
-Let's take a brief detour to discuss the **expected value** of a random variable. We will come back later in detail. For now, an expected value is a weighted sum of the possible values of a random variable, weighted by the probability of each value. This example hints at a very close relationship between expected values and probability. In later sections, we'll see how a formal approach can be used to properly explain this relationship.
+### Pushing the Biased Interval to Its Limits
 
+Let's consider what happens if we make push the bias in our previous example to its limits. Instead of just two pieces, let's divide our interval into smaller and smaller pieces, each with its own probability density.
 
-For continuous random variables, we use a probability density function (PDF) instead. Density, as in "probability per unit length", or per unit area, or per unit volume, allows us to calculate the probability of an interval (or more generally, a set) based on its "size".
+### Revised Section: Transition to Probability Density Functions (PDFs)
 
+---
 
+#### Multi-Piece Bias: Increasing Complexity
 
+Let’s extend our biased example further by dividing the interval $[0, 1]$ into multiple parts. Suppose the probability density decreases as we move from left to right. For simplicity, let’s divide the interval into $n$ equal pieces, where each piece has a different weight.
 
-### Cumulative Distribution Functions: Unifying Discrete and Continuous
+For example, if we assign decreasing weights to each segment, the probability that $X$ falls within $[a, b]$ would look something like this:
 
-To further bridge the gap between discrete and continuous probabilities, we introduce the concept of a cumulative distribution function (CDF). The CDF $F_X(x)$ gives the probability that the random variable $X$ takes on a value less than or equal to $x$:
+\[
+P(a \leq X \leq b) = \begin{cases}
+\frac{n}{1 + 2 + \cdots + n} \cdot \frac{(b - a)}{1/n} & \text{if } 0 \leq a \leq b \leq \frac{1}{n}, \\
+\frac{n-1}{1 + 2 + \cdots + n} \cdot \frac{(b - a)}{1/n} & \text{if } \frac{1}{n} \leq a \leq b \leq \frac{2}{n}, \\
+\vdots \\
+\frac{1}{1 + 2 + \cdots + n} \cdot \frac{(b - a)}{1/n} & \text{if } \frac{n-1}{n} \leq a \leq b \leq 1, \\
+0 & \text{otherwise.}
+\end{cases}
+\]
 
-$F_X(x) = P(X \leq x)$
+This example introduces a key idea: we’re assigning different probabilities to different intervals, based on a weighting scheme. The probability for each subinterval depends on its position in the interval and the assigned weight. However, this kind of piecewise calculation quickly becomes cumbersome as we increase the number of segments.
 
-This function works for both discrete and continuous random variables, providing a unified way to describe probability distributions.
+#### The Problem with Increasing $n$
 
-For our discrete coin flip example:
+As we increase the number of divisions, say $n = 10$, then $n = 100$, and eventually $n \to \infty$, writing out these piecewise probabilities becomes increasingly difficult. Each segment has its own weight, and calculating probabilities for intervals that span multiple segments becomes tedious and error-prone.
 
-$F_X(x) = \begin{cases}
-0 & \text{if } x < 0 \\
-\frac{1}{4} & \text{if } 0 \leq x < 1 \\
-\frac{3}{4} & \text{if } 1 \leq x < 2 \\
-1 & \text{if } x \geq 2
-\end{cases}$
+For instance, calculating the probability over an interval like $[0.15, 0.6]$ would require breaking it up across several segments and summing up the corresponding weights for each piece. As $n$ increases, the number of segments increases, and the situation becomes impractically complex.
 
-For the continuous bus waiting time example:
+#### The Limit Case: Continuous Variation
 
-$F_Y(y) = 1 - e^{-\lambda y}$ for $y \geq 0$
+Now, let’s take this idea to its logical extreme. What if, instead of dividing $[0, 1]$ into a finite number of intervals, we allowed the probability density to change **continuously** from left to right? As the number of segments grows without bound, we approach a situation where the probability density is no longer piecewise, but smoothly varying across the entire interval.
 
-These concepts - random variables, PMFs, PDFs, and CDFs - provide a more flexible and unified approach to probability. They allow us to:
+So far, we have established that the probability of a given interval depends on 2 things:
 
-1. Handle both discrete and continuous scenarios
-2. Represent unequal probabilities in discrete spaces
-3. Describe varying densities in continuous spaces
-4. Deal with mixed distributions
+1. The length of each subinterval with a defined probability
+2. The weight of each defined subinterval
 
-However, as we delve deeper into probability theory, we encounter scenarios that challenge even these more advanced concepts. In the next section, we'll explore these challenges and see how they lead us to the need for an even more general theory of probability.
+In this limit, we can imagine a function $f(x)$ that gives the **probability density** at every point $x \in [0, 1]$. This function $f(x)$ tells us how “dense” the probability is around each point, much like how mass density describes the distribution of mass in a physical object.
 
-### The Need for a More General Theory
+Here’s how this works: for a very small interval $[x, x + dx]$, the probability that $X$ lies within that interval is approximately $f(x) \, dx$. The function $f(x)$ represents the probability per unit length, much like how a histogram gives the frequency per bin in a discrete case.
 
-As we delve deeper into probability theory, we encounter scenarios that challenge even these more advanced concepts. For instance:
+#### The Integral: Summing Infinitesimal Probabilities
 
-1. What about random variables that are neither purely discrete nor purely continuous?
-2. How do we rigorously define probability for infinite sample spaces?
-3. Can we develop a theory that works consistently for all types of random phenomena?
+To calculate the probability that $X$ lies within an interval $[a, b]$, we can’t just sum up discrete pieces anymore, because the probability density changes continuously. Instead, we sum up the infinitesimal probabilities over every tiny piece of the interval. Mathematically, this is exactly what an **integral** does:
 
-These questions lead us to the doorstep of measure theory, the foundation of modern probability theory. In the next section, we'll explore how measure theory provides a rigorous framework that unifies and extends all the concepts we've discussed so far.
+\[
+P(a \leq X \leq b) = \lim_{n \to \infty} \sum_{i=1}^{n} f(x_i) \Delta x \quad \longrightarrow \quad P(a \leq X \leq b) = \int_a^b f(x) \, dx.
+\]
+
+This expression tells us that the total probability in the interval $[a, b]$ is the **integral** of the probability density function $f(x)$ over that interval. The integral is simply a way of adding up the infinitesimally small probabilities across every point in the interval, giving us the total probability for that range.
+
+---
 
 ## The Path to Modern Probability Theory
 
@@ -438,7 +467,7 @@ This framework might seem abstract, but it's crucial for building a consistent t
 
 In our next section, we'll explore how this framework helps us tackle more complex problems and leads us towards the full measure-theoretic foundation of modern probability theory. We'll see how concepts like random variables and expectation fit into this structure, and how it allows us to handle sophisticated scenarios in probability and statistics.
 
-# From Sample Spaces to Random Variables
+# From Random Variables to Sample Spaces
 
 In elementary probability courses, we often think of random variables as direct samples from our sample space. For instance, when rolling a die, we might define a random variable $X$ as the number that comes up. This intuitive approach works well for simple scenarios, but let's explore why it falls short as our problems become more complex.
 
