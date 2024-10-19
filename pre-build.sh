@@ -11,6 +11,9 @@ replace_delimiters() {
         sub process_math {
             my ($content) = @_;
 
+            # Escape asterisks
+            $content =~ s/\*/\\\*/g;
+
             # Escape double backslashes
             $content =~ s/\\\\/\\\\\\\\/g;
 
@@ -68,7 +71,7 @@ replace_delimiters() {
 
         # Process math environments: \( ... \), \[ ... \], $ ... $, and $$ ... $$
         # This version allows for any amount of whitespace, including newlines, between delimiters
-        s/(\\\(|\\\[|\$\$?)\s*(.*?)\s*(\\\)|\\\]|\$\$?)/ 
+        s/(\\\(|\\\[|\$|\$\$?)\s*(.*?)\s*(\\\)|\\\]|\$|\$\$?)/ 
             my ($open, $content, $close) = ($1, $2, $3);
             $open . process_math($content) . $close;
         /gsex;
