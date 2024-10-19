@@ -44,21 +44,16 @@ replace_delimiters() {
             return $content;
         }
 
-        # Store math environments temporarily
-        my @math_blocks;
-        s/(\\\(|\\\[|\$\$?)\s*(.*?)\s*(\\\)|\\\]|\$\$?)/
-            push @math_blocks, [$1, $2, $3];
-            "MATHBLOCK" . $#math_blocks . "MATHBLOCK";
-        /gsex;
+        # Replace \% with \\% and \$ with \\$ outside of math environments
+        s/(?<!\\)\\%/\\\\%/g;
+        s/(?<!\\)\\$/\\\\$/g;
 
-        # Escape backslashes outside math environments
-        s/(?<!\\)\\(?!\\)/\\\\/g;
-
-        # Restore math environments and process them
-        s/MATHBLOCK(\d+)MATHBLOCK/
-            my ($open, $content, $close) = @{$math_blocks[$1]};
+        # Process math environments: \( ... \), \[ ... \], $ ... $, and $$ ... $$
+        # This version allows for any amount of whitespace, including newlines, between delimiters
+        s/(\\\(|\\\[|\$\$?)\s*(.*?)\s*(\\\)|\\\]|\$\$?)/ 
+            my ($open, $content, $close) = ($1, $2, $3);
             $open . process_math($content) . $close;
-        /ge;
+        /gsex;
 
         # Process \text{...} environments and escape underscores inside them
         s/\\text\{(.*?)\}/ 
