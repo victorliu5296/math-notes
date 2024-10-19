@@ -192,17 +192,45 @@ To address the limitations we've discussed, statisticians introduced several key
 3. Probability Density Functions (PDFs)
 4. Cumulative Distribution Functions (CDFs)
 
-Before checking out the formal definitions, let's explore our previous definitions to see what properties we would like to preserve.
+Before checking out the formal definitions, let's explore our ideas a little bit further.
 
 The fundamental idea is to consider probability as a measure of sets. Whether we're counting discrete outcomes or measuring continuous regions, we're essentially quantifying the "size" of the event relative to the total "size" of possibilities. In the finite setting, we counted the number of favorable outcomes in the rolling of a die. In the geometric setting, we considered lengths of intervals and areas of shapes to define this "relative size".
 
-Measure theory, our ultimate goal to reach, is a modern mathematical framework that allows us to properly formalize this idea. 
+Measure theory, our ultimate goal to reach, is a modern mathematical framework that allows us to properly formalize this idea. It turns out that there are measures of more suitable dimensions for different types of objects.
 
-In both cases, as we have discussed, we would like to assign a probability as a ratio of the "size" of the favorable outcomes to the total "size" of all possible outcomes.
+For instance, remember when we tried to assign a probability to a subinterval of $[0, 1]$? When we tried to do this via the counting measure, the numerator and denominator both became infinitely large. But when we used the geometric measure, the length of the subinterval is a finite number, and the probability is a ratio of two finite numbers.
 
-In this case, the largest possible probability is $1$ when we say every outcome is favorable, and the smallest possible probability is $0$ when we say no outcomes are favorable. Then, other probabilities lies in between these two extremes.
+#### {#note-non-integer-dimensions} 
+Without going into technical details, extending this notion of measures of certain dimensions being more suitable for certain types of objects leads to non-integer dimensions to *fractals*. Some exploratory material can be found in the section of [References](#references-dimension-of-measures).
 
-We will keep this in mind as we explore the following definitions.
+In both cases, as we have discussed, we would like to assign a probability as a ratio of the "size" of the favorable outcomes to the total "size" of all possible outcomes. What properties do we want to preserve based on our previous definitions?
+
+Well, the largest possible probability is $1$ in the case where every outcome is favorable, and the smallest possible probability is $0$ when no outcomes are favorable. Then, other probabilities lies in between these two extremes.
+
+In addition, when we scale a set by a certain factor, the probability of the scaled set should also be scaled by the same factor.
+
+Let's list our discoveries. Suppose we have a set $A$ within a sample space $\Omega$ that serves as the universe of all possible outcomes. For now, our current best approach is setting the probability as a ratio of "size" measures. We will introduce the conventional notation
+
+\[
+\mu(A)
+\]
+
+to denote the **measure** of a set $A$ in the sample space $\Omega$, which can be things like a count, a length, an area, a volume and more.
+
+Then, we can define the probability of $A$ as:
+
+\[
+P(A) := \frac{\mu(A)}{\mu(\Omega)}
+\]
+
+The properties of this definition include:
+
+1. $P(\Omega) = 1$ (when all outcomes are favorable)
+2. $P(\emptyset) = 0$ (when no outcomes are favorable)
+3. $0 \le P(A) \le 1$ (for any $A \subseteq \Omega$)
+4. $P(B) = kP(A)$ if $\mu(B) = 2\mu(A)$ (for any $A, B \subseteq \Omega$)
+
+The formal definition of a measure will be covered later. For now, we keep our current beliefs and desired properties in mind as we explore the following sections.
 
 ---
 
@@ -554,9 +582,21 @@ This approach of defining random variables as functions and decoupling them from
 
 In our next section, we'll explore how this framework allows us to handle more sophisticated probabilistic concepts, and how it enables us to tackle complex problems in probability and statistics.
 
-## References and Further Reading
+## References and Further Reading {#references}
+
+### Probability Theory and Measure Theory {#references-probability-theory-and-measure-theory}
 
 1. [David Pollard - A User's Guide to Measure Theoretic Probability (Chapter 1: Motivation)](http://www.stat.yale.edu/~pollard/Courses/600.spring06/Handouts/Chapter1.pdf)
-2. [Probability Theory](https://en.wikipedia.org/wiki/Probability_theory)
-3. [Michael Betancourt - Probability Theory (for Scientists and Engineers)](https://betanalpha.github.io/assets/case_studies/probability_theory.html)
-4. [Random Variables](https://en.wikipedia.org/wiki/Random_variable)
+2. [Michael Betancourt - Probability Theory (for Scientists and Engineers)](https://betanalpha.github.io/assets/case_studies/probability_theory.html)
+3. [Matthew N. Bernstein - Demystifying measure-theoretic probability theory (part 1: probability spaces)](https://mbernste.github.io/posts/measure_theory_1/)
+4. [Wikipedia - Probability Theory](https://en.wikipedia.org/wiki/Probability_theory)
+5. [Wikipedia - Random Variables](https://en.wikipedia.org/wiki/Random_variable)
+6. [Wikipedia - Measure Theory](https://en.wikipedia.org/wiki/Measure_theory)
+
+### Dimension of measures {#references-dimension-of-measures}
+
+1. [3Blue1Brown (Grant Sanderson) - Fractals are typically not self-similar](https://m.youtube.com/watch?v=gB9n2gHsHN4)
+2. [Wikipedia - Minkowski–Bouligand dimension](https://en.wikipedia.org/wiki/Minkowski–Bouligand_dimension)
+3. [Wikipedia - Hausdorff dimension](https://en.wikipedia.org/wiki/Hausdorff_dimension)
+
+Back to [Note - Non-integer dimensions](#note-non-integer-dimensions)
