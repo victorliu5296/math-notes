@@ -184,35 +184,116 @@ To formalize this idea and address the limitations we've discussed, statistician
 3. Probability Density Functions (PDFs)
 4. Cumulative Distribution Functions (CDFs)
 
-Let's explore each of these concepts and see how they help us build a more robust and flexible framework for probability.
+Before checking out the formal definitions, let's explore our previous definitions to see what properties we would like to preserve.
+
+In both cases, as we have discussed, we would like to assign a probability as a ratio of the "size" of the favorable outcomes to the total "size" of all possible outcomes.
+
+In this case, the largest possible probability is $1$ when we say every outcome is favorable, and the smallest possible probability is $0$ when we say no outcomes are favorable. Then, other probabilities lies in between these two extremes.
+
+We will keep this in mind as we explore the formal definitions.
 
 ### Random Variables: Bridging Discrete and Continuous
 
-A random variable is a function that assigns a real number to each outcome in a sample space. This powerful abstraction allows us to treat both discrete and continuous probabilities in a unified manner.
+A **random variable** is a function that assigns a real number to each outcome in a sample space. This powerful abstraction allows us to treat both discrete and continuous probabilities in a unified manner.
 
 Let's explore this with an example:
 
+#### Discrete Example
+
 Suppose we flip a coin twice. We can define a random variable $X$ as the number of heads observed. Here, $X$ can take on values 0, 1, or 2.
+
+If we consider all possible outcomes, we see that we have the set of outcomes $\{HH, HT, TH, TT\}$. If the coin is fair, then the probability of each outcome is $\frac{1}{4}$. We see that there is $1$ outcome with 0 heads, $2$ outcomes with 1 head, and $1$ outcome with 2 heads.
 
 We can describe this discrete random variable using a probability mass function (PMF):
 
-$P(X = k) = \begin{cases}
-\frac{1}{4} & \text{if } k = 0 \text{ or } 2 \\
-\frac{1}{2} & \text{if } k = 1 \\
+\[
+P(X = k) = \begin{cases}
+\frac{1}{4} & \text{if } k = 0 \\
+\frac{2}{4} = \frac{1}{2} & \text{if } k = 1 \\
+\frac{1}{4} & \text{if } k = 2 \\
 0 & \text{otherwise}
-\end{cases}$
+\end{cases}
+\]
 
-Now, let's consider a continuous example:
+As we can see, the *total probabilities* of each outcome must **sum to 1** for the probability mass function to be valid. So, the probability mass function just lists out the probabilities for each value of the random variable $X$.
 
-Suppose we measure the time between two consecutive bus arrivals. We can define a random variable $Y$ as this waiting time. Here, $Y$ can take on any non-negative real value.
+So, the definition agrees with our previous valid examples. Now, let's see what more it brings to the table.
 
-For continuous random variables, we use a probability density function (PDF) instead. For example, if bus arrivals follow an exponential distribution with rate $\lambda$, the PDF would be:
+Let's say that the coin is now biased, with heads being more likely than tails. In this case, the probability of each outcome is no longer $\frac{1}{4}$.
 
-$f_Y(y) = \lambda e^{-\lambda y}$ for $y \geq 0$
+If we decide that $P(heads) = \frac{2}{3}$, then the probability of tails is $1 - \frac{2}{3} = \frac{1}{3}$. But then, our probabilities of each outcome is now different:
 
-The probability of waiting between $a$ and $b$ minutes is then given by the integral:
+\[
+\begin{cases}
+P(TT) = \frac{1}{3} \cdot \frac{1}{3} = \frac{1}{9} \\
+P(TH) = \frac{1}{3} \cdot \frac{2}{3} = \frac{2}{9} \\
+P(HT) = \frac{2}{3} \cdot \frac{1}{3} = \frac{2}{9} \\
+P(HH) = \frac{2}{3} \cdot \frac{2}{3} = \frac{4}{9} \\
+\end{cases}
+\]
 
-$P(a \leq Y \leq b) = \int_a^b \lambda e^{-\lambda y} dy$
+This significantly changes the PMF, as we now have different probabilities for each outcome.
+
+\[
+\begin{cases}
+P(X = 0) = \frac{1}{9} \\
+P(X = 1) = \frac{2}{9} + \frac{2}{9} = \frac{4}{9} \\
+P(X = 2) = \frac{4}{9} \\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+So, our new defintions are more flexible, allowing us to assign probabilities to unevenly weighted outcomes.
+
+#### Continuous Example
+
+Now, let's consider a continuous example. As we've discussed previously with our paradox of picking a single number in an infinite set, we cannot meaningfully assign a probability to a single point in a continuous space. Instead, we need to assign probabilities to **intervals**.
+
+For example, while the probability of a person being exactly 170.000000... cm tall is zero, the probability of their height falling between 169.5 cm and 170.5 cm is meaningful and can be calculated.
+
+In our initial example of picking a single number in an equally likely unit interval, the probability of picking a number between $0 \le a \le b \le 1$ would be
+
+$$\frac{b - a}{1} = b - a$$
+
+Based on this definition, if $a = b$ (in other words, we are picking a single point), then we assign a probability of $0$. This seems strange at first because picking that point is still possible, and is a very popular counterintuitive result of definitions in probability theory. So, having probability $0$ in the continuous case doesn't mean it's impossible as in the finite case, simply that we can't assign a meaningful probability without blowing up to infinity.
+
+If we once again consider this probability of lying within an interval as a "mass", then we define the the probability that the random variable lies within a certain interval:
+
+\[
+P(a \leq X \leq b) := b - a
+\]
+
+Once again, this agrees with our previous valid examples. Let's try to define it for a biased example now.
+
+Let's say that we have a tendency toward smaller values, so that the probability of lying within the first half of the unit interval is $\frac{2}{3}$ while the probability of lying within the second half is $\frac{1}{3}$. In this case, we have to change our distribution:
+
+\[
+P(a \leq X \leq b) = \begin{cases}
+\frac{2}{3} (b - a) & \text{if } 0 \leq a \leq b \leq \frac{1}{2} \\
+\frac{1}{3} (b - a) & \text{if } \frac{1}{2} \leq a \leq b \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+You might notice that every value is scaled by (b - a). We'll come back to this in a moment.
+
+The burning question is: what if the interval overlaps on both the first and second halves? For example, what if we take the interval $[0.25, 0.75]$? What is the probability of lying within this interval?
+
+We can break it up into two pieces: $[0.25, 0.5]$ and $[0.5, 0.75]$. The probability of lying within $[0.25, 0.75]$ is then:
+
+\[
+P([0.25, 0.75]) = \frac{2}{3} \cdot (0.5 - 0.25) + \frac{1}{3} \cdot (0.75 - 0.5) = \frac{1}{4}
+\]
+
+This is the same as the probability of lying within $[0.25, 0.5]$ and $[0.5, 0.75]$ combined. If we look at the structure of the calculation, it's very reminiscent of the calculation for an average value.
+
+Let's take a brief detour to discuss the **expected value** of a random variable. We will come back later in detail. For now, an expected value is a weighted sum of the possible values of a random variable, weighted by the probability of each value. This example hints at a very close relationship between expected values and probability. In later sections, we'll see how a formal approach can be used to properly explain this relationship.
+
+
+For continuous random variables, we use a probability density function (PDF) instead. Density, as in "probability per unit length", or per unit area, or per unit volume, allows us to calculate the probability of an interval (or more generally, a set) based on its "size".
+
+
+
 
 ### Cumulative Distribution Functions: Unifying Discrete and Continuous
 
@@ -443,3 +524,10 @@ This approach of defining random variables as functions and decoupling them from
 4. **Unification**: It provides a unified treatment of discrete and continuous probability, as well as more exotic probability spaces.
 
 In our next section, we'll explore how this framework allows us to handle more sophisticated probabilistic concepts, and how it enables us to tackle complex problems in probability and statistics.
+
+## References and Further Reading
+
+1. [David Pollard - A User's Guide to Measure Theoretic Probability (Chapter 1: Motivation)](http://www.stat.yale.edu/~pollard/Courses/600.spring06/Handouts/Chapter1.pdf)
+2. [Probability Theory](https://en.wikipedia.org/wiki/Probability_theory)
+3. [Michael Betancourt - Probability Theory (for Scientists and Engineers)](https://betanalpha.github.io/assets/case_studies/probability_theory.html)
+4. [Random Variables](https://en.wikipedia.org/wiki/Random_variable)
