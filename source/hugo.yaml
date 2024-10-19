@@ -36,6 +36,7 @@ params:
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
+  ShowToc: true
 
   # home-info mode
   homeInfoParams:
