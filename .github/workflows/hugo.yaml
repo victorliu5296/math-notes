@@ -38,8 +38,8 @@ jobs:
           fetch-depth: 0
       - name: Run pre-build script
         run: |
-          chmod +x ./replace-delimiters.sh
-          ./replace-delimiters.sh
+          chmod +x ./pre-build.sh
+          ./pre-build.sh
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
