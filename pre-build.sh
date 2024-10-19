@@ -79,10 +79,10 @@ replace_delimiters() {
         /gse;
 
         # # Double-escape delimiters if not already double-escaped
-        # s/(?<!\\\\)\\\(/\\\\(/g;
-        # s/(?<!\\\\)\\\)/\\\\)/g;
-        # s/(?<!\\\\)\\\[/\\\\[/g;
-        # s/(?<!\\\\)\\\]/\\\\]/g;
+        s/(?<!\\\\)\\\(/\\\\\(/g;   # Escape \( to \\(
+        s/(?<!\\\\)\\\)/\\\\\)/g;   # Escape \) to \\)
+        s/(?<!\\\\)\\\[/\\\\\[/g;   # Escape \[ to \\[
+        s/(?<!\\\\)\\\]/\\\\\]/g;   # Escape \] to \\]
     ' "$file"
 }
 
