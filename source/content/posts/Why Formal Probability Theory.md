@@ -28,9 +28,17 @@ Probability theory has a rich history, with many famous mathematicians contribut
 
 Yet, this historical context is often omitted, leading to a significant gap in motivation and causing confusion for many learners.
 
+### Motivation
+
 This blog post aims to fill this gap by providing a brief introduction to the foundations of modern probability and a surface-level overview of the concepts. We'll explore the evolution of probability theory, examining the problems and paradoxes that spurred its development. 
 
-Starting from the very basics, we will gradually refine each definition after encountering concrete problems that arise from our naive ones to build up to increasingly sophisticated and abstract concepts. By understanding the "why" behind the theory, these abstract concepts can hopefully become more accessible and meaningful.
+Starting from the very basics, we will adopt the Bayesian perspective of updating priors and gradually refine each definition. While encountering concrete problems that arise from our naive ones, we will build up to increasingly sophisticated and abstract concepts. By understanding the "why" behind the theory, these abstract concepts can hopefully become more accessible and meaningful.
+
+This is not meant to be a comprehensive textbook on probability theory, but rather a brief introduction to the foundations of modern probability and a surface-level overview of the concepts. We are more interested in the intuition and motivation behind the theory than in a exhaustive treatment of all its intricacies.
+
+### Prerequisites
+
+This blog post assumes a basic understanding of probability, calculus and linear algebra. While it's not strictly required since I attempt to build ideas up from scratch, familiarity with these topics undoubtedly will be helpful as the concepts are introduced.
 
 ---
 
@@ -57,11 +65,15 @@ Intuitively, we might reason:
 2. Only one of these outcomes is favorable (rolling a 4).
 3. Therefore, the probability is 1/6.
 
-This intuitive approach forms the basis of classical probability theory:
+This intuitive approach forms the basis of classic probability theory:
 
-$P(A) = \frac{\text{number of favorable outcomes}}{\text{total number of possible outcomes}}$
+> #### Definition: Classic Probability.
+> 
+> Given an event $A$, the probability of $A$, denoted $P(A)$, is defined as:
+> \[
+> P(A) := \frac{\text{number of favorable outcomes}}{\text{total number of possible outcomes}}
+> \]
 
-Where $P(A)$ represents the probability of event $A$.
 
 ### The Emergence of Combinatorics
 
@@ -75,6 +87,8 @@ To solve this, we need to:
 3. Apply our formula: $P(\text{sum of 7}) = \frac{6}{36} = \frac{1}{6}$
 
 This approach works well for discrete problems with a finite number of outcomes. But what happens when we encounter infinity?
+
+### The St. Petersburg Paradox
 
 Probability theory quickly ran into philosophical and mathematical challenges that spurred its development. Let's explore a famous paradox that shook the foundations of probability theory:
 
@@ -126,7 +140,17 @@ The solution involves calculus and geometric reasoning to arrive at a very beaut
 
 $P(\text{needle crosses a line}) = \frac{2L}{\pi D}$
 
-This problem introduces the idea of using geometric measures (lengths, areas, volumes) to calculate probabilities in continuous spaces. So far, this definition seems to be holding up pretty well for the infinite cases. But, unfortunately, it has its own limitations.
+This problem introduces the idea of using geometric measures (lengths, areas, volumes) to calculate probabilities in continuous spaces. 
+
+> #### Definition: Geometric Probability.
+>
+> Given a region $A$, the probability of $A$, denoted $P(A)$, is defined as:
+> \[
+> P(A) := \frac{\text{size of } A}{\text{total size}}
+> \]
+> where size is length, area, or volume.
+
+So far, this definition seems to be holding up pretty well for the infinite cases. But, unfortunately, it has its own limitations.
 
 ## The Need for a More Rigorous Foundation
 
@@ -149,13 +173,9 @@ As we've seen, both the counting approach for discrete probabilities and the geo
 
 ### Limitations of Our Current Approaches
 
-1. Disconnected Theories: Our current methods treat discrete and continuous probabilities as entirely separate concepts. This disconnect becomes problematic when we encounter scenarios that don't fit neatly into either category.
+Our current methods treat discrete and continuous probabilities as entirely separate concepts. This disconnect becomes problematic when we encounter scenarios that don't fit neatly into either category, or even when we want to combine them.
 
-2. Assumption of Equally Likely Outcomes: Both our counting and geometric approaches often rely on the assumption that all outcomes are equally likely. This assumption doesn't hold in many real-world scenarios.
-
-3. Inability to Handle Complex Scenarios: As we'll see, there are situations where neither the discrete nor the continuous approach alone is sufficient.
-
-Let's look at some examples that challenge our current understanding:
+Let's look at an example that challenges our current understanding:
 
 ### The Curious Case of Mixed Distributions
 
@@ -165,6 +185,75 @@ How would you describe the probability distribution of your winnings? It's neith
 
 This mixed distribution challenges our separate notions of discrete and continuous probability. We need a framework that can handle such hybrid scenarios in a unified manner.
 
+To fix this, we introduce a more general that can handle both discrete and continuous probabilities.
+
+#### Desired Properties of Probability
+
+Let's try to identify the key properties we want to preserve from our current approaches:
+
+1. The maximum probability is $1$ (when all outcomes are favorable).
+2. The minimum probability is $0$ (when no outcomes are favorable).
+3. Other probabilities lie between $0$ and $1$.
+4. Scaling the "size" of a set should scale its probability by the same factor.
+
+Now, we try to construct a definition based on these ideas from a more abstract perspective.
+
+#### The Concept of Relative Size
+
+At its core, probability is about measuring the "size" of an event relative to the total "size" of possibilities. This idea applies whether we're dealing with discrete outcomes (like rolling a die) or continuous regions (like intervals on a number line).
+
+Let's consider how this concept evolved:
+
+1. In finite settings, we simply counted favorable outcomes.
+2. In geometric settings, we used lengths of intervals or areas of shapes.
+
+
+#### The Challenge of Infinite Sets
+
+Remember our attempt to assign probability to a subinterval of $[0,1]$? 
+
+- Using the counting measure, both numerator and denominator became infinitely large.
+- Using the geometric measure (length), we obtained a ratio of finite numbers.
+
+This illustrates why different types of measures are needed for different scenarios.
+
+#### Formalizing Our Approach
+
+Let's introduce some notation:
+
+- $\Omega$ represents our sample space (all possible outcomes).
+- $A$ is a subset of $\Omega$ (an event we're interested in).
+- $\mu(A)$ denotes the "measure" of set $A$, which could be a count, length, area, etc.
+
+We can then define probability in a more general sense.
+
+> #### Definition: Ratio Probability.
+>
+> Given an event $A$ in a universe $\Omega$, the ratio probability of $A$, denoted $P(A)$, is defined as:
+> \[
+> P(A) := \frac{\mu(A)}{\mu(\Omega)}
+> \]
+
+This definition satisfies our desired properties:
+
+1. $P(\Omega) = 1$ (certainty: each outcome is favorable)
+2. $P(\emptyset) = 0$ (impossibility: no outcome is favorable)
+3. $0 \le P(A) \le 1$ (for any $A \subseteq \Omega$)
+4. $P(B) = kP(A)$ if $\mu(B) = k\mu(A)$ (scaling property)
+
+#### Looking Ahead
+
+While we'll formally define measures later, keeping these concepts and properties in mind will guide our exploration of more advanced probability theory.
+
+This progression will lead us to measure theory, a modern mathematical framework that formalizes these ideas. It provides measures of "size" of appropriate dimensions for different types of objects.
+
+###### {#note-non-integer-dimensions} 
+Interestingly, this concept of dimension-appropriate measures extends to non-integer dimensions, leading to the fascinating world of fractals. For those curious, check the [References](#references-dimension-of-measures) section for more on this topic.
+
+### Another Problem: Uniformity Assumption
+
+We are not nearly done yet. Unfortunately, our current approach still relies on the assumption that all outcomes are equally likely. This assumption doesn't hold in many real-world scenarios, and it can lead to contradictions such as the St. Petersburg paradox we covered earlier. Here are more examples of scenarios where the uniformity assumption fails.
+
 ### Unequal Probabilities in Discrete Spaces
 
 Let's revisit our die-rolling example, but with a twist. Imagine a weighted die where the probability of rolling a 6 is twice that of any other number.
@@ -173,64 +262,25 @@ Our simple counting approach falls short here because the outcomes are no longer
 
 ### Continuous Distributions with Varying Densities
 
-Imagine you're a meteorologist studying rainfall patterns in a particular region. You have a map of the area, and you want to predict the likelihood of rain at different locations.
-
-#### The Uniform Approach Falls Short
+Imagine you're a meteorologist studying rainfall patterns in a particular region. You have a map of the area, and you want to predict the likelihood of rain at different locations. 
 
 If rainfall were equally likely everywhere, we could use a simple geometric approach. The probability of rain in any sub-region would just be the area of that sub-region divided by the total area of the map.
+
 But let's consider why this doesn't work in our case:
 - Coastal areas might have a higher chance of rainfall due to moisture from the sea.
 - Mountainous regions could experience more rainfall due to orographic lifting.
 - Some areas might be in a "rain shadow," receiving less precipitation.
 
-### From Counting to Measuring
+Based on this, our uniform probability approach falls short. We need a more sophisticated approach.
 
-To address the limitations we've discussed, statisticians introduced several key concepts:
+### From Counting to Measuring: The Evolution of Probability
+
+As we've seen, our initial approach to probability had limitations. To overcome these, statisticians introduced several key concepts:
 
 1. Random Variables
 2. Probability Mass Functions (PMFs)
 3. Probability Density Functions (PDFs)
 4. Cumulative Distribution Functions (CDFs)
-
-Before checking out the formal definitions, let's explore our ideas a little bit further.
-
-The fundamental idea is to consider probability as a measure of sets. Whether we're counting discrete outcomes or measuring continuous regions, we're essentially quantifying the "size" of the event relative to the total "size" of possibilities. In the finite setting, we counted the number of favorable outcomes in the rolling of a die. In the geometric setting, we considered lengths of intervals and areas of shapes to define this "relative size".
-
-Measure theory, our ultimate goal to reach, is a modern mathematical framework that allows us to properly formalize this idea. It turns out that there are measures of more suitable dimensions for different types of objects.
-
-For instance, remember when we tried to assign a probability to a subinterval of $[0, 1]$? When we tried to do this via the counting measure, the numerator and denominator both became infinitely large. But when we used the geometric measure, the length of the subinterval is a finite number, and the probability is a ratio of two finite numbers.
-
-#### {#note-non-integer-dimensions} 
-Without going into technical details, extending this notion of measures of certain dimensions being more suitable for certain types of objects leads to non-integer dimensions to *fractals*. Some exploratory material can be found in the section of [References](#references-dimension-of-measures).
-
-In both cases, as we have discussed, we would like to assign a probability as a ratio of the "size" of the favorable outcomes to the total "size" of all possible outcomes. What properties do we want to preserve based on our previous definitions?
-
-Well, the largest possible probability is $1$ in the case where every outcome is favorable, and the smallest possible probability is $0$ when no outcomes are favorable. Then, other probabilities lies in between these two extremes.
-
-In addition, when we scale a set by a certain factor, the probability of the scaled set should also be scaled by the same factor.
-
-Let's list our discoveries. Suppose we have a set $A$ within a sample space $\Omega$ that serves as the universe of all possible outcomes. For now, our current best approach is setting the probability as a ratio of "size" measures. We will introduce the conventional notation
-
-\[
-\mu(A)
-\]
-
-to denote the **measure** of a set $A$ in the sample space $\Omega$, which can be things like a count, a length, an area, a volume and more.
-
-Then, we can define the probability of $A$ as:
-
-\[
-P(A) := \frac{\mu(A)}{\mu(\Omega)}
-\]
-
-The properties of this definition include:
-
-1. $P(\Omega) = 1$ (when all outcomes are favorable)
-2. $P(\emptyset) = 0$ (when no outcomes are favorable)
-3. $0 \le P(A) \le 1$ (for any $A \subseteq \Omega$)
-4. $P(B) = kP(A)$ if $\mu(B) = 2\mu(A)$ (for any $A, B \subseteq \Omega$)
-
-The formal definition of a measure will be covered later. For now, we keep our current beliefs and desired properties in mind as we explore the following sections.
 
 ---
 
@@ -244,9 +294,20 @@ Let's explore this with an example:
 
 Suppose we flip a coin twice. We can define a random variable $X$ as the number of heads observed. Here, $X$ can take on values 0, 1, or 2.
 
-If we consider all possible outcomes, we see that we have the set of outcomes $\{HH, HT, TH, TT\}$. If the coin is fair, then the probability of each outcome is $\frac{1}{4}$. We see that there is $1$ outcome with 0 heads, $2$ outcomes with 1 head, and $1$ outcome with 2 heads.
+If we consider all possible outcomes, we see that we have the set of outcomes $\{TT, TH, HT, HH\}$. If the coin is fair, then the probability of each outcome is $\frac{1}{4}$. We see that there is $1$ outcome with 0 heads, $2$ outcomes with 1 head, and $1$ outcome with 2 heads.
 
-We can describe this discrete random variable using a probability mass function (PMF):
+So $X$ can be defined as the following function:
+
+\[
+X = \begin{cases}
+0 & \text{if } TT \\
+1 & \text{if } TH \\
+1 & \text{if } HT \\
+2 & \text{if } HH \\
+\end{cases}
+\]
+
+We should note that some values of this random variable are *repeated*, which means that the probabilities are not equal. Specifically, the probability that $X = 1$ is twice as likely as each of $X = 0$ or $X = 2$. We can describe this discrete random variable using a probability mass function (PMF), which tells us the probability of each possible value of the random variable:
 
 \[
 P(X = k) = \begin{cases}
@@ -259,7 +320,7 @@ P(X = k) = \begin{cases}
 
 As we can see, the *total probabilities* of each outcome must **sum to 1** for the probability mass function to be valid. So, the probability mass function just lists out the probabilities for each value of the random variable $X$.
 
-So, the definition agrees with our previous valid examples. Now, let's see what more it brings to the table.
+This definition agrees with our previous valid examples. Now, let's see what more it brings to the table.
 
 Let's say that the coin is now biased, with heads being more likely than tails. In this case, the probability of each outcome is no longer $\frac{1}{4}$.
 
@@ -274,7 +335,7 @@ P(HH) = \frac{2}{3} \cdot \frac{2}{3} = \frac{4}{9} \\
 \end{cases}
 \]
 
-This significantly changes the PMF, as we now have different probabilities for each outcome.
+This changes the PMF, as we now have different probabilities for each outcome.
 
 \[
 \begin{cases}
@@ -285,7 +346,7 @@ P(X = 2) = \frac{4}{9} \\
 \end{cases}
 \]
 
-So, our new definitions are more flexible, allowing us to assign probabilities to unevenly weighted outcomes.
+So, our new definitions are more flexible, allowing us to assign probabilities to unevenly weighted outcomes. This approach finally allows for unequal probabilities in discrete spaces. Let's now try to extend this to continuous spaces.
 
 ---
 
@@ -301,55 +362,121 @@ Let’s say we’re interested in the probability that a person’s height falls
 
 This principle is at the heart of continuous probability: assigning probabilities to intervals of outcomes rather than specific points.
 
----
-
 ### Introducing Bias: Non-Uniform Distributions
 
-Now, let’s add some complexity. What if not all intervals are equally likely? Suppose we have a bias towards smaller values, such that the probability of picking a number in the first quarter of the interval $[0, 0.25]$ is weighted more heavily than the rest of the interval.
+Now, let's add complexity by introducing bias into our probability distribution. We'll see how this relates to our earlier discussion about scaling probabilities linearly with the size of intervals.
 
-Here’s how we’ll do it:
+#### The Weight-Proportion Principle
 
-- Assign twice as much weight to values in $[0, 0.25]$ compared to the rest of the interval $[0.25, 1]$.
-- Scale probability linearly with the length of the interval.
-- Normalize the weights so the total probability is still 1.
+The key idea we're introducing is that probabilities can be defined using the product of two factors:
 
-To formalize this, let’s assign a weight of $\frac{2}{3}$ to the first quarter and $\frac{1}{3}$ to the rest of the interval. Then, the probability that the number falls between two points $a$ and $b$ depends on whether those points lie in the first quarter, the remainder, or both.
+1. A normalized weight assigned to a region
+2. The proportion of that region occupied by our interval of interest
 
-\[
+This principle allows us to create non-uniform distributions while maintaining the property that probabilities scale linearly with the size of intervals.
+
+#### Example: Biased Interval
+
+Let's consider the interval $[0,1]$ and introduce a bias towards smaller values. We'll do this by:
+
+1. Assigning different weights to different parts of the interval
+2. Normalizing these weights to sum to 1
+3. Calculating probabilities based on these normalized weights and the proportion of each region occupied
+
+Here's our setup:
+
+- Assign an unnormalized weight of 2 to the interval $[0, 0.25]$ (the first quarter)
+- Assign an unnormalized weight of 1 to the interval $[0.25, 1]$ (the remaining three-quarters)
+
+To normalize these weights, we divide each by their sum:
+
+$$
+\text{Total weight} = 2 + 1 = 3
+$$
+
+Normalized weights:
+- For $[0, 0.25]$: $\frac{2}{3}$
+- For $[0.25, 1]$: $\frac{1}{3}$
+
+Now, let's define the probability that a number falls between two points $a$ and $b$:
+
+$$
 P(a \leq X \leq b) = \begin{cases}
-\frac{2}{3} \frac{(b - a)}{0.25} & \text{if } 0 \leq a \leq b \leq 0.25 \\
-\frac{1}{3} \frac{(b - a)}{0.75} & \text{if } 0.25 \leq a \leq b \leq 1 \\
+\frac{2}{3} \cdot \frac{(b - a)}{0.25} & \text{if } 0 \leq a \leq b \leq 0.25 \\
+\frac{1}{3} \cdot \frac{(b - a)}{0.75} & \text{if } 0.25 \leq a \leq b \leq 1 \\
 0 & \text{otherwise}
 \end{cases}
-\]
+$$
 
-#### What About Overlapping Intervals?
+Let's break down this formula:
 
-Here’s where things get interesting. What happens if we want to calculate the probability for an interval that crosses from one region into another, like $[0, 0.5]$? We can’t apply the same weight across the entire interval because it spans two different regions with different weights.
+1. For the first case $(0 \leq a \leq b \leq 0.25)$:
+   - Normalized weight assigned to this region: $\frac{2}{3}$
+   - Proportion of the region occupied: $\frac{(b - a)}{0.25}$
+   - Probability: $\text{(Normalized Weight)} \cdot \text{(Proportion)} = \frac{2}{3} \cdot \frac{(b - a)}{0.25}$
 
-Instead, we break the interval into two pieces: $[0, 0.25]$ and $[0.25, 0.5]$. We calculate the probability for each sub-interval separately, then sum them to get the total probability:
+2. For the second case $(0.25 \leq a \leq b \leq 1)$:
+   - Normalized weight assigned to this region: $\frac{1}{3}$
+   - Proportion of the region occupied: $\frac{(b - a)}{0.75}$
+   - Probability: $\text{(Normalized Weight)} \cdot \text{(Proportion)} = \frac{1}{3} \cdot \frac{(b - a)}{0.75}$
 
-\[
-P([0, 0.5]) = \frac{2}{3} \cdot (0.25 - 0) + \frac{1}{3} \cdot (0.5 - 0.25) = \frac{1}{3}
-\]
+This formulation explicitly shows how we're using the weight-proportion principle to define probabilities. The normalized weight ($\frac{2}{3}$ or $\frac{1}{3}$) represents the bias towards certain regions, while the proportion ($\frac{(b-a)}{0.25}$ or $\frac{(b-a)}{0.75}$) ensures that the probability scales linearly with the size of the interval within each region.
 
-This calculation has a familiar structure—it’s similar to calculating an **average** value. We’re weighting the probabilities of the sub-intervals according to their lengths and summing them to get the total probability.
+#### Verifying Linear Scaling
 
-### Pushing the Biased Interval to Its Limits
+To see how this maintains linear scaling within each region, consider doubling the size of an interval:
 
-Let's consider what happens if we make push the bias in our previous example to its limits. Instead of just two pieces, let's divide our interval into smaller and smaller pieces, each with its own probability density.
+1. In $[0, 0.25]$: If we double $(b-a)$, the probability doubles.
+2. In $[0.25, 1]$: If we double $(b-a)$, the probability doubles.
 
-### Revised Section: Transition to Probability Density Functions (PDFs)
+This property holds because we're multiplying the fixed normalized weight by a proportion that scales linearly with the interval size.
 
----
+#### Handling Overlapping Intervals
 
-#### Multi-Piece Bias: Increasing Complexity
+Of course, not all intervals will lie entirely within a single region with a fixed weight. What happens when we want to calculate the probability for an interval that crosses from one region into another, like $[0, 0.5]$?
 
-Let’s extend our biased example further by dividing the interval $[0, 1]$ into multiple parts. Suppose the probability density decreases as we move from left to right. For simplicity, let’s divide the interval into $n$ equal pieces, where each piece has a different weight.
+We can't apply the same weight across the entire interval because it spans two different regions with different weights. Instead, we break the interval into two pieces: $[0, 0.25] \subseteq [0, 0.25]$ and $[0.25, 0.5] \subseteq [0.25, 1]$. We calculate the probability for each sub-interval separately, then sum them to get the total probability:
 
-For example, if we assign decreasing weights to each segment, the probability that $X$ falls within $[a, b]$ would look something like this:
+$$
+\begin{aligned}
+P(0 \leq X \leq 0.5) &= P(0 \leq X \leq 0.25) + P(0.25 \leq X \leq 0.5) \\
+&= \frac{2}{3} \cdot \frac{(0.25 - 0)}{0.25} + \frac{1}{3} \cdot \frac{(0.5 - 0.25)}{0.75} \\
+&= \frac{2}{3} + \frac{1}{9} = \frac{7}{9}
+\end{aligned}
+$$
 
-\[
+This way, we can also check that the total probability of the entire interval is $1$, as expected:
+
+$$
+P(0 \leq X \leq 1) = \frac{2}{3}\cdot \frac{0.25}{0.25} + \frac{1}{3} \cdot \frac{0.75}{0.75} = \frac{2}{3} + \frac{1}{3} = 1
+$$
+
+This approach of using normalized weights and proportions allows us to create non-uniform distributions while maintaining the crucial property of linear scaling within defined regions. It forms the basis for more complex probability distributions and sets the stage for the continuous probability density functions we'll explore next.
+
+### From Discrete Bias to Continuous Density
+
+We've seen how we can introduce bias by assigning different weights to different parts of an interval. Let's take this idea further and see how it naturally leads us to the concept of probability density functions.
+
+#### Increasing the Number of Regions
+
+Instead of dividing our interval $[0, 1]$ into just two parts, let's divide it into $n$ equal parts, where $n$ is a large number. We'll assign decreasing weights to each segment as we move from left to right.
+
+Let's define our weights as follows:
+
+$$
+\begin{aligned}
+w_1 &= \frac{n}{1 + 2 + \cdots + n} \\
+w_2 &= \frac{n-1}{1 + 2 + \cdots + n} \\
+&\vdots \\
+w_n &= \frac{1}{1 + 2 + \cdots + n}
+\end{aligned}
+$$
+
+Here, the denominator $1 + 2 + \cdots + n = \frac{n(n+1)}{2}$ ensures that our weights sum to 1, maintaining proper normalization.
+
+Now, the probability that $X$ falls within $[a, b]$ can be expressed as:
+
+$$
 P(a \leq X \leq b) = \begin{cases}
 \frac{n}{1 + 2 + \cdots + n} \cdot \frac{(b - a)}{1/n} & \text{if } 0 \leq a \leq b \leq \frac{1}{n}, \\
 \frac{n-1}{1 + 2 + \cdots + n} \cdot \frac{(b - a)}{1/n} & \text{if } \frac{1}{n} \leq a \leq b \leq \frac{2}{n}, \\
@@ -357,30 +484,51 @@ P(a \leq X \leq b) = \begin{cases}
 \frac{1}{1 + 2 + \cdots + n} \cdot \frac{(b - a)}{1/n} & \text{if } \frac{n-1}{n} \leq a \leq b \leq 1, \\
 0 & \text{otherwise.}
 \end{cases}
-\]
+$$
 
-This example introduces a key idea: we’re assigning different probabilities to different intervals, based on a weighting scheme. The probability for each subinterval depends on its position in the interval and the assigned weight. However, this kind of piecewise calculation quickly becomes cumbersome as we increase the number of segments.
+#### Condensing the Notation
 
-#### The Problem with Increasing $n$
+We can condense this notation using indexing. Let $i$ be the index of the segment containing $[a, b]$. Using the identity $1 + 2 + ... + n = \frac{n(n+1)}{2}$, we can write:
 
-As we increase the number of divisions, say $n = 10$, then $n = 100$, and eventually $n \to \infty$, writing out these piecewise probabilities becomes increasingly difficult. Each segment has its own weight, and calculating probabilities for intervals that span multiple segments becomes tedious and error-prone.
+$$
+P(a \leq X \leq b) = \begin{cases}
+\frac{n-i+1}{\frac{n(n+1)}{2}} \cdot \frac{(b - a)}{1/n} & \text{if } \frac{i-1}{n} \leq a \leq b \leq \frac{i}{n}, \\
+0 & \text{otherwise.}
+\end{cases}
+$$
 
-For instance, calculating the probability over an interval like $[0.15, 0.6]$ would require breaking it up across several segments and summing up the corresponding weights for each piece. As $n$ increases, the number of segments increases, and the situation becomes impractically complex.
+This condensed form captures the same information more succinctly.
+
+#### The Challenge of Increasing $n$
+
+As we increase $n$, say from 10 to 100 to 1000, we encounter a problem: our piecewise function becomes increasingly complex. Calculating probabilities for intervals that span multiple segments becomes tedious and error-prone.
+
+For instance, to find $P(0.15 \leq X \leq 0.6)$, we'd need to:
+1. Identify which segments $0.15$ and $0.6$ fall into
+2. Sum the probabilities for all complete segments between them
+3. Calculate partial probabilities for the segments containing $0.15$ and $0.6$
+
+This process becomes unwieldy as $n$ grows large.
 
 #### The Limit Case: Continuous Variation
 
-Now, let’s take this idea to its logical extreme. What if, instead of dividing $[0, 1]$ into a finite number of intervals, we allowed the probability density to change **continuously** from left to right? As the number of segments grows without bound, we approach a situation where the probability density is no longer piecewise, but smoothly varying across the entire interval.
+When we see a partition that can be made finer, our first instinct should be to consider what happens as $n$ approaches infinity. If something meaninful comes out, then we can apply tools of calculus! In this limit:
+1. Each segment becomes infinitesimally small
+2. The discrete weights transform into a continuous function
 
-So far, we have established that the probability of a given interval depends on 2 things:
+Instead of discrete weights, we now have a continuous function $f(x)$ that gives the **probability density** at each point $x \in [0, 1]$, which is the standard name for what we previously called "normalized weights". Indeed, density is precisely the ratio between mass and volume, or in our mathematical framework, the ratio between probability mass and measure.
 
-1. The length of each subinterval with a defined probability
-2. The weight of each defined subinterval
-
-In this limit, we can imagine a function $f(x)$ that gives the **probability density** at every point $x \in [0, 1]$. This function $f(x)$ tells us how “dense” the probability is around each point, much like how mass density describes the distribution of mass in a physical object.
+Then, $f(x)$ is called a **Probability Density Function (PDF)**.
 
 Here’s how this works: for a very small interval $[x, x + dx]$, the probability that $X$ lies within that interval is approximately $f(x) \, dx$. The function $f(x)$ represents the probability per unit length, much like how a histogram gives the frequency per bin in a discrete case.
 
-#### The Integral: Summing Infinitesimal Probabilities
+In our example, as $n \to \infty$, our weight function approaches:
+
+$$
+f(x) = \lim_{n \to \infty} \frac{n-nx+1}{\frac{n(n+1)}{2}} \cdot n = 2(1-x)
+$$
+
+#### The Integral Form: Summing Infinitesimal Probabilities
 
 To calculate the probability that $X$ lies within an interval $[a, b]$, we can’t just sum up discrete pieces anymore, because the probability density changes continuously. Instead, we sum up the infinitesimal probabilities over every tiny piece of the interval. Mathematically, this is exactly what an **integral** does:
 
@@ -390,13 +538,53 @@ P(a \leq X \leq b) = \lim_{n \to \infty} \sum_{i=1}^{n} f(x_i) \Delta x \quad \l
 
 This expression tells us that the total probability in the interval $[a, b]$ is the **integral** of the probability density function $f(x)$ over that interval. The integral is simply a way of adding up the infinitesimally small probabilities across every point in the interval, giving us the total probability for that range.
 
+For our example:
+
+$$
+P(a \leq X \leq b) = \int_a^b 2(1-x) \, dx = [2x - x^2]_a^b = (2b - b^2) - (2a - a^2)
+$$
+
+This integral form allows us to calculate probabilities for any interval $[a, b]$ smoothly, without the need for piecewise calculations.
+
+- [ ] Todo: Expected value, variance, standard deviation
+- [ ] Gaussian distribution
+- [ ] CDF (motivate when PDF does not exist, etc.)
+
 ---
 
 ## The Path to Modern Probability Theory
 
-We've seen how elementary probability theory and geometric probability each have their limitations. Now, let's take our first step towards modern probability theory by examining a perplexing problem that challenged mathematicians in the early 20th century.
+We've seen how elementary probability theory and geometric probability each have their limitations. Now, let's take our first step towards modern probability theory by examining some perplexing problems that challenged mathematicians in the 19th and 20th centuries.
 
-### The Vitali Set: A Measure of Doubt
+### Motivating Examples: When Intuition Fails
+
+#### The Cantor Set: A Dust of Probability
+
+Let's begin with a seemingly simple question: Can a set have zero length but an uncountable number of points? The Cantor set, discovered by Georg Cantor in 1883, provides a startling answer.
+
+Here's how we construct it:
+
+1. Start with the interval $[0,1]$.
+2. Remove the middle third, leaving $[0,\frac{1}{3}] \cup [\frac{2}{3},1]$.
+3. Repeat this process infinitely, removing the middle third of each remaining interval.
+
+What's left is the Cantor set. Let's explore its properties:
+
+1. **Measure**: The total length removed is:
+
+    \[
+    \frac{1}{3} + \frac{2}{9} + \frac{4}{27} + ... = \sum_{n=1}^{\infty} \frac{2^{n-1}}{3^n} = 1
+    \]
+
+   So, the Cantor set has zero length (or measure).
+
+2. **Cardinality**: Despite having zero length, the Cantor set is uncountable! We can prove this by showing a one-to-one correspondence with real numbers in $[0,1]$.
+
+This paradoxical nature of the Cantor set challenges our intuition about probability. If we try to assign probabilities based on length, we'd give the Cantor set a probability of $0$. Yet, it contains as many points as the entire interval $[0,1]$!
+
+#### The Vitali Set: A Measure of Doubt
+
+Now, let's examine another perplexing example that further challenges our intuitive notions of probability and measure.
 
 Imagine we want to assign probabilities to subsets of the real line between $0$ and $1$. Seems straightforward, right? We might think we could use the length of the subset as its probability. But in 1905, Giuseppe Vitali showed that this intuitive approach breaks down in a spectacular way.
 
@@ -414,15 +602,15 @@ Now, if we try to assign a "length" (or measure) $m(V)$ to this set $V$, we run 
 
 This leads to the equation: $\aleph_0 \cdot m(V) = 1$, where $\aleph_0$ is the cardinality of the rational numbers.
 
-This can't be resolved properly. If we set $m(V)$ to anything greater than $0$, then the left-hand side blows up to infinity. So, we can only set the measure to something infinitesimal, $m(V) = 0$. Yet, if V has measure zero, how can its shifts cover the entire interval?
+This can't be resolved properly. If we set $m(V)$ to anything greater than $0$, then the left-hand side blows up to infinity. So, we can only set the measure to zero, $m(V) = 0$. Yet, if $V$ has measure zero, how can its shifts cover the entire interval?
 
-This paradox shook the foundations of probability theory. If we can't consistently assign probabilities (or measures) to all subsets of our sample space, how can we develop a rigorous theory?
+### The Need for a New Foundation
 
-The solution came in the form of $σ$-algebras. Instead of trying to assign probabilities to every possible subset, we define a collection of "measurable" sets that play nicely with our probability measure.
+These paradoxes shook the foundations of probability theory. If we can't consistently assign probabilities (or measures) to all subsets of our sample space, how can we develop a rigorous theory?
 
-### Building a Better Foundation
+The solution came in the form of measure theory and $\sigma$-algebras. Instead of trying to assign probabilities to every possible subset, we define a collection of "measurable" sets that play nicely with our probability measure.
 
-The Vitali set paradox reveals that our naive approach to assigning probabilities to all subsets of our sample space is fundamentally flawed. Let's think about what we need to build a consistent theory of probability:
+Let's think about what we need to build a consistent theory of probability:
 
 1. **A sample space**: We need a set of all possible outcomes. Let's call this $\Omega$.
 
@@ -434,9 +622,9 @@ Let's explore each of these components in more detail.
 
 #### The Sample Space $\Omega$
 
-The sample space is straightforward: it's just the set of all possible outcomes of our experiment or random process. For a coin flip, it might be $\Omega = \{\text{Heads}, \text{Tails}\}$. For our [0,1] interval example, it's $\Omega = [0,1]$.
+The sample space is straightforward: it's just the set of all possible outcomes of our experiment or random process. For a coin flip, it might be $\Omega = \{\text{Heads}, \text{Tails}\}$. For our $[0,1]$ interval example, it's $\Omega = [0,1]$.
 
-#### Events: The σ-algebra $\mathcal{F}$
+#### Events: The $\sigma$-algebra $\mathcal{F}$
 
 Here's where things get interesting. We can't assign probabilities to all subsets of $\Omega$, so we need to choose a collection of subsets that:
 
@@ -444,20 +632,20 @@ Here's where things get interesting. We can't assign probabilities to all subset
 2. Is closed under the operations we need for probability theory (like taking complements and unions).
 3. Excludes problematic sets like the Vitali set.
 
-This collection is called a σ-algebra, often denoted $\mathcal{F}$. Let's build it up step by step:
+This collection is called a $\sigma$-algebra, often denoted $\mathcal{F}$. Let's build it up step by step:
 
 1. We want $\Omega$ itself to be in $\mathcal{F}$ (the event "something happens").
 2. If an event $A$ is in $\mathcal{F}$, we want its complement $\Omega \setminus A$ to be in $\mathcal{F}$ too ("not A" should be an event if "A" is).
 3. If we have a sequence of events $A_1, A_2, \ldots$ in $\mathcal{F}$, we want their union $\bigcup_{i=1}^{\infty} A_i$ to be in $\mathcal{F}$ as well.
 
-These requirements lead us to the formal definition of a σ-algebra:
+These requirements lead us to the formal definition of a $\sigma$-algebra:
 
-> A σ-algebra $\mathcal{F}$ on $\Omega$ is a collection of subsets of $\Omega$ that:
+> A $\sigma$-algebra $\mathcal{F}$ on $\Omega$ is a collection of subsets of $\Omega$ that:
 > 1. Contains $\Omega$
 > 2. Is closed under complementation: if $A \in \mathcal{F}$, then $\Omega \setminus A \in \mathcal{F}$
 > 3. Is closed under countable unions: if $A_1, A_2, \ldots \in \mathcal{F}$, then $\bigcup_{i=1}^{\infty} A_i \in \mathcal{F}$
 
-This definition solves our Vitali set problem: we simply don't include such problematic sets in our σ-algebra $\mathcal{F}$. In practice, we often use the Borel σ-algebra, which includes all the sets we typically care about in probability theory while excluding pathological cases.
+This definition solves our Vitali set problem: we simply don't include such problematic sets in our $\sigma$-algebra $\mathcal{F}$. In practice, we often use the Borel $\sigma$-algebra, which includes all the sets we typically care about in probability theory while excluding pathological cases.
 
 #### The Probability Measure $P$
 
@@ -484,7 +672,18 @@ Now we can see why we need all three components: $\Omega$, $\mathcal{F}$, and $P
 
 Together, they form a probability space $(\Omega, \mathcal{F}, P)$, which gives us a rigorous foundation for probability theory.
 
-### Why This Matters
+### Why This Matters: Resolving Paradoxes and Enabling New Mathematics
+
+This framework resolves the paradoxes we encountered earlier:
+
+1. For the Cantor set, we can now say it's a measurable set with probability (measure) zero, while acknowledging its uncountable nature.
+2. The Vitali set, being non-measurable, simply isn't assigned a probability in our framework.
+
+Moreover, this approach opens up new avenues for mathematical exploration:
+
+1. It allows us to work with continuous probability distributions rigorously.
+2. It provides a foundation for stochastic processes and advanced probability theory.
+3. It connects probability theory with other areas of mathematics, like functional analysis and ergodic theory.
 
 This framework might seem abstract, but it's crucial for building a consistent theory of probability. It allows us to:
 
@@ -544,7 +743,7 @@ This functional approach offers several advantages:
 2. **Composability**: We can easily compose random variables to create new ones. For example, if $X$ and $Y$ are random variables, we can define $Z = X + Y$ without changing our underlying probability space.
 3. **Abstraction**: We can focus on the properties of the random variable itself, without worrying about the details of the underlying sample space.
 
-It's worth noting that by this new definition, "random variables" are neither random nor variables in the usual sense - they're deterministic functions on the sample space. The name has stuck due to historical development, but it's important to understand the shift in perspective.
+It's worth noting that by this new definition, "random variables" are neither random nor variables - they're deterministic functions on the sample space. The name has stuck due to historical underpinnings, but it's important to understand the shift in perspective is now totally distinct from the old one.
 
 ### Generalizing Further
 
