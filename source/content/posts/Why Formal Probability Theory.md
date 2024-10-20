@@ -453,6 +453,8 @@ $$
 
 This approach of using normalized weights and proportions allows us to create non-uniform distributions while maintaining the crucial property of linear scaling within defined regions. It forms the basis for more complex probability distributions and sets the stage for the continuous probability density functions we'll explore next.
 
+- [ ] Todo: re-order this section to motivate the need for normalization of weights
+
 ### From Discrete Bias to Continuous Density
 
 We've seen how we can introduce bias by assigning different weights to different parts of an interval. Let's take this idea further and see how it naturally leads us to the concept of probability density functions.
@@ -486,8 +488,6 @@ P(a \leq X \leq b) = \begin{cases}
 \end{cases}
 $$
 
-#### Condensing the Notation
-
 We can condense this notation using indexing. Let $i$ be the index of the segment containing $[a, b]$. Using the identity $1 + 2 + ... + n = \frac{n(n+1)}{2}$, we can write:
 
 $$
@@ -497,7 +497,7 @@ P(a \leq X \leq b) = \begin{cases}
 \end{cases}
 $$
 
-This condensed form captures the same information more succinctly.
+This condensed form captures the same information more succinctly and will be useful for calculations.
 
 #### The Challenge of Increasing $n$
 
@@ -512,7 +512,7 @@ This process becomes unwieldy as $n$ grows large.
 
 #### The Limit Case: Continuous Variation
 
-When we see a partition that can be made finer, our first instinct should be to consider what happens as $n$ approaches infinity. If something meaninful comes out, then we can apply tools of calculus! In this limit:
+When we see a partition that can be made finer, our first instinct should be to consider what happens as $n$ approaches infinity. If something meaningful comes out, then we can apply tools of calculus! In this limit:
 1. Each segment becomes infinitesimally small
 2. The discrete weights transform into a continuous function
 
@@ -547,8 +547,8 @@ $$
 This integral form allows us to calculate probabilities for any interval $[a, b]$ smoothly, without the need for piecewise calculations.
 
 - [ ] Todo: Expected value, variance, standard deviation
-- [ ] Gaussian distribution
 - [ ] CDF (motivate when PDF does not exist, etc.)
+- [ ] Gaussian distribution
 
 ---
 
