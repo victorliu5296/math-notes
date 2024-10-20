@@ -1,0 +1,71 @@
+{{ define "main" }}
+<div class="page-container">
+    <!-- Main Content -->
+    <div class="content-area">
+        <article class="post-single">
+            <header class="post-header">
+                {{ partial "breadcrumbs.html" . }}
+                <h1 class="post-title">
+                    {{ .Title }}
+                    {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
+                </h1>
+                {{ if .Description }}
+                <div class="post-description">
+                    {{ .Description }}
+                </div>
+                {{ end }}
+                {{ if not (.Param "hideMeta") }}
+                <div class="post-meta">
+                    {{- partial "post_meta.html" . -}}
+                </div>
+                {{ end }}
+            </header>
+
+            {{- if .Params.cover.image }}
+            <figure class="entry-cover">
+                {{- partial "cover.html" . -}}
+            </figure>
+            {{- end }}
+
+            <div class="post-content">
+                <article>
+                    {{- if not (.Param "disableAnchoredHeadings") }}
+                    {{- partial "anchored_headings.html" .Content -}}
+                    {{- else }}{{ .Content }}{{ end }}
+                </article>
+            </div>
+
+            <footer class="post-footer">
+                {{- if .Params.tags }}
+                <ul class="post-tags">
+                    {{- range ($.GetTerms "tags") }}
+                    <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+                    {{- end }}
+                </ul>
+                {{- end }}
+
+                {{- if (.Param "ShowPostNavLinks") }}
+                {{- partial "post_nav_links.html" . }}
+                {{- end }}
+
+                {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
+                {{- partial "share_icons.html" . -}}
+                {{- end }}
+            </footer>
+
+            {{- if (.Param "comments") }}
+            {{- partial "comments.html" . }}
+            {{- end }}
+        </article>
+    </div>
+
+    <aside class="toc-sidebar">
+        <details open>
+            <summary>Table of Contents</summary>
+            <div class="toc-content">
+                {{ .TableOfContents }}
+            </div>
+        </details>
+    </aside>
+</div>
+{{ end }}

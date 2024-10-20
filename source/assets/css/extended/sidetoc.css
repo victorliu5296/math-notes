@@ -1,0 +1,62 @@
+/* General layout container */
+.page-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+}
+
+/* Main content on the left */
+.content-area {
+    flex: 1;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+/* ToC Sidebar */
+.toc-sidebar {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    /* Positioned to the right */
+    width: calc(20%);
+    /* Dynamic width */
+    max-width: 400px;
+    /* Maximum width */
+    min-width: 200px;
+    /* Minimum width */
+    max-height: 80vh;
+    /* Scrollable height */
+    overflow-y: auto;
+    /* Allow scrolling if content exceeds height */
+    padding-left: 20px;
+    z-index: 1000;
+}
+
+/* Style for the <details> element */
+.toc-sidebar details {
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the summary element */
+.toc-sidebar summary {
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    padding-bottom: 10px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 1200px) {
+    .toc-sidebar {
+        display: none;
+        /* Hide the ToC on smaller screens */
+    }
+
+    .content-area {
+        max-width: 100%;
+    }
+}
