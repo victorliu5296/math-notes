@@ -42,6 +42,46 @@ This blog post assumes a basic understanding of probability, calculus and linear
 
 ---
 
+## The Dawn of Probability
+
+In ancient times, people played games of chance by rolling carved knucklebones. While our ancestors didn't have a formal theory of probability, they intuitively understood the concept of randomness and fairness in games.
+
+The first recorded musings on probability date back to the 16th century, revolving around gambling problems. Gerolamo Cardano, an Italian polymath, wrote "Liber de Ludo Aleae" (Book on Games of Chance) around 1564, providing the first systematic treatment of probability, though it wasn't published until a century later.
+
+## The Birth of Modern Probability
+
+The true birth of probability as a mathematical discipline came in 1654, with a correspondence between two French mathematicians, Blaise Pascal and Pierre de Fermat. Their exchange, sparked by a gambling problem posed by Chevalier de Méré, laid the groundwork for the theory of probability.
+
+The problem that ignited their discussion was deceptively simple: How should the stakes be divided in a game of chance that's interrupted before its conclusion? This "problem of points" led Pascal and Fermat to develop the fundamental principles of probability theory.
+
+## From Games to Science
+
+As the field developed, probability theory began to find applications beyond gambling. In the early 18th century, Jacob Bernoulli made a significant breakthrough with his law of large numbers. This principle, which states that the average of a large number of trials should be close to the expected value, formed a bridge between theoretical probability and practical statistics.
+
+Bernoulli's work was followed by that of Abraham de Moivre, who introduced the concept of normal distribution and laid the groundwork for the central limit theorem. These developments began to reveal the profound connections between probability and the natural world.
+
+## The Laplacian Revolution
+
+The late 18th and early 19th centuries saw Pierre-Simon Laplace emerge as a towering figure in probability theory. His "Théorie analytique des probabilités" (1812) was a landmark work that unified and extended previous results. Laplace introduced generating functions and the method of least squares, tools that remain crucial in modern probability and statistics.
+
+Laplace also popularized the classical definition of probability as the ratio of favorable outcomes to total outcomes, assuming all outcomes are equally likely. While this definition would later prove insufficient for more complex scenarios, it served as a crucial stepping stone in the development of the field.
+
+## The Road to Rigor
+
+As mathematics became increasingly rigorous in the 19th century, probability theory faced challenges. The intuitive notions that had served well for simple problems began to break down in more complex scenarios. Paradoxes emerged, such as Bertrand's paradox in geometric probability, highlighting the need for a more robust foundation.
+
+The early 20th century saw attempts to axiomatize probability theory, culminating in Andrey Kolmogorov's seminal work "Foundations of the Theory of Probability" in 1933. Kolmogorov's approach, based on measure theory, provided the rigorous mathematical foundation that probability theory had been lacking.
+
+## Why This History Matters
+
+This historical journey from games of chance to a rigorous mathematical theory illustrates a crucial point: probability theory developed in response to real-world problems and paradoxes. Each advancement was driven by the need to explain observed phenomena or resolve contradictions in existing theories.
+
+Probability theory evolves not just for the sake of abstraction, but to provide tools for understanding the uncertain world around us. From weather forecasting to quantum mechanics, from financial markets to artificial intelligence, probability theory has become an indispensable tool in modern science and decision-making, making sure to avoid paradoxes and provide a framework for making sense of the world.
+
+Let's carry this historical perspective with us as we explore the fundamental concepts of probability, always asking: What problem is this solving? How does this help us understand the world better?
+
+---
+
 ## Introduction
 
 Let's start with a seemingly simple question: What's the probability of randomly selecting a number between $0$ and $1$ on the unit interval $[0,1]$?
