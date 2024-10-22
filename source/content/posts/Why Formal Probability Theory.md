@@ -406,39 +406,89 @@ This principle is at the heart of continuous probability: assigning probabilitie
 
 Now, let's add complexity by introducing bias into our probability distribution. We'll see how this relates to our earlier discussion about scaling probabilities linearly with the size of intervals.
 
+Imagine we're running a carnival game where players pick a number between 0 and 1. But here's the twist: we want to make it harder for players to win by biasing the game towards smaller numbers. How can we set this up mathematically?
+
+#### A Motivating Example: The Biased Carnival Game
+
+As in our discrete example with the biased coin, we want to assign a higher probability to certain outcomes in our probability distribution. However, as we established, we cannot assign probabilities to single points. Instead, we need to assign probabilities to intervals of outcomes.
+
+Let's set up our carnival game with the following rules:
+
+1. Players pick a number between 0 and 1.
+2. We want numbers in the first quarter (0 to 0.25) to be twice as likely as numbers in the rest of the range.
+
+How do we create a probability distribution that reflects this bias? Let's explore through an example.
+
+#### Step 1: Assigning Weights
+
+To create our bias, we'll assign different weights to different parts of the interval:
+
+- Weight of 2 for the interval $[0, 0.25]$
+- Weight of 1 for the interval $[0.25, 1]$
+
+Okay, but then, what happens when we want to calculate the probability for an interval that spans both regions, such as $[0, 0.5]$? We can't apply the same weight across the entire interval because it spans two different regions with different weights.
+
+#### Step 2: Breaking Calculations Apart
+
+When dealing with such an overlapping interval, we define the calculations by breaking it apart to account for the different weights in each region.
+
+For instance, if we want to calculate the probability for the entire interval $[0, 1]$, we'll need to:
+
+1. Calculate the probability for $[0, 0.25]$ using its weight
+2. Calculate the probability for $[0.25, 1]$ using its weight
+3. Sum these probabilities
+
+This approach ensures we correctly account for the different weights in each region.
+
+#### Step 3: The Need for Normalization
+
+Now, let's see what happens if we use these weights directly to calculate probabilities. We'll use our method of breaking calculations apart:
+
+$$
+\begin{aligned}
+P(0 \leq X \leq 1) &= P(0 \leq X \leq 0.25) + P(0.25 \leq X \leq 1) \\
+&= 2 \cdot \frac{0.25}{0.25} + 1 \cdot \frac{0.75}{0.75} \\
+&= 2 + 1 = 3
+\end{aligned}
+$$
+
+Wait a minute! The probability of picking any number should be 1, not 3. This shows us why we need to normalize our weights.
+
+#### Step 4: Normalizing Weights
+
+To fix this, we'll divide each weight by the sum of all weights:
+
+- Total weight: $2 + 1 = 3$
+- Normalized weight for $[0, 0.25]$: $\frac{2}{3}$
+- Normalized weight for $[0.25, 1]$: $\frac{1}{3}$
+
+Now let's check our total probability again:
+
+$$
+\begin{aligned}
+P(0 \leq X \leq 1) &= P(0 \leq X \leq 0.25) + P(0.25 \leq X \leq 1) \\
+&= \frac{2}{3} \cdot \frac{0.25}{0.25} + \frac{1}{3} \cdot \frac{0.75}{0.75} \\
+&= \frac{2}{3} + \frac{1}{3} = 1
+\end{aligned}
+$$
+
+Perfect! Our probabilities now sum to 1, as they should.
+
 #### The Weight-Proportion Principle
 
-The key idea we're introducing is that probabilities can be defined using the product of two factors:
+From our carnival game example, we can extract a general principle for creating biased probability distributions:
 
-1. A normalized weight assigned to a region
-2. The proportion of that region occupied by our interval of interest
+1. Assign weights to different regions of your interval.
+2. Normalize these weights so they sum to 1.
+3. Calculate probabilities using the product of:
+   a) The normalized weight for a region
+   b) The proportion of that region occupied by your interval of interest
 
-This principle allows us to create non-uniform distributions while maintaining the property that probabilities scale linearly with the size of intervals.
+Let's formalize this into a mathematical definition.
 
-#### Example: Biased Interval
+#### Formal Definition: Biased Interval Probabilities
 
-Let's consider the interval $[0,1]$ and introduce a bias towards smaller values. We'll do this by:
-
-1. Assigning different weights to different parts of the interval
-2. Normalizing these weights to sum to 1
-3. Calculating probabilities based on these normalized weights and the proportion of each region occupied
-
-Here's our setup:
-
-- Assign an unnormalized weight of 2 to the interval $[0, 0.25]$ (the first quarter)
-- Assign an unnormalized weight of 1 to the interval $[0.25, 1]$ (the remaining three-quarters)
-
-To normalize these weights, we divide each by their sum:
-
-$$
-\text{Total weight} = 2 + 1 = 3
-$$
-
-Normalized weights:
-- For $[0, 0.25]$: $\frac{2}{3}$
-- For $[0.25, 1]$: $\frac{1}{3}$
-
-Now, let's define the probability that a number falls between two points $a$ and $b$:
+For our carnival game, we can define the probability that a number falls between two points $a$ and $b$ as:
 
 $$
 P(a \leq X \leq b) = \begin{cases}
@@ -448,34 +498,28 @@ P(a \leq X \leq b) = \begin{cases}
 \end{cases}
 $$
 
-Let's break down this formula:
+Let's break this down:
 
-1. For the first case $(0 \leq a \leq b \leq 0.25)$:
-   - Normalized weight assigned to this region: $\frac{2}{3}$
-   - Proportion of the region occupied: $\frac{(b - a)}{0.25}$
-   - Probability: $\text{(Normalized Weight)} \cdot \text{(Proportion)} = \frac{2}{3} \cdot \frac{(b - a)}{0.25}$
+1. For $0 \leq a \leq b \leq 0.25$:
+   - Normalized weight: $\frac{2}{3}$
+   - Proportion of region: $\frac{(b - a)}{0.25}$
 
-2. For the second case $(0.25 \leq a \leq b \leq 1)$:
-   - Normalized weight assigned to this region: $\frac{1}{3}$
-   - Proportion of the region occupied: $\frac{(b - a)}{0.75}$
-   - Probability: $\text{(Normalized Weight)} \cdot \text{(Proportion)} = \frac{1}{3} \cdot \frac{(b - a)}{0.75}$
-
-This formulation explicitly shows how we're using the weight-proportion principle to define probabilities. The normalized weight ($\frac{2}{3}$ or $\frac{1}{3}$) represents the bias towards certain regions, while the proportion ($\frac{(b-a)}{0.25}$ or $\frac{(b-a)}{0.75}$) ensures that the probability scales linearly with the size of the interval within each region.
+2. For $0.25 \leq a \leq b \leq 1$:
+   - Normalized weight: $\frac{1}{3}$
+   - Proportion of region: $\frac{(b - a)}{0.75}$
 
 #### Verifying Linear Scaling
 
-To see how this maintains linear scaling within each region, consider doubling the size of an interval:
+An important property of this distribution is that probabilities scale linearly with interval size within each region. Let's verify this:
 
 1. In $[0, 0.25]$: If we double $(b-a)$, the probability doubles.
 2. In $[0.25, 1]$: If we double $(b-a)$, the probability doubles.
 
-This property holds because we're multiplying the fixed normalized weight by a proportion that scales linearly with the interval size.
+This linear scaling holds because we're multiplying a fixed normalized weight by a proportion that scales linearly with interval size.
 
 #### Handling Overlapping Intervals
 
-Of course, not all intervals will lie entirely within a single region with a fixed weight. What happens when we want to calculate the probability for an interval that crosses from one region into another, like $[0, 0.5]$?
-
-We can't apply the same weight across the entire interval because it spans two different regions with different weights. Instead, we break the interval into two pieces: $[0, 0.25] \subseteq [0, 0.25]$ and $[0.25, 0.5] \subseteq [0.25, 1]$. We calculate the probability for each sub-interval separately, then sum them to get the total probability:
+What if we want to find the probability for an interval that spans both regions, like $[0, 0.5]$? We simply break it into pieces and sum the probabilities:
 
 $$
 \begin{aligned}
@@ -485,15 +529,11 @@ P(0 \leq X \leq 0.5) &= P(0 \leq X \leq 0.25) + P(0.25 \leq X \leq 0.5) \\
 \end{aligned}
 $$
 
-This way, we can also check that the total probability of the entire interval is $1$, as expected:
+#### Conclusion and Next Steps
 
-$$
-P(0 \leq X \leq 1) = \frac{2}{3}\cdot \frac{0.25}{0.25} + \frac{1}{3} \cdot \frac{0.75}{0.75} = \frac{2}{3} + \frac{1}{3} = 1
-$$
+This weight-proportion approach allows us to create non-uniform distributions while maintaining linear scaling within defined regions. It forms the foundation for more complex probability distributions and sets the stage for continuous probability density functions, which we'll explore next.
 
-This approach of using normalized weights and proportions allows us to create non-uniform distributions while maintaining the crucial property of linear scaling within defined regions. It forms the basis for more complex probability distributions and sets the stage for the continuous probability density functions we'll explore next.
-
-- [ ] Todo: re-order this section to motivate the need for normalization of weights
+---
 
 ### From Discrete Bias to Continuous Density
 
