@@ -17,8 +17,6 @@ https://arxiv.org/abs/2406.02528
 - Implications: they managed to fully eliminate matrix multiplication in their architecture, making it much more computationally efficient while retaining performance that scales as well as regular transformers.
 - Implementation: https://github.com/ridgerchu/matmulfreellm. They build a custom FPGA hardware solution that allows extremely fast operation better than general-purpose GPUs.
 
-Certainly! Here's a summary of the "Mixture of A Million Experts" paper in a similar format:
-
 ### Mixture of A Million Experts
 https://arxiv.org/abs/2407.04153
 
