@@ -1,13 +1,13 @@
 ---
-title: 'Isoperimetric Problem in R^2'
+title: 'Proof of Isoperimetric Problem in R^2'
 date: 2024-10-21T21:27:12-04:00
 summary: "Proof that a circle encloses the greatest possible area in R^2 for a given perimeter"
 math: katex
 categories:
   - Variational Calculus
   - Calculus of Variations
-  - Proofs
 tags:
+  - Proof
   - Isoperimetric Problem
   - Circle
 weight: 100
