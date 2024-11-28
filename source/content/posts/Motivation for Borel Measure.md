@@ -25,7 +25,7 @@ Imagine you're trying to figure out how to assign a size, or "measure," to diffe
 
 A *probability measure* is a special kind of measure where the total size of the space is 1—think of it like spreading probability evenly across all outcomes in a probability space.
 
-#### 2. **The Lebesgue Measure on \( [0, 1] \)**
+#### 2. **The Lebesgue Measure on** \( [0, 1] \)
 The unit interval \( [0, 1] \) is foundational to probability theory, often used to parameterize probabilities. In addition, one of the most common measures is the *Lebesgue measure*, which is a natural way to assign "length" to sets in \( \mathbb{R} \). On the unit interval \( [0, 1] \), this measure behaves exactly as you’d expect: the measure of an interval is just its length. For example:
 \[
 \lambda([a, b]) = b - a

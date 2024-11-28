@@ -55,7 +55,7 @@ Thus, **quadratic variation** for Brownian motion does not vanish as \( \Delta t
 
 ---
 
-### **1.2 Heuristic Rule: \( dW_t^2 = dt \)**
+### **1.2 Heuristic Rule:** \( dW_t^2 = dt \)
 
 This non-trivial quadratic variation introduces a fundamental difference between Brownian motion and smooth functions. To develop intuition, we adopt the following **heuristic rule** in Itô calculus:
 \[
@@ -93,7 +93,7 @@ In deterministic calculus, the higher-order terms (like \( (dX_t)^2 \)) are igno
 
 ---
 
-### **2.2 Computing \( (dX_t)^2 \)**
+### **2.2 Computing** \( (dX_t)^2 \)
 
 From the SDE:
 \[
@@ -166,7 +166,7 @@ As in the single-variable case, the second-order terms \( dX_i \, dX_k \) are no
 
 ---
 
-### **1.2 Computing the Cross-Terms \( dX_i \, dX_k \)**
+### **1.2 Computing the Cross-Terms** \( dX_i \, dX_k \)
 
 From the SDE \( dX_i(t) = \mu_i \, dt + \sum_{j=1}^m \sigma_{ij} \, dW_j(t) \), the cross-product of two differentials is:
 \[

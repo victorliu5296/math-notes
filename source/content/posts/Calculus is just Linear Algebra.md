@@ -416,7 +416,7 @@ m \frac{d^2 x(t)}{dt^2} + c \frac{dx(t)}{dt} + kx(t) = 0
    m(s^2 X(s) - sx(0) - v(0)) + c(s X(s) - x(0)) + kX(s) = 0
    \]
 
-2. **Solve for \( X(s) \)**:
+2. **Solve for** \( X(s) \):
 
    \[
    X(s) = \frac{msx(0) + mv(0) + cx(0)}{ms^2 + cs + k}

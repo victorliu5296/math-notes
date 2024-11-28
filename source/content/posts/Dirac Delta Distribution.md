@@ -83,7 +83,7 @@ Thus, the term \( re^{i\theta} \delta(k - k_0) \) tells us that:
 
 ---
 
-### 4. **Example: Fourier Transform of \( \sin(x) \)**
+### 4. **Example: Fourier Transform of** \( \sin(x) \)
 
 Let’s consider an example: the Fourier transform of \( \sin(x) \).
 

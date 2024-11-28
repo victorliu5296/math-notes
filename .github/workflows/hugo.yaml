@@ -31,10 +31,10 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
-      - name: Run pre-build script
-        run: |
-          chmod +x ./pre-build.sh
-          ./pre-build.sh
+      # - name: Run pre-build script
+      #   run: |
+      #     chmod +x ./pre-build.sh
+      #     ./pre-build.sh
 
       - name: Install Hugo CLI
         run: |

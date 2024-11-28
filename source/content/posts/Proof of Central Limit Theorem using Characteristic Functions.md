@@ -53,7 +53,7 @@ We use the following key properties of characteristic functions:
 2. For a constant \( a \), \( \phi_{aX}(t) = \phi_X(at) \).
 3. For a constant \( b \), \( \phi_{X+b}(t) = e^{itb} \phi_X(t) \).
 
-#### **Step 3: Characteristic Function of \( Z_n \)**
+#### **Step 3: Characteristic Function of** \( Z_n \)
 
 Using the properties of characteristic functions, we express the characteristic function of \( Z_n \):
 
@@ -61,7 +61,7 @@ Using the properties of characteristic functions, we express the characteristic 
 \phi_{Z_n}(t) = E\left[ e^{itZ_n} \right] = E\left[ e^{it \frac{S_n - n\mu}{\sigma \sqrt{n}}} \right] = e^{-it \frac{n\mu}{\sigma \sqrt{n}}} \phi_{S_n} \left( \frac{t}{\sigma \sqrt{n}} \right)
 \]
 
-#### **Step 4: Characteristic Function of \( S_n \)**
+#### **Step 4: Characteristic Function of** \( S_n \)
 
 Since \( S_n \) is the sum of \( n \) i.i.d. random variables, the characteristic function of \( S_n \) can be written as:
 \[
@@ -69,7 +69,7 @@ Since \( S_n \) is the sum of \( n \) i.i.d. random variables, the characteristi
 \]
 where \( \phi_X(t) \) is the characteristic function of the individual random variables \( X_i \).
 
-#### **Step 5: Taylor Expansion of \( \phi_X(t) \)**
+#### **Step 5: Taylor Expansion of** \( \phi_X(t) \)
 
 We now expand \( \phi_X(t) \) around \( t = 0 \) using a Taylor expansion:
 \[
@@ -77,7 +77,7 @@ We now expand \( \phi_X(t) \) around \( t = 0 \) using a Taylor expansion:
 \]
 where \( o(t^2) \) represents terms that vanish faster than \( t^2 \) as \( t \to 0 \). We will see that we don't need to expand this term because it vanishes as \( n \to \infty \).
 
-#### **Step 6: Substitute into \( \phi_{Z_n}(t) \)**
+#### **Step 6: Substitute into** \( \phi_{Z_n}(t) \)
 
 Substituting the Taylor expansion of \( \phi_X(t) \) into the expression for \( \phi_{Z_n}(t) \), we get:
 \[

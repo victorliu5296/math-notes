@@ -26,12 +26,12 @@ Taken from [AN INTRODUCTION TO STOCHASTIC DIFFERENTIAL EQUATIONS](https://www.cm
 #### Motivation:
 Conditional expectation, a fundamental concept in probability, can be derived through an elegant geometric approach using **least squares projections**. This method is based on minimizing the distance between a vector (or random variable) and a subspace, which leads to a natural interpretation of conditional expectation as a best approximation.
 
-#### 1. **Least Squares in \( \mathbb{R}^n \):**
+#### 1. **Least Squares in** \( \mathbb{R}^n \):
 Consider \( \mathbb{R}^n \) and a proper subspace \( V \subseteq \mathbb{R}^n \). Given a vector \( x \in \mathbb{R}^n \), we aim to find \( z \in V \) that minimizes the distance:
 \[
 \| z - x \| = \min_{y \in V} \| y - x \|.
 \]
-This problem has a unique solution where \( z \) is the **projection of \( x \) onto \( V \)**, denoted by:
+This problem has a unique solution where \( z \) is the **projection of** \( x \) **onto** \( V \), denoted by:
 \[
 z = \text{proj}_V(x).
 \]
@@ -52,7 +52,7 @@ x \cdot w = z \cdot w \quad \text{for all} \ w \in V.
 \]
 Thus, \( x - z \) is perpendicular to every vector in \( V \).
 
-#### 3. **Projection in \( L^2 \) Spaces (Random Variables):**
+#### 3. **Projection in** \( L^2 \) **Spaces (Random Variables):**
 We extend this idea to random variables. Consider the space \( L^2(\Omega) \), which consists of all real-valued square-integrable random variables. Given random variables \( X \) and \( Y \) in \( L^2(\Omega) \), their **inner product** is defined as:
 \[
 (X, Y) := \int_\Omega X Y \, dP = \mathbb{E}[XY].
@@ -77,7 +77,7 @@ which implies:
 \]
 Since \( Z \) is \( \mathcal{V} \)-measurable, we conclude that \( Z = \mathbb{E}[X | \mathcal{V}] \).
 
-Thus, conditional expectation \( \mathbb{E}[X | \mathcal{V}] \) can be interpreted as the **projection of \( X \) onto the space of \( \mathcal{V} \)-measurable random variables**:
+Thus, conditional expectation \( \mathbb{E}[X | \mathcal{V}] \) can be interpreted as the **projection of** \( X \) **onto the space of** \( \mathcal{V} \) **-measurable random variables**:
 \[
 \mathbb{E}[X | \mathcal{V}] = \text{proj}_V(X).
 \]

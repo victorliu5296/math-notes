@@ -1,7 +1,7 @@
 baseURL: https://victorliu5296.github.io/math-notes/
+theme: PaperMod
 languageCode: en-us
 title: Victor Liu's Math Notes
-theme: ["PaperMod"]
 
 buildDrafts: false
 buildFuture: false
@@ -105,3 +105,24 @@ related:
       weight: 100
     - name: "categories"
       weight: 80
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      passthrough:
+        delimiters:
+          block:
+          - - \[
+            - \]
+          - - $$
+            - $$
+          inline:
+          - - \(
+            - \)
+        enable: true
+    parser:
+      attribute:
+        block: true
+        title: true
