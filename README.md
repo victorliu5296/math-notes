@@ -1,3 +1,5 @@
+### Notice: This repository is deprecated in favor of merging into the main website at victorliu5296/victorliu5296.github.io
+
 # math-notes
 I'm going to write some math notes on here (often with the assistance of large language models)
 
